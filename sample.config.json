@@ -1,0 +1,20 @@
+{
+  "credentials": {
+    "angellist": {
+      "user": "johnfoo@testing.com",
+      "password": "changeme"
+    },
+    "studentOpportunityCenter": {
+      "user": "johnfoo@testing.com",
+      "password": "changeme"
+    }
+  },
+  "additionalParams": {
+    "simplyHired": {
+      "timeout": 500,
+      "searchTerms": {
+        "compsci": "computer science intern"
+      }
+    }
+  }
+}

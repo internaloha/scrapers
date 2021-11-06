@@ -1,0 +1,18 @@
+{
+  "entry": [
+    "scrape.ts",
+    "statistics.ts"
+  ],
+  "ignoreUnresolved": [
+  ],
+  "ignoreUnimported": [
+  ],
+  "ignoreUnused": [
+    "ts-node",
+    "tslib"
+  ],
+  "ignorePatterns": [
+    "**/node_modules/**",
+    "**/typings/**"
+  ]
+}
