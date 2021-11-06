@@ -52,7 +52,7 @@ export class SimplyHiredScraper extends Scraper {
   async login() {
     super.login();
     this.log.debug(`Going to ${this.url}`);
-    await this.page.goto(this.url);
+    await super.goto(this.url);
   }
 
   async setUpSearchCriteria() {
@@ -74,7 +74,7 @@ export class SimplyHiredScraper extends Scraper {
       const url = `${internshipDropdown[0]}`;
       this.log.debug(`Directing to: ${url}`);
       await Promise.all([
-        this.page.goto(url),
+        super.goto(url),
         this.page.waitForSelector('div[data-id=JobType]'),
       ]);
       // Setting filter as last '30 days'
@@ -82,7 +82,7 @@ export class SimplyHiredScraper extends Scraper {
       const lastPostedURL = `${lastPosted[0]}`;
       this.log.debug('Setting Date Relevance: 30 days');
       this.log.debug(`Directing to: ${lastPostedURL}`);
-      await this.page.goto(lastPostedURL);
+      await super.goto(lastPostedURL);
       await Promise.all([
         this.page.click('a[class=SortToggle]'),
         this.page.waitForNavigation()
@@ -192,7 +192,7 @@ export class SimplyHiredScraper extends Scraper {
         // eslint-disable-next-line @typescript-eslint/no-unused-expressions
         ((totalPages === 1) || (totalPages % 10 === 0)) ? this.log.info(message) : this.log.debug(message);
       }
-    } while (hasNext === true);
+    } while (hasNext);
     this.log.debug(`Found ${totalPages} pages.`);
   }
 

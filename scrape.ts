@@ -9,6 +9,7 @@ import { Apple } from './scrapers/Scraper.apple';
 import { LinkedinScraper } from './scrapers/Scraper.linkedin';
 import { TestScraper } from './scrapers/Scraper.test';
 import { ZipRecruiterScraper } from './scrapers/Scraper.ziprecruiter';
+import { AcmScraper } from './scrapers/Scraper.acm';
 
 
 /**
@@ -22,6 +23,7 @@ import { ZipRecruiterScraper } from './scrapers/Scraper.ziprecruiter';
  *  After we process the CLI args, we then configure the selected scraper from the CLI values before execution.
  */
 const scrapers = {
+  acm: new AcmScraper(),
   angellist: new AngelListScraper(),
   apple: new Apple(),
   cisco: new CiscoScraper(),
