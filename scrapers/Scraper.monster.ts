@@ -50,7 +50,7 @@ export class MonsterScraper extends Scraper {
     // get the name of the companies
     const companies = await super.getValues('h3[class="job-cardstyle__JobCardCompany-sc-1mbmxes-3 cYIFfT"]', 'innerText');
     this.log.debug(`Companies: \n${companies}`);
-    
+
     // Retrieve each URL, extract the internship listing info.
     for (let i = 0; i < urls.length; i++) {
       const url = urls[i];
