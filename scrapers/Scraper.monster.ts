@@ -41,7 +41,7 @@ export class MonsterScraper extends Scraper {
     const companies = await super.getValues('h3[class="job-cardstyle__JobCardCompany-sc-1mbmxes-3 cYIFfT"', 'innerText');
     this.log.debug(`Companies: \n${companies}`);
     // get the name of the location
-    const locations = await super.getValues('p[class="job-cardstyle__JobCardCompany-sc-1mbmxes-3 cYIFfT"]', 'innerText');
+    const locations = await super.getValues('p[class="job-cardstyle__JobCardCompany-sc-1mbmxes-5 cYIFfT"]', 'innerText');
     this.log.debug(`Locations: \n${locations}`);
 
     //break the cities and states of the locations
