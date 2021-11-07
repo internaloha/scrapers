@@ -30,7 +30,7 @@ export class MonsterScraper extends Scraper {
 
   async generateListings() {
     await super.generateListings();
-    await super.goto('https://www.monster.com/jobs/search?q=computer+science+intern&where=united+states&page=3');
+    await super.goto('https://www.monster.com/jobs/search?q=computer+science+intern&where=united+states');
     await this.page.waitForNavigation;
     //retrieve the url of the position
     let urls = await super.getValues('a[class="job-cardstyle__JobCardComponent-sc-1mbmxes-0 khzaNc"]', 'href');
