@@ -29,23 +29,17 @@ export class CiscoScraper extends Scraper {
     this.log.debug(`Found ${urls.length} URLS: \n${urls}`);
     const descriptions = [];
     const positions = [];
-    const locations = [];
     const cities = [];
     const states = [];
     for (const url of urls) {
       this.log.debug(`Processing: ${url}`);
       await this.page.goto(url);
-      positions.push(await super.getValues('h2[itemprop="title"]', 'innerText'));
+      positions.push((await super.getValues('h2[itemprop="title"]', 'innerText'))[0]);
       descriptions.push(await super.getValues('div[itemprop="description"]', 'innerText'));
-      let location: any[];
-      location = await super.getValues('div[itemprop="jobLocation"]', 'innerText');
-      locations.push(location);
-      location.forEach(location => {
-        const loc = location.split(', ');
-        this.log.debug(`Location: \n${loc}`);
-        cities.push(loc[0]);
-        states.push(loc[1]);
-      });
+      const location = (await super.getValues('div[itemprop="jobLocation"]', 'innerText'))[0];
+      const locationTuple = location.split(', ');
+      cities.push(locationTuple[0]);
+      states.push(locationTuple[1]);
     }
 
     // Now we add listings. All arrays are (hopefully!) the same length.
