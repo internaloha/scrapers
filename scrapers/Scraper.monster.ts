@@ -8,15 +8,6 @@ export class MonsterScraper extends Scraper {
     super({ name: 'monster', url: 'https://www.monster.com/jobs/search?q=computer+science+intern&where=united+states' });
   }
 
-  async autoScrollToBottom() {
-    const endPage = document.querySelector('div.sc-fTQuIj fxTeMH');
-    while (endPage.clientHeight === 0) {
-      window.scrollBy(0, document.scrollingElement.scrollHeight);
-      await new Promise((resolve) => { setTimeout(resolve, 1000); });
-    }
-    return document.querySelectorAll('a.job-cardstyle__JobCardComponent-sc-1mbmxes-0 khzaNc').length;
-  }
-
   async launch() {
     await super.launch();
     prefix.apply(this.log, { nameFormatter: () => this.name.toUpperCase() });
