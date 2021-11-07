@@ -61,7 +61,12 @@ export class MonsterScraper extends Scraper {
       // retrieve the description from that page
       const description = await super.getValues('div[class="descriptionstyles__DescriptionBody-sc-13ve12b-4 eCiZzS"]', 'innerText');
       // set the location of the certain position
-      const location = { city: cities[i], state: states[i], country: 'United States' };
+      const jobLocation = await super.getValues('h3[class="headerstyle__JobViewHeaderLocation-sc-1ijq9nh-4 fQCuMw"', 'innerText');
+      //split the location based on city and state
+      const loc = jobLocation.split(', ');
+      const city = loc[0];
+      const state = loc[1];
+      const location = { city: city, state: state, country: 'United States' };
       // create the listing information
       const listing = new Listing({ url: urls[i], position: positions[i], location, company: companies[i], description: description });
       this.listings.addListing(listing);
