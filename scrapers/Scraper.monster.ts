@@ -50,19 +50,7 @@ export class MonsterScraper extends Scraper {
     // get the name of the companies
     const companies = await super.getValues('h3[class="job-cardstyle__JobCardCompany-sc-1mbmxes-3 cYIFfT"]', 'innerText');
     this.log.debug(`Companies: \n${companies}`);
-    // get the name of the location
-    const locations = await super.getValues('p[class="job-cardstyle__JobCardDetails-sc-1mbmxes-5 gmygBl"]', 'innerText');
-    this.log.debug(`Locations: \n${locations}`);
-
-    //break the cities and states of the locations
-    const cities = [];
-    const states = [];
-    for (let i = 0; i < locations.length; i++) {
-      const loc = locations[i].split(', ');
-      cities.push(loc[0]);
-      states.push(loc[1]);
-    }
-
+    
     // Retrieve each URL, extract the internship listing info.
     for (let i = 0; i < urls.length; i++) {
       const url = urls[i];
