@@ -9,6 +9,7 @@ import { Apple } from './scrapers/Scraper.apple';
 import { LinkedinScraper } from './scrapers/Scraper.linkedin';
 import { TestScraper } from './scrapers/Scraper.test';
 import { ZipRecruiterScraper } from './scrapers/Scraper.ziprecruiter';
+import { MonsterScraper } from './scrapers/Scraper.monster';
 
 
 /**
@@ -30,6 +31,7 @@ const scrapers = {
   simplyhired: new SimplyHiredScraper(),
   test: new TestScraper(),
   ziprecruiter: new ZipRecruiterScraper(),
+  monster: new MonsterScraper(),
 };
 
 // You don't normally edit anything below.
