@@ -70,7 +70,9 @@ export class MonsterScraper extends Scraper {
       await this.page.goto(url);
       // retrieve the description from that page
       const description = await super.getValues('div[class="descriptionstyles__DescriptionBody-sc-13ve12b-4 eCiZzS"]', 'innerText');
-      const location = { city: cities[i], state: states[i], country: 'United States' };
+      const jobLocation = await super.getValues('div[class="detailsstyles__DetailsTableDetailBody-sc-1deoovj-5 gPiXKx"]', 'innerText');
+      const loc = jobLocation.toString().split(',');
+      const location = { city: loc[0], state: loc[1], country: 'United States' };
       // create the listing information
       const listing = new Listing({ url: urls[i], position: positions[i], location, company: companies[i], description: description });
       this.listings.addListing(listing);
