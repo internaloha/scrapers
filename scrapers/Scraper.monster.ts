@@ -8,6 +8,24 @@ export class MonsterScraper extends Scraper {
     super({ name: 'monster', url: 'https://www.monster.com/jobs/search?q=computer+science+intern&where=united+states' });
   }
 
+  async autoScroll() {
+    await this.page.evaluate(async () => {
+      await new Promise<void>((resolve) => {
+        let totalHeight = 0;
+        const distance = 400;
+        const timer = setInterval(() => {
+          const scrollHeight = document.body.scrollHeight;
+          window.scrollBy(0, distance);
+          totalHeight += distance;
+          if (totalHeight >= scrollHeight) {
+            clearInterval(timer);
+            resolve(); //????
+          }
+        }, 3000);
+      });
+    });
+  }
+
   async launch() {
     await super.launch();
     prefix.apply(this.log, { nameFormatter: () => this.name.toUpperCase() });
@@ -24,6 +42,7 @@ export class MonsterScraper extends Scraper {
     await super.goto('https://www.monster.com/jobs/search?q=computer+science+intern&where=united+states');
     await this.page.waitForNavigation;
     //retrieve the url of the position
+    await this.autoScroll();
     let urls = await super.getValues('a[class="job-cardstyle__JobCardComponent-sc-1mbmxes-0 khzaNc"]', 'href');
     // get the name of the posiiton
     const positions = await super.getValues('div[class="job-cardstyle__JobCardTitle-sc-1mbmxes-2 fsDALQ"]', 'innerText');
