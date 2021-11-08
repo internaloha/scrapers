@@ -100,16 +100,18 @@ export class CheggScraper extends Scraper {
     // Our search words will contain computer science, software, engineering, computers, programming
     // If the description does not contain these words we remove the object from the array
     function filterArray( arr ) {
-      var i = arr.length;
+      var i = arr.length - 1;
       //-- Loop through the array in reverse order since we are modifying the array.
       while ( i >= 0) {
+        console.log(arr[i].description);
         if (arr[i].description.indexOf('Computer Science') < 0) {
           //-- splice will remove the non-matching element
-          removedCount++;
+          removedCount += 1;
           arr.splice(i, 1);
         }
         i--;
       }
+      return arr;
     }
 
     this.log.info(`Removed ${removedCount} not relevant listings`);
