@@ -41,8 +41,8 @@ export class CheggScraper extends Scraper {
 
     await this.page.waitForTimeout(1000); //WAIT FOR PAGE TO FULLY LOAD
 
-    //Selects the divs that we want to get information from
-    await this.page.waitForSelector('div[class="GridItem_jobContent__ENwap"]');
+    //Selects the divs that we want to get information from, EXTRA failsafe just in case waiting does not work, we wait until the element is visible
+    await this.page.waitForSelector('div[class="GridItem_jobContent__ENwap"]', { visible: true });
 
     //Create an array called elements which is an array of all the internship boxes on the chegg page
     let elements = await this.page.$$('div[class="GridItem_jobContent__ENwap"]');
@@ -54,7 +54,7 @@ export class CheggScraper extends Scraper {
     // Then go back a page and refresh the elements array refilling it with new internships that loaded.
     for (let i = 0; i < elements.length; i++) {
 
-      await this.page.waitForSelector('div[class="GridItem_jobContent__ENwap"]', { waitUntil: 'load' });
+      await this.page.waitForSelector('div[class="GridItem_jobContent__ENwap"]', { visible: true });
       await elements[i].click();
       await this.page.waitForTimeout(3000); // Wait till page is loaded. Might need a better way to do this?
 
@@ -82,7 +82,9 @@ export class CheggScraper extends Scraper {
 
       await this.page.goBack();
       await this.page.waitForTimeout(3000); //Have to wait till page is loaded might need a better way to do this
-      await this.page.waitForSelector('div[class="GridItem_jobContent__ENwap"]', { waitUntil: 'load' });
+
+      //EXTRA failsafe just in case waiting does not work, we wait until the element is visible
+      await this.page.waitForSelector('div[class="GridItem_jobContent__ENwap"]', { visible: true });
       elements = await this.page.$$('div[class="GridItem_jobContent__ENwap"]');
 
     }
