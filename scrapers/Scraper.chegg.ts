@@ -61,21 +61,34 @@ export class CheggScraper extends Scraper {
       let url = this.page.url();
 
       const position = (await super.getValues('h1[class="DesktopHeader_title__2ihuJ"]', 'innerText'))[0];
+      this.log.debug(`Descriptions: \n${position}`);
 
       const description = (await super.getValues('div[class="ql-editor ql-snow ql-container ql-editor-display ' +
         'Body_rteText__U3_Ce"]', 'innerText'))[0];
+      this.log.debug(`Descriptions: \n${description}`);
 
       const company = (await super.getValues('a[class="Link_anchor__1oD5h ' +
         'Link_linkColoring__394wp ' +
         'Link_medium__25UK6 DesktopHeader_subTitle__3k6XA"]', 'innerText'))[0];
+      this.log.debug(`Descriptions: \n${company}`);
 
-      const location = (await super.getValues('span[class="DesktopHeader_subTitle__3k6XA ' +
+      const locationStr = (await super.getValues('span[class="DesktopHeader_subTitle__3k6XA ' +
         'DesktopHeader_location__3jiWp"]', 'innerText'))[0];
+
+
+      const loc = locationStr.split(', ');
+      const city = (loc.length > 0) ? loc[0] : '';
+      const state = (loc.length > 1) ? loc[1] : '';
+      const country = '';
+
+      const location = { city, state, country };
+
+      this.log.debug(`Location: {${city}, ${state}, ${country}}`);
 
       const posted = (await super.getValues('p[class="DesktopHeader_postedDate__11t-5"]', 'innerText'))[0];
 
       const listing = new Listing({ url, position, location, company, description, posted });
-      // console.log(`Adding Listing ${listing.url}`);
+      this.log.debug(`Adding Listing ${listing.url}`); //Used to verify that a listing is being added
 
 
       this.listings.addListing(listing);
