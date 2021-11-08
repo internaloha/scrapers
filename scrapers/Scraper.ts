@@ -60,11 +60,23 @@ export class Scraper {
 
   /**
    * Return a list of field values based on selector.
+   * Use this function when you expect the selector to match a list of elements in the page.
    * @param selector The nodes to be selected from the current page.
    * @param field The field to extract from the nodes returned from the selector.
    */
   async getValues(selector, field) {
     return await this.page.$$eval(selector, (nodes, field) => nodes.map(node => node[field]), field);
+  }
+
+  /**
+   * Return a single field value based on selector.
+   * Use this function when you expect the selector match only a single element in the page.
+   * @param selector The node to be selected from the current page.
+   * @param field The field to extract from the node returned from the selector.
+   * @throws Error if there is no element matching the selector.
+   */
+  async getValue(selector, field) {
+    return await this.page.$eval(selector, (node, field) => node[field], field);
   }
 
   /**

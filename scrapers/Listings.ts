@@ -23,6 +23,10 @@ export class Listings {
     this.listings.push(listing);
   }
 
+  forEach(fn) {
+    this.listings.forEach(fn);
+  }
+
   length() {
     return this.listings.length;
   }

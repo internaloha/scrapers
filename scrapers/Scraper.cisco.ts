@@ -20,38 +20,45 @@ export class CiscoScraper extends Scraper {
 
     const nextLink = 'div[class="pagination autoClearer"] a:last-child';
     const urlSelector = 'table[class="table_basic-1 table_striped"] tbody tr td[data-th="Job Title"] a';
+
     let urls = [];
+    let descriptions = [];
+    let positions = [];
+    let locations = [];
+
+    // Get all of the URLs to the Internship pages.
     urls = urls.concat(await super.getValues(urlSelector, 'href'));
     while (await super.selectorExists(nextLink)) {
       await this.page.click(nextLink);
       urls = urls.concat(await super.getValues(urlSelector, 'href'));
     }
-    this.log.debug(`Found ${urls.length} URLS: \n${urls}`);
-    const descriptions = [];
-    const positions = [];
-    const cities = [];
-    const states = [];
+    this.log.debug(`Found ${urls.length} URLs: \n${urls}`);
+
+    // Get positions, descriptions, and locations.
     for (const url of urls) {
       this.log.debug(`Processing: ${url}`);
       await this.page.goto(url);
-      positions.push((await super.getValues('h2[itemprop="title"]', 'innerText'))[0]);
-      descriptions.push(await super.getValues('div[itemprop="description"]', 'innerText'));
-      const location = (await super.getValues('div[itemprop="jobLocation"]', 'innerText'))[0];
+      positions.push(await super.getValue('h2[itemprop="title"]', 'innerText'));
+      descriptions.push(await super.getValue('div[itemprop="description"]', 'innerText'));
+      const location = await super.getValue('div[itemprop="jobLocation"]', 'innerText');
       const locationTuple = location.split(', ');
-      cities.push(locationTuple[0]);
-      states.push(locationTuple[1]);
+      locations.push({ city: locationTuple[0], state: locationTuple[1], country: '' });
     }
 
-    // Now we add listings. All arrays are (hopefully!) the same length.
+    // Create the listings from the parallel arrays.
     for (let i = 0; i < urls.length; i++) {
-      const location = { city: cities[i], state: states[i], country: '' };
-      const listing = new Listing({ url: urls[i], position: positions[i], location, company: 'Cisco', description: descriptions[i] });
+      const listing = new Listing({ url: urls[i], position: positions[i], location: locations[i], company: 'Cisco', description: descriptions[i] });
       this.listings.addListing(listing);
     }
   }
 
+  /** Replace four newlines with two newlines and nonbreaking space chars with a normal space char. */
+  fixDescription(description) {
+    return description.replace(/\n\s*\n\s*\n\s*\n/g, '\n\n').replace(/\xa0/g, ' ');
+  }
+
   async processListings() {
     await super.processListings();
-    // Not yet implemented.
+    this.listings.forEach(listing => { listing.description = this.fixDescription(listing.description) });
   }
 }
