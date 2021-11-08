@@ -24,7 +24,9 @@ export class LinkedinScraper extends Scraper {
     results.push(await super.getValues('a[class="topcard__org-name-link topcard__flavor--black-link"]', 'innerHTML'));
     results.push(await super.getValues('span[class="topcard__flavor topcard__flavor--bullet"]', 'innerHTML'));
     results.push(await super.getValues('span[class="posted-time-ago__text topcard__flavor--metadata"]', 'innerHTML'));
-    results.push(await super.getValues('div[class="show-more-less-html__markup"]', 'innerHTML'));
+    // results.push(await super.getValues('div[class="show-more-less-html__markup"]', 'innerHTML'));
+    results.push(await super.getValues('div[class="show-more-less-html__markup show-more-less-html__markup--clamp-after-5"]', 'innerHTML'));
+
     // for (let i = 0; i < 5; i++) {
     //   results.push(await super.getValues( 'h1[class="top-card-layout__title topcard__title"]', 'innerHTML'));
     //   results.push(await super.getValues('a[class="topcard__org-name-link topcard__flavor--black-link"]', 'innerHTML'));
@@ -32,18 +34,6 @@ export class LinkedinScraper extends Scraper {
     //   results.push(await super.getValues('span[class="posted-time-ago__text topcard__flavor--metadata"]', 'innerHTML'));
     //   results.push(await super.getValues('div[class="show-more-less-html__markup"]', 'innerHTML'));
     // }
-    return Promise.all(results);
-  }
-
-  async getDataTwo() {
-    const results = [];
-    for (let i = 0; i < 5; i++) {
-      results.push(await super.getValues('h1[class="top-card-layout__title topcard__title"]', 'innerHTML'));
-      results.push(await super.getValues('a[class="topcard__org-name-link topcard__flavor--black-link"]', 'innerHTML'));
-      results.push(await super.getValues('span[class="topcard__flavor topcard__flavor--bullet"]', 'innerHTML'));
-      results.push(await super.getValues('span[class="posted-time-ago__text topcard__flavor--metadata"]', 'innerHTML'));
-      results.push(await super.getValues('div[class="show-more-less-html__markup show-more-less-html__markup--clamp-after-5"]', 'innerHTML'));
-    }
     return Promise.all(results);
   }
 
@@ -191,41 +181,46 @@ export class LinkedinScraper extends Scraper {
     this.log.info('--- Going back to scrape the ones previously skipped ---');
     // scraping the ones we skipped
     for (let i = 0; i < skippedURLs.length; i++) {
-      await this.page.goto(skippedURLs[i]);
-      // await this.page.waitForSelector('section.core-rail');
-      const skills = 'N/A';
-      // eslint-disable-next-line prefer-const
-      const position = await super.getValues('h1[class="topcard__title"]', 'innerText');
-
-      const company = await super.getValues('a[class="topcard__org-name-link topcard__flavor--black-link"]', 'innerText');
-
-      const location = await super.getValues('span[class="topcard__flavor topcard__flavor--bullet"]', 'innerText');
-
-      let posted = await super.getValues('span.topcard__flavor--metadata.posted-time-ago__text', 'innerText');
-
-      const description = await super.getValues('div[class="show-more-less-html__markup show-more-less-html__markup--clamp-after-5"]', 'innerText');
-      posted = this.convertPostedToDate(posted);
-      let state = '';
-      if (!location.match(/([^,]*)/g)[2]) {
-        state = 'United States';
-      } else {
-        state = location.match(/([^,]*)/g)[2].trim();
+      try {
+        await this.page.goto(skippedURLs[i]);
+        // await this.page.waitForSelector('section.core-rail');
+        const skills = 'N/A';
+        // eslint-disable-next-line prefer-const
+        let [position, company, location, posted, description] = await this.getData();
+        this.log.debug('Got data:');
+        this.log.debug('position', position);
+        this.log.debug('company', company);
+        this.log.debug('location', location);
+        this.log.debug('posted', posted);
+        this.log.debug('description', description);
+        // posted = this.convertPostedToDate(posted);
+        // let state = '';
+        // if (!location.match(/([^,]*)/g)[2]) {
+        //   state = 'United States';
+        // } else {
+        //   state = location.match(/([^,]*)/g)[2].trim();
+        // }
+        this.listings.addListing({
+          position: position,
+          company: company,
+          // location: {
+          //   city: location.match(/([^,]*)/g)[0].trim(),
+          //   state: state.trim(),
+          // },
+          posted: posted,
+          url: skippedURLs[i],
+          skills: skills,
+          lastScraped: lastScraped,
+          description: description,
+        });
+        this.log.info(position);
+        totalInternships++;
+      } catch (err5) {
+        this.log.info('LinkedIn', err5);
+        this.log.info('Skipping! Did not load...');
+        // skippedURLs.push(urls[i]);
       }
-      this.listings.addListing({
-        position: position,
-        company: company.trim(),
-        location: {
-          city: location.match(/([^,]*)/g)[0].trim(),
-          state: state.trim(),
-        },
-        posted: posted,
-        url: skippedURLs[i],
-        skills: skills,
-        lastScraped: lastScraped,
-        description: description,
-      });
-      this.log.info(position);
-      totalInternships++;
+
     }
     this.log.info('Total internships scraped:', totalInternships);
     this.log.info('Closing browser!');
