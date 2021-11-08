@@ -49,7 +49,7 @@ export class CheggScraper extends Scraper {
 
     this.log.info('Obtaining and adding internships');
 
-    // This for loop loops through all the internship boxes found (the elements array we created earlier)
+    // This for loop loops through the elements array.
     // After we select and click the div that contains the internship we want. After we add the listing.
     // Then go back a page and refresh the elements array refilling it with new internships that loaded.
     for (let i = 0; i < elements.length; i++) {
