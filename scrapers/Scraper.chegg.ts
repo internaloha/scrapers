@@ -75,7 +75,7 @@ export class CheggScraper extends Scraper {
       const posted = (await super.getValues('p[class="DesktopHeader_postedDate__11t-5"]', 'innerText'))[0];
 
       const listing = new Listing({ url, position, location, company, description, posted });
-      console.log(`Adding Listing ${listing.url}`);
+      // console.log(`Adding Listing ${listing.url}`);
 
 
       this.listings.addListing(listing);
