@@ -10,9 +10,11 @@ export class LinkedinScraper extends Scraper {
   async launch() {
     await super.launch();
     prefix.apply(this.log, { nameFormatter: () => this.name.toUpperCase() });
+    // TODO:REVIEW: How can the following line be improved?
     this.log.info('Launching scraper.');
   }
 
+  // TODO:REVIEW: Why the following method?
   async login() {
     super.login();
   }
@@ -27,6 +29,7 @@ export class LinkedinScraper extends Scraper {
       results.push(await super.getValues('span.topcard__flavor--metadata.posted-time-ago__text', 'innerHTML'));
       results.push(await super.getValues('div[class="show-more-less-html__markup show-more-less-html__markup--clamp-after-5"]', 'innerHTML'));
     }
+    // TODO:REVIEW: Why the following line?
     return Promise.all(results);
   }
 
@@ -39,6 +42,7 @@ export class LinkedinScraper extends Scraper {
       results.push(await super.getValues('span.topcard__flavor--metadata.posted-time-ago__text', 'innerText'));
       results.push(await super.getValues('div[class="show-more-less-html__markup show-more-less-html__markup--clamp-after-5"]', 'innerHTML'));
     }
+    // TODO:REVIEW: Why the following line?
     return Promise.all(results);
   }
 
@@ -113,10 +117,12 @@ export class LinkedinScraper extends Scraper {
     await super.generateListings();
     await this.reload();
     let totalInternships = 0;
+    // TODO:REVIEW: Why the following line? (Hint: look down three lines).
     let elements = await this.page.$$('a[class="base-card__full-link"]');
     this.log.info('Total Elements:', elements);
     let urls = await super.getValues('a[class="base-card__full-link"]', 'href');
 
+    // TODO:REVIEW: How could the following two lines be improved?
     this.log.info('Total URLs:', urls.length);
     this.log.info('URLs:', urls);
     const skippedURLs = [];
@@ -135,6 +141,8 @@ export class LinkedinScraper extends Scraper {
 
           let [position, company, location, posted, description] = await this.getData();
           // this.log.debug(await this.getData());
+
+          // TODO:REVIEW: How could the following 6 lines be improved?
           this.log.debug('Got data:');
           this.log.debug('position', position);
           this.log.debug('company', company);
@@ -188,9 +196,10 @@ export class LinkedinScraper extends Scraper {
       await this.page.goto(skippedURLs[i]);
       await this.page.waitForSelector('section.core-rail');
       const skills = 'N/A';
+      // TODO:REVIEW: Why the following line?
       // eslint-disable-next-line prefer-const
       const position = await super.getValues('h1[class="topcard__title"]', 'innerText');
-
+      // TODO:REVIEW: How could the above line and below lines be improved?
       const company = await super.getValues('a[class="topcard__org-name-link topcard__flavor--black-link"]', 'innerText');
 
       const location = await super.getValues('span[class="topcard__flavor topcard__flavor--bullet"]', 'innerText');
@@ -225,6 +234,7 @@ export class LinkedinScraper extends Scraper {
     this.log.info('Closing browser!');
   }
 
+  // TODO:REVIEW: Why the following method?
   async processListings() {
     await super.processListings();
     // Not yet implemented.

@@ -40,22 +40,27 @@ export class ZipRecruiterScraper extends Scraper {
 
   async login() {
     super.login();
+    // TODO:REVIEW How could the following line be improved?
     await this.page.goto(this.url);
   }
 
   async generateListings() {
     super.generateListings();
+    // TODO:REVIEW How could the following line be improved?
     await this.page.goto('https://www.ziprecruiter.com/candidate/search?search=computer+science+internship&location=United+States&days=30&radius=25');
     await this.page.waitForNavigation;
 
+
     let loadMore = true;
     if (!loadMore) {
+      // TODO:REVIEW Under what conditions will the following line of code be executed?
       this.log.info('--- All jobs are Listed, no "Load More" button --- ');
     } else {
       await this.page.click('.load_more_jobs');
       await this.autoScroll();
     }
 
+    // TODO:REVIEW How could the following assignment be improved?
     let urls = await this.page.evaluate(
       () => Array.from(
         document.querySelectorAll('.job_link.t_job_link'),
@@ -99,6 +104,7 @@ export class ZipRecruiterScraper extends Scraper {
     }
   }
 
+  // TODO:REVIEW How could the following method be improved?
   async processListings() {
     await super.processListings();
   }

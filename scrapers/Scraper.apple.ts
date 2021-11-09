@@ -16,6 +16,7 @@ export class Apple extends Scraper {
 
   async login() {
     super.login();
+    // TODO:REVIEW: why the following line?
     await this.page.goto(this.url);
   }
 
@@ -40,6 +41,7 @@ export class Apple extends Scraper {
         const url = urls[i];
         await this.page.goto(url);
         const company = 'Apple';
+        // TODO:REVIEW: how can the next four lines be improved?
         const position = (await super.getValues('h1[itemprop="title"]', 'innerText'))[0];
         const description = (await super.getValues('div[id="jd-description"]', 'innerText'))[0];
         const state = await super.getValues('span[itemprop="addressRegion"]', 'innerText');

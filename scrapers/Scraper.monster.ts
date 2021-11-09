@@ -34,12 +34,15 @@ export class MonsterScraper extends Scraper {
 
   async login() {
     await super.login();
+    // TODO:REVIEW: Could the following line be improved?
     await super.goto(this.url);
   }
 
   async generateListings() {
     await super.generateListings();
+    // TODO:REVIEW: How could the following line be improved?
     await super.goto('https://www.monster.com/jobs/search?q=computer+science+intern&where=united+states');
+    // TODO:REVIEW: How could the following line be improved?
     await this.page.waitForNavigation;
     //retrieve the url of the position
     await this.autoScroll();
@@ -57,6 +60,7 @@ export class MonsterScraper extends Scraper {
       // go to the page of the url of that listing
       await this.page.goto(url);
       // retrieve the description from that page
+      // TODO:REVIEW how could the following two lines be improved?
       const description = await super.getValues('div[class="descriptionstyles__DescriptionBody-sc-13ve12b-4 eCiZzS"]', 'innerText');
       const jobLocation = await super.getValues('div[class="detailsstyles__DetailsTableDetailBody-sc-1deoovj-5 gPiXKx"]', 'innerText');
       const loc = jobLocation.toString().split(',');
@@ -67,6 +71,7 @@ export class MonsterScraper extends Scraper {
     }
   }
 
+  // TODO:REVIEW How could the following method be improved?
   async processListings() {
     await super.processListings();
   }
