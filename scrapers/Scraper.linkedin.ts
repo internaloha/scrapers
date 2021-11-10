@@ -10,11 +10,9 @@ export class LinkedinScraper extends Scraper {
   async launch() {
     await super.launch();
     prefix.apply(this.log, { nameFormatter: () => this.name.toUpperCase() });
-    // TODO:REVIEW: How can the following line be improved?
     this.log.info('Launching scraper.');
   }
 
-  // TODO:REVIEW: Why the following method?
   async login() {
     super.login();
   }
@@ -22,27 +20,20 @@ export class LinkedinScraper extends Scraper {
 
   async getData() {
     const results = [];
-    for (let i = 0; i < 5; i++) {
-      results.push(await super.getValues( 'h2[class="top-card-layout__title topcard__title"]', 'innerHTML'));
-      results.push(await super.getValues('a[class="topcard__org-name-link topcard__flavor--black-link"]', 'innerHTML'));
-      results.push(await super.getValues('span[class="topcard__flavor topcard__flavor--bullet"]', 'innerHTML'));
-      results.push(await super.getValues('span.topcard__flavor--metadata.posted-time-ago__text', 'innerHTML'));
-      results.push(await super.getValues('div[class="show-more-less-html__markup show-more-less-html__markup--clamp-after-5"]', 'innerHTML'));
-    }
-    // TODO:REVIEW: Why the following line?
-    return Promise.all(results);
-  }
+    results.push(await super.getValues( 'h1[class="top-card-layout__title topcard__title"]', 'innerHTML'));
+    results.push(await super.getValues('a[class="topcard__org-name-link topcard__flavor--black-link"]', 'innerHTML'));
+    results.push(await super.getValues('span[class="topcard__flavor topcard__flavor--bullet"]', 'innerHTML'));
+    results.push(await super.getValues('span[class="posted-time-ago__text topcard__flavor--metadata"]', 'innerHTML'));
+    // results.push(await super.getValues('div[class="show-more-less-html__markup"]', 'innerHTML'));
+    results.push(await super.getValues('div[class="show-more-less-html__markup show-more-less-html__markup--clamp-after-5"]', 'innerHTML'));
 
-  async getDataTwo() {
-    const results = [];
-    for (let i = 0; i < 5; i++) {
-      results.push(await super.getValues('h1[class="topcard__title"]', 'innerText'));
-      results.push(await super.getValues('a[class="topcard__org-name-link topcard__flavor--black-link"]', 'innerText'));
-      results.push(await super.getValues('span[class="topcard__flavor topcard__flavor--bullet"]', 'innerText'));
-      results.push(await super.getValues('span.topcard__flavor--metadata.posted-time-ago__text', 'innerText'));
-      results.push(await super.getValues('div[class="show-more-less-html__markup show-more-less-html__markup--clamp-after-5"]', 'innerHTML'));
-    }
-    // TODO:REVIEW: Why the following line?
+    // for (let i = 0; i < 5; i++) {
+    //   results.push(await super.getValues( 'h1[class="top-card-layout__title topcard__title"]', 'innerHTML'));
+    //   results.push(await super.getValues('a[class="topcard__org-name-link topcard__flavor--black-link"]', 'innerHTML'));
+    //   results.push(await super.getValues('span[class="topcard__flavor topcard__flavor--bullet"]', 'innerHTML'));
+    //   results.push(await super.getValues('span[class="posted-time-ago__text topcard__flavor--metadata"]', 'innerHTML'));
+    //   results.push(await super.getValues('div[class="show-more-less-html__markup"]', 'innerHTML'));
+    // }
     return Promise.all(results);
   }
 
@@ -117,32 +108,29 @@ export class LinkedinScraper extends Scraper {
     await super.generateListings();
     await this.reload();
     let totalInternships = 0;
-    // TODO:REVIEW: Why the following line? (Hint: look down three lines).
     let elements = await this.page.$$('a[class="base-card__full-link"]');
     this.log.info('Total Elements:', elements);
     let urls = await super.getValues('a[class="base-card__full-link"]', 'href');
 
-    // TODO:REVIEW: How could the following two lines be improved?
     this.log.info('Total URLs:', urls.length);
     this.log.info('URLs:', urls);
     const skippedURLs = [];
     const lastScraped = new Date();
 
-    for (let i = 0; i < elements.length; i++) {
+    for (let i = 0; i < urls.length; i++) {
       try {
-        const element = elements[i];
+        // const element = elements[i];
         // sometimes clicking it doesn't show the panel, try/catch to allow it to keep going
         try {
           this.log.debug('getting data for element ', i);
-          // await this.page.goto(urls[i]);
-          await this.page.waitForSelector('div[class="details-pane__content details-pane__content--show"]', {timeout: 1500});
+          await this.page.goto(urls[i]);
+          await this.page.waitForSelector('button[class="show-more-less-html__button show-more-less-html__button--more"]', {timeout: 1500});
           // await this.page.waitForTimeout(1500);
           // eslint-disable-next-line prefer-const
+          this.log.debug('url: ', urls[i]);
 
           let [position, company, location, posted, description] = await this.getData();
           // this.log.debug(await this.getData());
-
-          // TODO:REVIEW: How could the following 6 lines be improved?
           this.log.debug('Got data:');
           this.log.debug('position', position);
           this.log.debug('company', company);
@@ -169,14 +157,14 @@ export class LinkedinScraper extends Scraper {
           });
           this.log.info(position);
           totalInternships++;
-          this.log.info(this.listings);
+          // this.log.info(this.listings);
         } catch (err5) {
           this.log.info('LinkedIn', err5);
           this.log.info('Skipping! Did not load...');
           skippedURLs.push(urls[i]);
         }
-        this.log.debug('What is this element:', element);
-        await element.click();
+        // this.log.debug('What is this element:', element);
+        // await element.click();
         this.log.debug('click happened');
       } catch (e2) {
         this.log.info('Navigated off site... Redirecting back...');
@@ -185,56 +173,59 @@ export class LinkedinScraper extends Scraper {
 
         urls = await super.getValues('a.result-card__full-card-link', 'href');
       }
-      this.log.debug('What is this element 2:', elements[i + 1]);
-      await elements[i + 1].click();
+      // this.log.debug('What is this element 2:', elements[i + 1]);
+      // await elements[i + 1].click();
       this.log.debug('click 2 happened');
     }
 
     this.log.info('--- Going back to scrape the ones previously skipped ---');
     // scraping the ones we skipped
     for (let i = 0; i < skippedURLs.length; i++) {
-      await this.page.goto(skippedURLs[i]);
-      await this.page.waitForSelector('section.core-rail');
-      const skills = 'N/A';
-      // TODO:REVIEW: Why the following line?
-      // eslint-disable-next-line prefer-const
-      const position = await super.getValues('h1[class="topcard__title"]', 'innerText');
-      // TODO:REVIEW: How could the above line and below lines be improved?
-      const company = await super.getValues('a[class="topcard__org-name-link topcard__flavor--black-link"]', 'innerText');
-
-      const location = await super.getValues('span[class="topcard__flavor topcard__flavor--bullet"]', 'innerText');
-
-      let posted = await super.getValues('span.topcard__flavor--metadata.posted-time-ago__text', 'innerText');
-
-      const description = await super.getValues('div[class="show-more-less-html__markup show-more-less-html__markup--clamp-after-5"]', 'innerText');
-      posted = this.convertPostedToDate(posted);
-      let state = '';
-      if (!location.match(/([^,]*)/g)[2]) {
-        state = 'United States';
-      } else {
-        state = location.match(/([^,]*)/g)[2].trim();
+      try {
+        await this.page.goto(skippedURLs[i]);
+        // await this.page.waitForSelector('section.core-rail');
+        const skills = 'N/A';
+        // eslint-disable-next-line prefer-const
+        let [position, company, location, posted, description] = await this.getData();
+        this.log.debug('Got data:');
+        this.log.debug('position', position);
+        this.log.debug('company', company);
+        this.log.debug('location', location);
+        this.log.debug('posted', posted);
+        this.log.debug('description', description);
+        // posted = this.convertPostedToDate(posted);
+        // let state = '';
+        // if (!location.match(/([^,]*)/g)[2]) {
+        //   state = 'United States';
+        // } else {
+        //   state = location.match(/([^,]*)/g)[2].trim();
+        // }
+        this.listings.addListing({
+          position: position,
+          company: company,
+          // location: {
+          //   city: location.match(/([^,]*)/g)[0].trim(),
+          //   state: state.trim(),
+          // },
+          posted: posted,
+          url: skippedURLs[i],
+          skills: skills,
+          lastScraped: lastScraped,
+          description: description,
+        });
+        this.log.info(position);
+        totalInternships++;
+      } catch (err5) {
+        this.log.info('LinkedIn', err5);
+        this.log.info('Skipping! Did not load...');
+        // skippedURLs.push(urls[i]);
       }
-      this.listings.addListing({
-        position: position,
-        company: company.trim(),
-        location: {
-          city: location.match(/([^,]*)/g)[0].trim(),
-          state: state.trim(),
-        },
-        posted: posted,
-        url: skippedURLs[i],
-        skills: skills,
-        lastScraped: lastScraped,
-        description: description,
-      });
-      this.log.info(position);
-      totalInternships++;
+
     }
     this.log.info('Total internships scraped:', totalInternships);
     this.log.info('Closing browser!');
   }
 
-  // TODO:REVIEW: Why the following method?
   async processListings() {
     await super.processListings();
     // Not yet implemented.

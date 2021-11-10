@@ -10,6 +10,7 @@ import { LinkedinScraper } from './scrapers/Scraper.linkedin';
 import { TestScraper } from './scrapers/Scraper.test';
 import { ZipRecruiterScraper } from './scrapers/Scraper.ziprecruiter';
 import { MonsterScraper } from './scrapers/Scraper.monster';
+import { CheggScraper } from './scrapers/Scraper.chegg';
 
 
 /**
@@ -32,6 +33,7 @@ const scrapers = {
   test: new TestScraper(),
   ziprecruiter: new ZipRecruiterScraper(),
   monster: new MonsterScraper(),
+  chegg: new CheggScraper(),
 };
 
 // You don't normally edit anything below.
