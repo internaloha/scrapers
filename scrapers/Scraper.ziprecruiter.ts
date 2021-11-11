@@ -9,11 +9,7 @@ export class ZipRecruiterScraper extends Scraper {
     super({ name: 'ziprecruiter', url: 'https://www.ziprecruiter.com/candidate/search?search=computer+science+internship&location=United+States&days=30&radius=25' });
   }
 
-  /**
-   * Scrolls down a specific amount every 4 milliseconds.
-   * @param page The page we are scrolling.
-   * @returns {Promise<void>}
-   */
+  /** Scrolls down 400 pixels every 400 milliseconds until scrolling doesn't increase the page size. */
   async autoScroll() {
     await this.page.evaluate(async () => {
       await new Promise<void>((resolve) => {
