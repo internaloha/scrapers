@@ -9,7 +9,7 @@ export class ZipRecruiterScraper extends Scraper {
     super({ name: 'ziprecruiter', url: 'https://www.ziprecruiter.com/candidate/search?search=computer+science+internship&location=United+States&days=30&radius=25' });
   }
 
-  /** Scrolls down 400 pixels every 400 milliseconds until scrolling doesn't increase the page size. */
+  /** Scrolls down 400 pixels every 400 milliseconds until scrolling doesn't increase the page height. */
   async autoScroll() {
     await this.page.evaluate(async () => {
       await new Promise<void>((resolve) => {
@@ -21,7 +21,7 @@ export class ZipRecruiterScraper extends Scraper {
           totalHeight += distance;
           if (totalHeight >= scrollHeight) {
             clearInterval(timer);
-            resolve(); //????
+            resolve();
           }
         }, 400);
       });
