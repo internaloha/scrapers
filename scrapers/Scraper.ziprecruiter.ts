@@ -37,7 +37,7 @@ export class ZipRecruiterScraper extends Scraper {
     const locations = [];
     for (let i = 0; i < locationStrings.length; i++) {
       const locPair = locationStrings[i].split(', ');
-      locations.push({ city: locPair[0], state: locPair[1], country: 'USA' })
+      locations.push({ city: locPair[0], state: locPair[1], country: 'USA' });
     }
 
     for (let i = 0; i < urls.length; i++) {
