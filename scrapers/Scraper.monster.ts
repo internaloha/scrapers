@@ -32,10 +32,6 @@ export class MonsterScraper extends Scraper {
     this.log.warn(`Launching ${this.name.toUpperCase()} scraper`);
   }
 
-  async login() {
-    await super.login();
-  }
-
   async generateListings() {
     await super.generateListings();
     await super.goto(this.url);
@@ -88,9 +84,4 @@ export class MonsterScraper extends Scraper {
       this.listings.addListing(listing);
     }
   }
-
-  async processListings() {
-    await super.processListings();
-  }
-
 }
