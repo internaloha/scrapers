@@ -59,6 +59,6 @@ export class CiscoScraper extends Scraper {
 
   async processListings() {
     await super.processListings();
-    this.listings.forEach(listing => { listing.description = this.fixDescription(listing.description) });
+    this.listings.forEach(listing => { listing.description = this.fixDescription(listing.description); });
   }
 }

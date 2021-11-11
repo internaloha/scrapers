@@ -1,0 +1,10 @@
+{
+  "date": "2021-11-10",
+  "elapsedTime": 137,
+  "numErrors": 1,
+  "numListings": 21,
+  "errorMessages": [
+    "Cannot read property 'split' of undefined"
+  ],
+  "scraper": "chegg"
+}

@@ -49,7 +49,7 @@ export class Scraper {
   protected maxRandomWait: number;
 
   /** Initialize the scraper state and provide configuration info. */
-  constructor({ name, url }) {
+  constructor({ name, url = '' }) {
     this.name = name;
     this.url = url;
     this.log = log;
@@ -163,6 +163,25 @@ export class Scraper {
     const wait = Math.floor(Math.random() * this.maxRandomWait) + 1000;
     this.log.debug(`Waiting ${wait} milliseconds.`);
     await this.page.waitForTimeout(wait);
+  }
+
+  /** Scrolls down 400 pixels every 400 milliseconds until scrolling doesn't increase the page height. */
+  async autoScroll() {
+    await this.page.evaluate(async () => {
+      await new Promise<void>((resolve) => {
+        let totalHeight = 0;
+        const distance = 400;
+        const timer = setInterval(() => {
+          const scrollHeight = document.body.scrollHeight;
+          window.scrollBy(0, distance);
+          totalHeight += distance;
+          if (totalHeight >= scrollHeight) {
+            clearInterval(timer);
+            resolve();
+          }
+        }, 400);
+      });
+    });
   }
 
   /**
