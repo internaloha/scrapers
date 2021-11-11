@@ -26,7 +26,7 @@ export class GlassDoorScraper extends Scraper {
     urls = urls.concat(await super.getValues('a[class="jobLink"]', 'href'));
 
     for (let j = 2; j < 30; j++) {
-      await this.page.goto(`https://www.glassdoor.com/Job/us-computer-science-intern-jobs-SRCH_IL.0,2_IN1_KO3,26_IP${j}.htm?fromAge=14&includeNoSalaryJobs=true&jobType=internship&sortBy=date_desc&pgc=AB4AAoEAPAAAAAAAAAAAAAAAAbsADWUAcAEBARYLPplTgwz6w5gkUFSL%2FblhjH2dnpaNeUYZXuH6Cu3v8isCPy16PzrVdNdet7UF1fZYJ6qrDq1oVrnKpdztukcmJhLXfw0O24fRE0%2B5tWtrBFKzBwo1%2Bd0fZppHS9r3QIn3v1WdnCbnV9BKa%2B4AAA%3D%3D`)
+      await this.page.goto(`https://www.glassdoor.com/Job/us-computer-science-intern-jobs-SRCH_IL.0,2_IN1_KO3,26_IP${j}.htm?fromAge=14&includeNoSalaryJobs=true&jobType=internship&sortBy=date_desc&pgc=AB4AAoEAPAAAAAAAAAAAAAAAAbsADWUAcAEBARYLPplTgwz6w5gkUFSL%2FblhjH2dnpaNeUYZXuH6Cu3v8isCPy16PzrVdNdet7UF1fZYJ6qrDq1oVrnKpdztukcmJhLXfw0O24fRE0%2B5tWtrBFKzBwo1%2Bd0fZppHS9r3QIn3v1WdnCbnV9BKa%2B4AAA%3D%3D`);
       urls = urls.concat(await super.getValues('a[class="jobLink"]', 'href'));
     }
     /**
@@ -46,7 +46,7 @@ export class GlassDoorScraper extends Scraper {
       descriptions.push(await super.getValue('div[class="tabSection p-std mt-0"]', 'innerText'));
       const location = await super.getValue('div[class="css-1v5elnn e11nt52q2"]', 'innerText');
       const locationTuple = location.split(', ');
-      locations.push({ city: locationTuple[0], state: locationTuple[1], country: '' });
+      locations.push({ city: locationTuple[0], state: locationTuple[1], country: 'United States' });
     }
     for (let i = 0; i < urls.length; i++) {
       const listing = new Listing({ url: urls[i], position: positions[i], location: locations[i], company: companies[i], description: descriptions[i] });
