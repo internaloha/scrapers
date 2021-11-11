@@ -25,7 +25,11 @@ export class GlassDoorScraper extends Scraper {
 
     urls = urls.concat(await super.getValues('a[class="jobLink"]', 'href'));
 
-    for (let j = 2; j < 30; j++) {
+    let key = await super.getValue('div[class="cell middle d-none d-md-block py-sm"]', 'innerText');
+    key = key.split(' ');
+    let numberOfPages = key[3];
+
+    for (let j = 2; j < numberOfPages; j++) {
       await this.page.goto(`https://www.glassdoor.com/Job/us-computer-science-intern-jobs-SRCH_IL.0,2_IN1_KO3,26_IP${j}.htm?fromAge=14&includeNoSalaryJobs=true&jobType=internship&sortBy=date_desc&pgc=AB4AAoEAPAAAAAAAAAAAAAAAAbsADWUAcAEBARYLPplTgwz6w5gkUFSL%2FblhjH2dnpaNeUYZXuH6Cu3v8isCPy16PzrVdNdet7UF1fZYJ6qrDq1oVrnKpdztukcmJhLXfw0O24fRE0%2B5tWtrBFKzBwo1%2Bd0fZppHS9r3QIn3v1WdnCbnV9BKa%2B4AAA%3D%3D`);
       urls = urls.concat(await super.getValues('a[class="jobLink"]', 'href'));
     }
