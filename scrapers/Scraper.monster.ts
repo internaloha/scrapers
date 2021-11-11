@@ -34,7 +34,7 @@ export class MonsterScraper extends Scraper {
 
   async generateListings() {
     await super.generateListings();
-    await super.goto(this.url);
+    await this.page.goto(this.url);
 
     let urls = [];
     let positions = [];
