@@ -44,7 +44,8 @@ export class MonsterScraper extends Scraper {
     let positions = [];
     let companies = [];
 
-    const nextLink = 'a[class="sc-dkPtyc hVjBwZ  ds-button"]';
+    const nextLink = 'div[class="job-search-resultsstyle__LoadMoreContainer-sc-1wpt60k-1 eDBmDW"]';
+    const nextPage = 'a[class="sc-dkPtyc hVjBwZ  ds-button"]';
     const urlSelector = 'a[class="job-cardstyle__JobCardComponent-sc-1mbmxes-0 khzaNc"]';
     const positionSelector = 'div[class="job-cardstyle__JobCardTitle-sc-1mbmxes-2 fsDALQ"]';
     const companySelector = 'h3[class="job-cardstyle__JobCardCompany-sc-1mbmxes-3 cYIFfT"]';
@@ -60,7 +61,7 @@ export class MonsterScraper extends Scraper {
 
     //while next link exists
     while (await super.selectorExists(nextLink)) {
-      await this.page.click(nextLink);
+      await this.page.click(nextPage);
       await this.autoScroll();
       urls = urls.concat(await super.getValues(urlSelector, 'href'));
       // get the name of the posiiton
