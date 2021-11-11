@@ -165,6 +165,25 @@ export class Scraper {
     await this.page.waitForTimeout(wait);
   }
 
+  /** Scrolls down 400 pixels every 400 milliseconds until scrolling doesn't increase the page height. */
+  async autoScroll400By400() {
+    await this.page.evaluate(async () => {
+      await new Promise<void>((resolve) => {
+        let totalHeight = 0;
+        const distance = 400;
+        const timer = setInterval(() => {
+          const scrollHeight = document.body.scrollHeight;
+          window.scrollBy(0, distance);
+          totalHeight += distance;
+          if (totalHeight >= scrollHeight) {
+            clearInterval(timer);
+            resolve();
+          }
+        }, 400);
+      });
+    });
+  }
+
   /**
    * Login to site.
    * Subclass: invoke `await super.login()` if you need to override.

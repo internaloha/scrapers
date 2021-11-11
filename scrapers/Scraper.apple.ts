@@ -3,7 +3,7 @@ import { Scraper } from './Scraper';
 
 const prefix = require('loglevel-plugin-prefix');
 
-export class Apple extends Scraper {
+export class AppleScraper extends Scraper {
   constructor() {
     super({ name: 'apple' });
   }
