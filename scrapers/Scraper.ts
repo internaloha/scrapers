@@ -166,7 +166,7 @@ export class Scraper {
   }
 
   /** Scrolls down 400 pixels every 400 milliseconds until scrolling doesn't increase the page height. */
-  async autoScroll400By400() {
+  async autoScroll() {
     await this.page.evaluate(async () => {
       await new Promise<void>((resolve) => {
         let totalHeight = 0;

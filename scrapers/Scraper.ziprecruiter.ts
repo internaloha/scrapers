@@ -23,7 +23,7 @@ export class ZipRecruiterScraper extends Scraper {
 
     // Autoscroll to retrieve and display all of the listings on the page.
     await this.page.click('.load_more_jobs');
-    await super.autoScroll400By400();
+    await super.autoScroll();
 
     let urls = await super.getValues('.job_link.t_job_link', 'href');
     urls = _.uniq(urls);
