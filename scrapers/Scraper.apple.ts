@@ -5,19 +5,13 @@ const prefix = require('loglevel-plugin-prefix');
 
 export class Apple extends Scraper {
   constructor() {
-    super({ name: 'apple', url: 'https://jobs.apple.com/en-us/search?sort=relevance' });
+    super({ name: 'apple' });
   }
 
   async launch() {
     await super.launch();
     prefix.apply(this.log, { nameFormatter: () => this.name.toUpperCase() });
     this.log.warn(`Launching ${this.name.toUpperCase()} scraper`);
-  }
-
-  async login() {
-    super.login();
-    // TODO:REVIEW: why the following line?
-    await this.page.goto(this.url);
   }
 
   async generateListings() {
@@ -41,22 +35,16 @@ export class Apple extends Scraper {
         const url = urls[i];
         await this.page.goto(url);
         const company = 'Apple';
-        // TODO:REVIEW: how can the next four lines be improved?
-        const position = (await super.getValues('h1[itemprop="title"]', 'innerText'))[0];
-        const description = (await super.getValues('div[id="jd-description"]', 'innerText'))[0];
-        const state = await super.getValues('span[itemprop="addressRegion"]', 'innerText');
-        const city = await super.getValues('span[itemprop="addressLocality"]', 'innerText');
-        const location = { city: city[0], state: state[0], country: 'United States' };
+        const position = await super.getValue('h1[itemprop="title"]', 'innerText');
+        const description = await super.getValue('div[id="jd-description"]', 'innerText');
+        const state = await super.getValue('span[itemprop="addressRegion"]', 'innerText');
+        const city = await super.getValue('span[itemprop="addressLocality"]', 'innerText');
+        const location = { city, state, country: 'USA' };
         const listing = new Listing({ url, position, location, company, description });
         this.listings.addListing(listing);
       }
-
       // Increment the pageNum and get that page. If we get a page without listings, then listingsTable selector won't be on it.
       await this.page.goto(pageUrl(++pageNum), { waitUntil: 'networkidle0' });
     }
-  }
-
-  async processListings() {
-    await super.processListings();
   }
 }

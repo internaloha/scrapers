@@ -49,7 +49,7 @@ export class Scraper {
   protected maxRandomWait: number;
 
   /** Initialize the scraper state and provide configuration info. */
-  constructor({ name, url }) {
+  constructor({ name, url = '' }) {
     this.name = name;
     this.url = url;
     this.log = log;
