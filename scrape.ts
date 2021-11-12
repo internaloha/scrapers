@@ -1,17 +1,18 @@
 import * as fs from 'fs';
 import { Command, Option } from 'commander';
-import { AngelListScraper } from './scrapers/Scraper.angellist';
-import { NsfScraper } from './scrapers/Scraper.nsf';
-import { CiscoScraper } from './scrapers/Scraper.cisco';
 import { DISCIPLINES } from './disciplines';
-import { SimplyHiredScraper } from './scrapers/Scraper.simplyHired';
-import { Apple } from './scrapers/Scraper.apple';
+import { AngelListScraper } from './scrapers/Scraper.angellist';
+import { AppleScraper } from './scrapers/Scraper.apple';
+import { CheggScraper } from './scrapers/Scraper.chegg';
+import { CiscoScraper } from './scrapers/Scraper.cisco';
 import { LinkedinScraper } from './scrapers/Scraper.linkedin';
+import { MonsterScraper } from './scrapers/Scraper.monster';
+import { NsfScraper } from './scrapers/Scraper.nsf';
+import { SimplyHiredScraper } from './scrapers/Scraper.simplyHired';
 import { TestScraper } from './scrapers/Scraper.test';
 import { ZipRecruiterScraper } from './scrapers/Scraper.ziprecruiter';
-import { MonsterScraper } from './scrapers/Scraper.monster';
-import { CheggScraper } from './scrapers/Scraper.chegg';
-
+import { GlassDoorScraper } from './scrapers/Scraper.glassdoor';
+import { StackOverFlowScrapper } from './scrapers/Scraper.stackoverflow';
 
 /**
  *  Create all possible scraper instances next. Keys must be all lower case.
@@ -25,15 +26,17 @@ import { CheggScraper } from './scrapers/Scraper.chegg';
  */
 const scrapers = {
   angellist: new AngelListScraper(),
-  apple: new Apple(),
+  apple: new AppleScraper(),
+  chegg: new CheggScraper(),
   cisco: new CiscoScraper(),
   linkedin: new LinkedinScraper(),
+  monster: new MonsterScraper(),
   nsf: new NsfScraper(),
   simplyhired: new SimplyHiredScraper(),
   test: new TestScraper(),
   ziprecruiter: new ZipRecruiterScraper(),
-  monster: new MonsterScraper(),
-  chegg: new CheggScraper(),
+  glassdoor: new GlassDoorScraper(),
+  stackoverflow: new StackOverFlowScrapper(),
 };
 
 // You don't normally edit anything below.
