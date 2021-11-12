@@ -61,18 +61,18 @@ export class CheggScraper extends Scraper {
       let url = this.page.url();
 
       const position = (await super.getValues('h1[class="DesktopHeader_title__2ihuJ"]', 'innerText'))[0];
-      this.log.debug(`Descriptions: \n${position}`);
+      this.log.debug(`Position: \n${position}`);
 
       //use super.getvalue
 
       const description = (await super.getValues('div[class="ql-editor ql-snow ql-container ql-editor-display ' +
         'Body_rteText__U3_Ce"]', 'innerText'))[0];
-      this.log.debug(`Descriptions: \n${description}`);
+      this.log.debug(`Description: \n${description}`);
 
       const company = (await super.getValues('a[class="Link_anchor__1oD5h ' +
         'Link_linkColoring__394wp ' +
         'Link_medium__25UK6 DesktopHeader_subTitle__3k6XA"]', 'innerText'))[0];
-      this.log.debug(`Descriptions: \n${company}`);
+      this.log.debug(`Company: \n${company}`);
 
       const locationStr = (await super.getValues('span[class="DesktopHeader_subTitle__3k6XA ' +
         'DesktopHeader_location__3jiWp"]', 'innerText'))[0];
@@ -122,7 +122,7 @@ export class CheggScraper extends Scraper {
       //-- Loop through the array in reverse order since we are modifying the array.
       while (i >= 0) {
         console.log(arr[i].description);
-        if (arr[i].description.indexOf('Computer Science') < 0) {
+        if (arr[i].description.indexOf('Computer Science') < 0 || arr[i].description.indexOf('programming') < 0) {
           //-- splice will remove the non-matching element
           removedCount += 1;
           arr.splice(i, 1);
