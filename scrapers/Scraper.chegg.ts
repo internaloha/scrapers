@@ -30,9 +30,7 @@ export class CheggScraper extends Scraper {
   async generateListings() {
     await super.generateListings();
 
-    await super.goto('https://www.internships' +
-      '.com/app/search?keywords=computer+science&position-types=internship&location=Hawaii&context=seo&seo-mcid' +
-      '=33279397626109020301048056291448164886');
+    await super.goto('https://www.internships.com/app/search?keywords=computer+science&position-types=internship&location=Hawaii&context=seo&seo-mcid=33279397626109020301048056291448164886');
 
     await this.page.waitForTimeout(1000); //WAIT FOR PAGE TO FULLY LOAD
 
@@ -66,9 +64,7 @@ export class CheggScraper extends Scraper {
         'Body_rteText__U3_Ce"]', 'innerText'));
       this.log.debug(`Description: \n${description}`);
 
-      const company = (await super.getValue('a[class="Link_anchor__1oD5h ' +
-        'Link_linkColoring__394wp ' +
-        'Link_medium__25UK6 DesktopHeader_subTitle__3k6XA"]', 'innerText'));
+      const company = (await super.getValues('a[class="Link_anchor__1oD5h Link_linkColoring__394wp Link_medium__25UK6 DesktopHeader_subTitle__3k6XA"]', 'innerText'))[0];
       this.log.debug(`Company: \n${company}`);
 
       const location = (await super.getValue('span[class="DesktopHeader_subTitle__3k6XA ' +
@@ -100,26 +96,17 @@ export class CheggScraper extends Scraper {
     this.log.info('Processing Listings');
     //const words = ['computer science', 'software', 'engineering', 'computers', 'programming' ];
     var removedCount = 0;
-
-    // Our search words will contain computer science, software, engineering, computers, programming
-    // If the description does not contain these words we remove the object from the array
-    function filterArray(arr) {
-      var i = arr.length - 1;
-      //-- Loop through the array in reverse order since we are modifying the array.
-      while (i >= 0) {
-        console.log(arr[i].description);
-        if (arr[i].description.indexOf('Computer Science') < 0 || arr[i].description.indexOf('programming') < 0) {
-          //-- splice will remove the non-matching element
-          removedCount += 1;
-          arr.splice(i, 1);
-        }
-        i--;
+    
+    this.listings.forEach(function (listing, index, object) {
+      if (listing.description.indexOf('Computer Science') < 0 || listing.description.indexOf('programming') < 0) {
+        //-- splice will remove the non-matching element
+        removedCount += 1;
+        object.splice(index, 1);
       }
-      return arr;
     }
+    );
 
-    this.log.info(`Removed ${removedCount}  nonrelevant listings`);
-    filterArray(this.listings);
+    this.log.info(`Removed ${removedCount} nonrelevant listings`);
     this.log.info(`Total of listing added after Processing ${this.listings.length()}`);
   }
 
