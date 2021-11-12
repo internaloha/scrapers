@@ -1,6 +1,7 @@
 import log from 'loglevel';
 import chalk from 'chalk';
 import puppeteer from 'puppeteer-extra';
+import { Listing } from './Listing';
 import { Listings } from './Listings';
 import * as prefix from 'loglevel-plugin-prefix';
 import * as moment from 'moment';
@@ -262,6 +263,26 @@ export class Scraper {
       await this.launch();
       await this.login();
       await this.generateListings();
+      await this.processListings();
+    } catch (error) {
+      const message = error['message'];
+      this.errorMessages.push(message);
+      this.log.error(`Error caught in scrape(): ${message}`);
+    } finally {
+      await this.close();
+      await this.writeListings();
+      await this.writeStatistics();
+    }
+  }
+
+  async initializeAndProcessListings(listingsObj) {
+    try {
+      await this.launch();
+      listingsObj.forEach(listingData => {
+        const {url = '', position = '', location = {}, company = '', description =  '', contact = '', posted = '', due = '' }= listingData;
+        const listing = new Listing({ url, position, location, company, description, contact, posted, due });
+        this.listings.addListing(listing);
+      });
       await this.processListings();
     } catch (error) {
       const message = error['message'];
