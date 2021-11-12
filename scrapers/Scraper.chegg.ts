@@ -110,7 +110,7 @@ export class CheggScraper extends Scraper {
       const test = words.some(word => listing.description.includes(word));
       //If the test fails then we remove the element from the listings
       if (!test) {
-        //splice will remove the non-matching element
+        //splice will remove the non-matching object
         removedCount += 1;
         object.splice(index, 1);
       }
