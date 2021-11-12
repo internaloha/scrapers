@@ -64,8 +64,8 @@ export class CheggScraper extends Scraper {
         'Body_rteText__U3_Ce"]', 'innerText'));
       this.log.debug(`Description: \n${description}`);
 
-      // Sometimes the company selector does not exist, so if its not there we just set it to an empty string
-      const company = (await this.page.$('a[class="Link_anchor__1oD5h Link_linkColoring__394wp Link_medium__25UK6 DesktopHeader_subTitle__3k6XA"]', 'innerText')) || '';
+      // Sometimes the company selector does not exist, use super.getValues to return an empty string if it doesnt exist
+      const company = (await super.getValues('a[class="Link_anchor__1oD5h Link_linkColoring__394wp Link_medium__25UK6 DesktopHeader_subTitle__3k6XA"]', 'innerText'))[0];
       this.log.debug(`Company: \n${company}`);
 
       const location = (await super.getValue('span[class="DesktopHeader_subTitle__3k6XA ' +
