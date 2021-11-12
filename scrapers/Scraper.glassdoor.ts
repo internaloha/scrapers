@@ -30,16 +30,9 @@ export class GlassDoorScraper extends Scraper {
     let numberOfPages = key[3];
 
     for (let j = 2; j < numberOfPages; j++) {
-      await this.page.goto(`https://www.glassdoor.com/Job/us-computer-science-intern-jobs-SRCH_IL.0,2_IN1_KO3,26_IP${j}.htm?fromAge=14&includeNoSalaryJobs=true&jobType=internship&sortBy=date_desc&pgc=AB4AAoEAPAAAAAAAAAAAAAAAAbsADWUAcAEBARYLPplTgwz6w5gkUFSL%2FblhjH2dnpaNeUYZXuH6Cu3v8isCPy16PzrVdNdet7UF1fZYJ6qrDq1oVrnKpdztukcmJhLXfw0O24fRE0%2B5tWtrBFKzBwo1%2Bd0fZppHS9r3QIn3v1WdnCbnV9BKa%2B4AAA%3D%3D`);
+      await this.page.goto(`https://www.glassdoor.com/Job/us-computer-science-intern-jobs-SRCH_IL.0,2_IN1_KO3,26_IP${j}.htm?fromAge=14&includeNoSalaryJobs=true&jobType=internship&sortBy=date_desc&pgc=AB4AAoEAPAAAAAAAAAAAAAAAAbsADWUAcAEBARYLPplTgwz6w5gkUFSL%2FblhjH2dnpaNeUYZXuH6Cu3v8isCPy16PzrVdNdet7UF1fZYJ6qrDq1oVrnKpdztukcmJhLXfw0O24fRE0%2B5tWtrBFKzBwo1%2Bd0fZppHS9r3QIn3v1WdnCbnV9BKa%2B4AAA%3D%3D`, { waitUntil: 'networkidle0' });
       urls = urls.concat(await super.getValues('a[class="jobLink"]', 'href'));
     }
-    /**
-    const nextLink = 'a[data-test="pagination-next"]';
-    while (await super.selectorExists(nextLink)) {
-      await this.page.click(nextLink);
-      urls = urls.concat(await super.getValues('a[class="jobLink"]', 'href'));
-    }
-    **/
     this.log.debug(`Found ${urls.length} URLs: \n${urls}`);
 
     for (const url of urls) {
