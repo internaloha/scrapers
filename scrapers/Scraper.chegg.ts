@@ -64,6 +64,7 @@ export class CheggScraper extends Scraper {
         'Body_rteText__U3_Ce"]', 'innerText'));
       this.log.debug(`Description: \n${description}`);
 
+      //Sometimes the company selector is null, using super.getvalues just fills in the space as null if it's not there 
       const company = (await super.getValues('a[class="Link_anchor__1oD5h Link_linkColoring__394wp Link_medium__25UK6 DesktopHeader_subTitle__3k6XA"]', 'innerText'))[0];
       this.log.debug(`Company: \n${company}`);
 
@@ -96,7 +97,7 @@ export class CheggScraper extends Scraper {
     this.log.info('Processing Listings');
     //const words = ['computer science', 'software', 'engineering', 'computers', 'programming' ];
     var removedCount = 0;
-    
+
     this.listings.forEach(function (listing, index, object) {
       if (listing.description.indexOf('Computer Science') < 0 || listing.description.indexOf('programming') < 0) {
         //-- splice will remove the non-matching element
