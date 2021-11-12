@@ -117,7 +117,7 @@ export class CheggScraper extends Scraper {
     });
 
     this.log.info(`Removed ${removedCount} nonrelevant listings`);
-    this.log.info(`Total of listing added after processing: ${this.listings.length()}`);
+    this.log.info(`Total number of listing added after processing: ${this.listings.length()}`);
   }
 
 }
