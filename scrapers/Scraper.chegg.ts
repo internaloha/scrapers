@@ -3,7 +3,6 @@ import { Scraper } from './Scraper';
 
 const prefix = require('loglevel-plugin-prefix');
 
-
 export class CheggScraper extends Scraper {
   constructor() {
     super({ name: 'chegg', url: 'https://www.internships.com/app/search' });
@@ -60,33 +59,29 @@ export class CheggScraper extends Scraper {
 
       let url = this.page.url();
 
-      const position = (await super.getValues('h1[class="DesktopHeader_title__2ihuJ"]', 'innerText'))[0];
+      const position = (await super.getValue('h1[class="DesktopHeader_title__2ihuJ"]', 'innerText'));
       this.log.debug(`Position: \n${position}`);
 
-      //use super.getvalue
-
-      const description = (await super.getValues('div[class="ql-editor ql-snow ql-container ql-editor-display ' +
-        'Body_rteText__U3_Ce"]', 'innerText'))[0];
+      const description = (await super.getValue('div[class="ql-editor ql-snow ql-container ql-editor-display ' +
+        'Body_rteText__U3_Ce"]', 'innerText'));
       this.log.debug(`Description: \n${description}`);
 
-      const company = (await super.getValues('a[class="Link_anchor__1oD5h ' +
+      const company = (await super.getValue('a[class="Link_anchor__1oD5h ' +
         'Link_linkColoring__394wp ' +
-        'Link_medium__25UK6 DesktopHeader_subTitle__3k6XA"]', 'innerText'))[0];
+        'Link_medium__25UK6 DesktopHeader_subTitle__3k6XA"]', 'innerText'));
       this.log.debug(`Company: \n${company}`);
 
-      const location = (await super.getValues('span[class="DesktopHeader_subTitle__3k6XA ' +
-        'DesktopHeader_location__3jiWp"]', 'innerText'))[0];
+      const location = (await super.getValue('span[class="DesktopHeader_subTitle__3k6XA ' +
+        'DesktopHeader_location__3jiWp"]', 'innerText'));
       this.log.debug(`Location: ${location}`);
 
-      const posted = (await super.getValues('p[class="DesktopHeader_postedDate__11t-5"]', 'innerText'))[0];
+      const posted = (await super.getValue('p[class="DesktopHeader_postedDate__11t-5"]', 'innerText'));
 
       const listing = new Listing({ url, position, location, company, description, posted });
       this.log.debug(`Adding Listing ${listing.url}`); //Used to verify that a listing is being added
-
-
       this.listings.addListing(listing);
 
-      //Go back to original page
+      //Go back to original page with all the listings
       await this.page.goBack();
       await this.page.waitForTimeout(3000); //Have to wait till page is loaded might need a better way to do this
 
