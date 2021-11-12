@@ -98,12 +98,12 @@ export class CheggScraper extends Scraper {
   async processListings() {
     await super.processListings();
     this.log.info('Processing Listings');
-    //const words = ['computer science', 'software', 'engineering', 'computers', 'programming' ];
     var removedCount = 0;
 
     this.listings.forEach(function (listing, index, object) {
-      if (listing.description.indexOf('Computer Science') < 0 || listing.description.indexOf('programming') < 0) {
-        //-- splice will remove the non-matching element
+      if (listing.description.indexOf('Computer Science') < 0 || listing.description.indexOf('programming') < 0 || listing.description.indexOf('software') < 0) {
+        //splice will remove the non-matching element
+        console.log(object);
         removedCount += 1;
         object.splice(index, 1);
       }
