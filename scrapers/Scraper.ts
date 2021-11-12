@@ -49,7 +49,7 @@ export class Scraper {
   protected maxRandomWait: number;
 
   /** Initialize the scraper state and provide configuration info. */
-  constructor({ name, url }) {
+  constructor({ name, url = '' }) {
     this.name = name;
     this.url = url;
     this.log = log;
@@ -60,11 +60,23 @@ export class Scraper {
 
   /**
    * Return a list of field values based on selector.
+   * Use this function when you expect the selector to match a list of elements in the page.
    * @param selector The nodes to be selected from the current page.
    * @param field The field to extract from the nodes returned from the selector.
    */
   async getValues(selector, field) {
     return await this.page.$$eval(selector, (nodes, field) => nodes.map(node => node[field]), field);
+  }
+
+  /**
+   * Return a single field value based on selector.
+   * Use this function when you expect the selector match only a single element in the page.
+   * @param selector The node to be selected from the current page.
+   * @param field The field to extract from the node returned from the selector.
+   * @throws Error if there is no element matching the selector.
+   */
+  async getValue(selector, field) {
+    return await this.page.$eval(selector, (node, field) => node[field], field);
   }
 
   /**
@@ -151,6 +163,25 @@ export class Scraper {
     const wait = Math.floor(Math.random() * this.maxRandomWait) + 1000;
     this.log.debug(`Waiting ${wait} milliseconds.`);
     await this.page.waitForTimeout(wait);
+  }
+
+  /** Scrolls down 400 pixels every 400 milliseconds until scrolling doesn't increase the page height. */
+  async autoScroll() {
+    await this.page.evaluate(async () => {
+      await new Promise<void>((resolve) => {
+        let totalHeight = 0;
+        const distance = 400;
+        const timer = setInterval(() => {
+          const scrollHeight = document.body.scrollHeight;
+          window.scrollBy(0, distance);
+          totalHeight += distance;
+          if (totalHeight >= scrollHeight) {
+            clearInterval(timer);
+            resolve();
+          }
+        }, 400);
+      });
+    });
   }
 
   /**

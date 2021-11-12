@@ -11,11 +11,7 @@ export class CiscoScraper extends Scraper {
   async launch() {
     await super.launch();
     prefix.apply(this.log, { nameFormatter: () => this.name.toUpperCase() });
-    this.log.info('Launching scraper.');
-  }
-
-  async login() {
-    await super.login();
+    this.log.warn(`Launching ${this.name.toUpperCase()} scraper`);
   }
 
   async generateListings() {
@@ -23,51 +19,46 @@ export class CiscoScraper extends Scraper {
     await this.page.goto(this.url);
 
     const nextLink = 'div[class="pagination autoClearer"] a:last-child';
-    const urls = [];
-    urls.push(await super.getValues('table[class="table_basic-1 table_striped"] tbody tr td[data-th="Job Title"] a', 'href'));
+    const urlSelector = 'table[class="table_basic-1 table_striped"] tbody tr td[data-th="Job Title"] a';
+
+    let urls = [];
+    let descriptions = [];
+    let positions = [];
+    let locations = [];
+
+    // Get all of the URLs to the Internship pages.
+    urls = urls.concat(await super.getValues(urlSelector, 'href'));
     while (await super.selectorExists(nextLink)) {
-      // process page
       await this.page.click(nextLink);
-      urls.push(await super.getValues('table[class="table_basic-1 table_striped"] tbody tr td[data-th="Job Title"] a', 'href'));
+      urls = urls.concat(await super.getValues(urlSelector, 'href'));
     }
-    this.log.debug(`URLS: \n${urls}`);
-    this.log.debug(`URL length: \n${urls.length}`);
-    const descriptions = [];
-    const positions = [];
-    const locations = [];
-    const cities = [];
-    const states = [];
-    this.log.debug(`URL: \n${urls[0]}`);
-    const urlTemp = urls[0];
-    const urlArr = urlTemp.slice(',');
-    this.log.debug(`URL length: \n${urlArr.length}`);
-    for (const url of urlArr) {
-      this.log.debug(`URL: \n${url}`);
+    this.log.debug(`Found ${urls.length} URLs: \n${urls}`);
 
+    // Get positions, descriptions, and locations.
+    for (const url of urls) {
+      this.log.debug(`Processing: ${url}`);
       await this.page.goto(url);
-      positions.push(await super.getValues('h2[itemprop="title"]', 'innerText'));
-      descriptions.push(await super.getValues('div[itemprop="description"]', 'innerText'));
-      let location: any[];
-      location = await super.getValues('div[itemprop="jobLocation"]', 'innerText');
-      locations.push(location);
-      location.forEach(location => {
-        const loc = location.split(', ');
-        this.log.debug(`Location: \n${loc}`);
-        cities.push(loc[0]);
-        states.push(loc[1]);
-      });
+      positions.push(await super.getValue('h2[itemprop="title"]', 'innerText'));
+      descriptions.push(await super.getValue('div[itemprop="description"]', 'innerText'));
+      const location = await super.getValue('div[itemprop="jobLocation"]', 'innerText');
+      const locationTuple = location.split(', ');
+      locations.push({ city: locationTuple[0], state: locationTuple[1], country: '' });
     }
 
-    // Now we add listings. All arrays are (hopefully!) the same length.
-    for (let i = 0; i < urlArr.length; i++) {
-      const location = { city: cities[i], state: states[i], country: '' };
-      const listing = new Listing({ url: urlArr[i], position: positions[i], location, company: 'Cisco', description: descriptions[i] });
+    // Create the listings from the parallel arrays.
+    for (let i = 0; i < urls.length; i++) {
+      const listing = new Listing({ url: urls[i], position: positions[i], location: locations[i], company: 'Cisco', description: descriptions[i] });
       this.listings.addListing(listing);
     }
   }
 
+  /** Replace four newlines with two newlines and nonbreaking space chars with a normal space char. */
+  fixDescription(description) {
+    return description.replace(/\n\s*\n\s*\n\s*\n/g, '\n\n').replace(/\xa0/g, ' ');
+  }
+
   async processListings() {
     await super.processListings();
-    // Not yet implemented.
+    this.listings.forEach(listing => { listing.description = this.fixDescription(listing.description); });
   }
 }
