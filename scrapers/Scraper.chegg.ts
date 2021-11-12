@@ -74,18 +74,9 @@ export class CheggScraper extends Scraper {
         'Link_medium__25UK6 DesktopHeader_subTitle__3k6XA"]', 'innerText'))[0];
       this.log.debug(`Company: \n${company}`);
 
-      const locationStr = (await super.getValues('span[class="DesktopHeader_subTitle__3k6XA ' +
+      const location = (await super.getValues('span[class="DesktopHeader_subTitle__3k6XA ' +
         'DesktopHeader_location__3jiWp"]', 'innerText'))[0];
-
-
-      const loc = locationStr.split(', ');
-      const city = (loc.length > 0) ? loc[0] : '';
-      const state = (loc.length > 1) ? loc[1] : '';
-      const country = '';
-
-      const location = { city, state, country };
-
-      this.log.debug(`Location: {${city}, ${state}, ${country}}`);
+      this.log.debug(`Location: ${location}`);
 
       const posted = (await super.getValues('p[class="DesktopHeader_postedDate__11t-5"]', 'innerText'))[0];
 
