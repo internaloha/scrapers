@@ -7,25 +7,7 @@ export class MonsterScraper extends Scraper {
   constructor() {
     super({ name: 'monster', url: 'https://www.monster.com/jobs/search?q=computer+science+intern&where=united+states' });
   }
-
-  async autoScroll() {
-    await this.page.evaluate(async () => {
-      await new Promise<void>((resolve) => {
-        let totalHeight = 0;
-        const distance = 400;
-        const timer = setInterval(() => {
-          const scrollHeight = document.body.scrollHeight;
-          window.scrollBy(0, distance);
-          totalHeight += distance;
-          if (totalHeight >= scrollHeight) {
-            clearInterval(timer);
-            resolve(); //????
-          }
-        }, 3000);
-      });
-    });
-  }
-
+  
   async launch() {
     await super.launch();
     prefix.apply(this.log, { nameFormatter: () => this.name.toUpperCase() });
@@ -46,7 +28,7 @@ export class MonsterScraper extends Scraper {
     const positionSelector = 'div[class="job-cardstyle__JobCardTitle-sc-1mbmxes-2 fsDALQ"]';
     const companySelector = 'h3[class="job-cardstyle__JobCardCompany-sc-1mbmxes-3 cYIFfT"]';
     //retrieve the url of the position
-    await this.autoScroll();
+    await super.autoScroll();
     urls = urls.concat(await super.getValues(urlSelector, 'href'));
     // get the name of the posiiton
     positions = await super.getValues(positionSelector, 'innerText');
@@ -58,7 +40,7 @@ export class MonsterScraper extends Scraper {
     //while next link exists
     while (await super.selectorExists(nextLink)) {
       await this.page.click(nextPage);
-      await this.autoScroll();
+      await super.autoScroll();
       urls = urls.concat(await super.getValues(urlSelector, 'href'));
       // get the name of the posiiton
       positions = await super.getValues(positionSelector, 'innerText');
