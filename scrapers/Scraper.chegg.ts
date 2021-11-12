@@ -50,9 +50,13 @@ export class CheggScraper extends Scraper {
     // Then go back a page and refresh the elements array refilling it with new internships that loaded.
     for (let i = 0; i < elements.length; i++) {
 
-      await this.page.waitForSelector('div[class="GridItem_jobContent__ENwap"]', { visible: true });
-      await elements[i].click();
-      await this.page.waitForTimeout(3000); // Wait till page is loaded. Might need a better way to do this?
+      //This code ensures that both the click() and the waitForNavigation() complete before the script proceeds to the next
+      // command.
+      await Promise.all([
+        this.page.waitForSelector('div[class="GridItem_jobContent__ENwap"]', { visible: true }),
+        elements[i].click(),
+        this.page.waitForNavigation(),
+      ]);
 
       let url = this.page.url();
 
@@ -113,10 +117,10 @@ export class CheggScraper extends Scraper {
 
     // Our search words will contain computer science, software, engineering, computers, programming
     // If the description does not contain these words we remove the object from the array
-    function filterArray( arr ) {
+    function filterArray(arr) {
       var i = arr.length - 1;
       //-- Loop through the array in reverse order since we are modifying the array.
-      while ( i >= 0) {
+      while (i >= 0) {
         console.log(arr[i].description);
         if (arr[i].description.indexOf('Computer Science') < 0) {
           //-- splice will remove the non-matching element
