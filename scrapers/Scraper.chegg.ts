@@ -90,25 +90,28 @@ export class CheggScraper extends Scraper {
 
     }
 
-    this.log(`Added ${this.listings.length()}`);
+    this.log.info(`Added ${this.listings.length()} listings.`);
 
   }
+
 
   // here is where you do any additional processing on the raw data now available in the this.listings field.
   async processListings() {
     await super.processListings();
     this.log.info('Processing Listings');
-    var removedCount = 0;
+    var removedCount = 0; //the number of non relevant listings removed
+    const words = ['Computer Science', 'programming', 'software']; //the words we want to search for in the description
 
     this.listings.forEach(function (listing, index, object) {
-      if (listing.description.indexOf('Computer Science') < 0 || listing.description.indexOf('programming') < 0 || listing.description.indexOf('software') < 0) {
+      //This tests to see if some words from our array are in the description, returns true if there is
+      const test = words.some(word => listing.description.includes(word));
+      //If the test fails then we remove the element from the listings
+      if (!test) {
         //splice will remove the non-matching element
-        console.log(object);
         removedCount += 1;
         object.splice(index, 1);
       }
-    }
-    );
+    });
 
     this.log.info(`Removed ${removedCount} nonrelevant listings`);
     this.log.info(`Total of listing added after processing: ${this.listings.length()}`);
