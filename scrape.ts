@@ -103,23 +103,9 @@ scraper.viewportWidth = parseInt(options.viewportWidth, 10);
 // Uncomment the following line to verify the scraper state prior to running.
 //Object.keys(scraper).map(key => console.log(`${key}: ${scraper[key]}`));
 
-/** Return an object containing all of the Listings in fileName. */
-function getListingsObj(fileName) {
-  const path = `${scraper.listingDir}/${scraper.discipline}/${fileName}`;
-  let listingsObj;
-  try {
-    listingsObj = JSON.parse(fs.readFileSync(path, 'utf8'));
-  } catch (Exception) {
-    console.log(`${path} missing or unable to be parsed. Exiting.`);
-    process.exit(0);
-  }
-  return listingsObj;
-}
-
 /* Run the chosen scraper, either from the passed listings file or from scratch.. */
 if (options.processListingsFile) {
-  const listingsObj = getListingsObj(options.processListingsFile);
-  scraper.initializeAndProcessListings(listingsObj);
+  scraper.initializeAndProcessListings(options.processListingsFile);
 } else {
   scraper.scrape();
 }

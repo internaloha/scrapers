@@ -59,13 +59,4 @@ export class NsfScraper extends Scraper {
       this.listings.addListing(listing);
     }
   }
-
-  fixDescription(description) {
-    return description.replace('Research Topics/Keywords', ' Research Topics and Keywords');
-  }
-
-  async processListings() {
-    await super.processListings();
-    this.listings.forEach(listing => { listing.description = this.fixDescription(listing.description); });
-  }
 }

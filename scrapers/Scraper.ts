@@ -275,9 +275,23 @@ export class Scraper {
     }
   }
 
-  async initializeAndProcessListings(listingsObj) {
+  async getListingsObj(fileName) {
+    const path = `${this.listingDir}/${this.discipline}/${fileName}`;
+    let listingsObj;
+    try {
+      this.log.info(`Reading listings from ${path}`);
+      listingsObj = JSON.parse(fs.readFileSync(path, 'utf8'));
+    } catch (Exception) {
+      this.log.error(`${path} missing or unable to be parsed. Exiting.`);
+      process.exit(0);
+    }
+    return listingsObj;
+  }
+
+  async initializeAndProcessListings(fileName) {
     try {
       await this.launch();
+      const listingsObj = await this.getListingsObj(fileName);
       listingsObj.forEach(listingData => {
         const {url = '', position = '', location = {}, company = '', description =  '', contact = '', posted = '', due = '' }= listingData;
         const listing = new Listing({ url, position, location, company, description, contact, posted, due });
