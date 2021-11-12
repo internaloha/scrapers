@@ -43,11 +43,11 @@ export class CheggScraper extends Scraper {
     this.log.info('Obtaining and adding internships');
 
     // This for loop loops through the elements array.
-    // After we select and click the div that contains the internship we want. After we add the listing.
+    // After we select and click the div that contains the internship we want and add the listing.
     // Then go back a page and refresh the elements array refilling it with new internships that loaded.
     for (let i = 0; i < elements.length; i++) {
 
-      //This code ensures that both the click() and the waitForNavigation() complete before the script proceeds to the next
+      // This code ensures that both the click() and the waitForNavigation() complete before the script proceeds to the next
       // command.
       await Promise.all([
         this.page.waitForSelector('div[class="GridItem_jobContent__ENwap"]', { visible: true }),
@@ -64,8 +64,8 @@ export class CheggScraper extends Scraper {
         'Body_rteText__U3_Ce"]', 'innerText'));
       this.log.debug(`Description: \n${description}`);
 
-      //Sometimes the company selector is null, using super.getvalues just fills in the space as null if it's not there 
-      const company = (await super.getValues('a[class="Link_anchor__1oD5h Link_linkColoring__394wp Link_medium__25UK6 DesktopHeader_subTitle__3k6XA"]', 'innerText'))[0];
+      // Sometimes the company selector does not exist, so if its not there we just set it to an empty string
+      const company = (await this.page.$('a[class="Link_anchor__1oD5h Link_linkColoring__394wp Link_medium__25UK6 DesktopHeader_subTitle__3k6XA"]', 'innerText')) || '';
       this.log.debug(`Company: \n${company}`);
 
       const location = (await super.getValue('span[class="DesktopHeader_subTitle__3k6XA ' +
@@ -78,17 +78,20 @@ export class CheggScraper extends Scraper {
       this.log.debug(`Adding Listing ${listing.url}`); //Used to verify that a listing is being added
       this.listings.addListing(listing);
 
-      //Go back to original page with all the listings
+      // Go back to original page with all the listings
       await this.page.goBack();
       await this.page.waitForTimeout(3000); //Have to wait till page is loaded might need a better way to do this
 
-      //EXTRA failsafe just in case waiting does not work, we wait until the element is visible
+      // EXTRA failsafe just in case waiting does not work, we wait until the element is visible
       await this.page.waitForSelector('div[class="GridItem_jobContent__ENwap"]', { visible: true });
 
-      //Refill elements array with new recently loaded boxes
+      // Refill elements array with new recently loaded boxes
       elements = await this.page.$$('div[class="GridItem_jobContent__ENwap"]');
 
     }
+
+    this.log(`Added ${this.listings.length()}`);
+
   }
 
   // here is where you do any additional processing on the raw data now available in the this.listings field.
@@ -108,7 +111,7 @@ export class CheggScraper extends Scraper {
     );
 
     this.log.info(`Removed ${removedCount} nonrelevant listings`);
-    this.log.info(`Total of listing added after Processing ${this.listings.length()}`);
+    this.log.info(`Total of listing added after processing: ${this.listings.length()}`);
   }
 
 }
