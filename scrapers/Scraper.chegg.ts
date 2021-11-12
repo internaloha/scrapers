@@ -15,10 +15,6 @@ export class CheggScraper extends Scraper {
     this.log.warn(`Launching ${this.name.toUpperCase()} scraper`);
   }
 
-  async login() {
-    await super.login();
-  }
-
   // autoscroll scrolls to the last element in the div using scrollIntoView
   async autoscroll() {
     // Select last child
@@ -63,6 +59,8 @@ export class CheggScraper extends Scraper {
       const position = (await super.getValues('h1[class="DesktopHeader_title__2ihuJ"]', 'innerText'))[0];
       this.log.debug(`Descriptions: \n${position}`);
 
+      //use super.getvalue
+
       const description = (await super.getValues('div[class="ql-editor ql-snow ql-container ql-editor-display ' +
         'Body_rteText__U3_Ce"]', 'innerText'))[0];
       this.log.debug(`Descriptions: \n${description}`);
@@ -93,11 +91,14 @@ export class CheggScraper extends Scraper {
 
       this.listings.addListing(listing);
 
+      //Go back to original page
       await this.page.goBack();
       await this.page.waitForTimeout(3000); //Have to wait till page is loaded might need a better way to do this
 
       //EXTRA failsafe just in case waiting does not work, we wait until the element is visible
       await this.page.waitForSelector('div[class="GridItem_jobContent__ENwap"]', { visible: true });
+
+      //Refill elements array with new recently loaded boxes
       elements = await this.page.$$('div[class="GridItem_jobContent__ENwap"]');
 
     }
