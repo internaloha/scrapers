@@ -29,9 +29,11 @@ function convertPostedToDate(posted) {
 
 export class AcmScraper extends Scraper {
   private searchTerms: string;
+  private urls: string[];
 
   constructor() {
     super({ name: 'acm', url: 'https://jobs.acm.org' });
+    this.urls = [];
   }
 
   async launch() {
@@ -52,53 +54,64 @@ export class AcmScraper extends Scraper {
     await super.goto(searchUrl);
   }
 
-  async processPage() {
+  /**
+   * Process the left-hand set of tiles to get the detail URL for internships. Then go to the next page of tiles.
+   */
+  async getInternshipUrls() {
     await this.page.waitForSelector('.job-result-tiles .job-tile');
-    const tiles = await this.page.$$('.job-result-tiles .job-tile');
-    const positions = await super.getValues('.job-result-tiles .job-tile .job-detail-row .job-title', 'innerText');
-    const urls = await super.getValues('.job-result-tiles .job-tile .job-main-data .job-details .job-detail-row .job-title a', 'href');
-    this.log.debug(urls);
-    const companies = await super.getValues('.job-result-tiles .job-tile .job-company-row', 'innerText');
-    const locations = await super.getValues('.job-result-tiles .job-tile .job-location', 'innerText');
-    this.log.debug(tiles.length, positions.length, companies.length, locations.length);
-    for (let i = 0; i < positions.length; i++) {
-      await super.randomWait(); // go slow.
-      const position = positions[i];
-      if (position.includes('intern') || position.includes('Intern')) {
-        this.log.debug(position);
-        this.log.debug(`Going to ${urls[i]}`);
-        await super.goto(urls[i]);
-        const company = companies[i].trim();
-        const locationStr = locations[i];
-        const url = urls[i];
-        const lSplit = locationStr.split(', ');
-        // this.log.debug(`${lSplit.length}`);
-        const city = (lSplit.length > 0) ? lSplit[0] : '';
-        const state = (lSplit.length > 1) ? lSplit[1] : '';
-        const country = (lSplit.length > 2) ? lSplit[2] : '';
-        this.log.trace(`Location: {${city}, ${state}, ${country}}`);
-        const location = { city, state, country };
-        const postedArr = await super.getValues('#job-results-details.job-results-details .job-main-data .job-subtext-row .job-posted-date', 'innerText');
-        let posted;
-        if (postedArr.length > 0) {
-          posted = convertPostedToDate(postedArr[0].toLowerCase()).toLocaleDateString();
-        } else {
-          posted = 'N/A';
-          this.log.trace('No date found. Setting posted as: N/A');
+    let isNotInactive;
+    let pageNumber = 1;
+    do {
+      this.log.debug(`Getting Urls on page ${pageNumber}`);
+      const nextPageElement = await this.page.$('ul[class="pagination"] li:nth-child(6)[class="page-item inactive"]');
+      this.log.debug(nextPageElement);
+      isNotInactive = nextPageElement === null;
+      const pageUrls = await super.getValues('.job-result-tiles .job-tile .job-main-data .job-details .job-detail-row .job-title a', 'href');
+      pageUrls.forEach(url => {
+        if (url.toLowerCase().includes('intern')) {
+          this.urls.push(url);
         }
-        const description = await super.getValues('.job-results-details .job-desc', 'innerHTML');
-        this.log.trace(`URLS: ${urls}`);
-        this.log.trace(`Posted: ${postedArr}`);
-        this.log.trace(`Description: ${description}`);
-        const listing = new Listing({ url, location, position, description, company, posted });
-        this.listings.addListing(listing);
-      }
-    }
+      });
+      const nextPageEl = await this.page.$('ul[class="pagination"] li:nth-child(6)');
+      pageNumber++;
+      await Promise.all([
+        nextPageEl.click(),
+        // this.page.waitForSelector('.job-result-tiles .job-tile'),
+        super.randomWait(),
+      ]);
+      this.log.debug(`Now have ${this.urls.length} internships isNotInactive = ${isNotInactive}`);
+    } while (isNotInactive);
+  }
+
+  /**
+   * Process the detail page to create a listing.
+   * @param url the URL of the detail page.
+   */
+  async processUrl(url) {
+    await super.goto(url);
+    const position = await super.getValue('.job-main-data .job-details .job-detail-row h1.job-title', 'innerText');
+    const company = await super.getValue('.job-company-row', 'innerText');
+    const locStr = await super.getValue('.company-location', 'innerText');
+    // TODO should this code be consolidated somewhere?
+    const lSplit = locStr.split(',');
+    const city = (lSplit.length > 0) ? lSplit[0] : '';
+    const state = (lSplit.length > 1) ? lSplit[1] : '';
+    const country = (lSplit.length > 2) ? lSplit[2] : '';
+    this.log.trace(`Location: {${city}, ${state}, ${country}}`);
+    const location = { city, state, country };
+    const postedStr = await super.getValue('.job-posted-date', 'innerText');
+    const posted = convertPostedToDate(postedStr.toLowerCase()).toLocaleDateString();
+    const description = await super.getValue('.job-main-desc .job-desc', 'innerHTML');
+    const listing = new Listing({ url, location, position, description, company, posted });
+    this.listings.addListing(listing);
   }
 
   async generateListings() {
     await super.generateListings();
-    await this.processPage();
+    // get all the internship urls
+    await this.getInternshipUrls();
+    this.log.debug(this.urls);
+    this.urls.forEach(async url => await this.processUrl(url));
   }
 
   async processListings() {
