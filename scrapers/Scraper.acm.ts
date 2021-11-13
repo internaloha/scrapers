@@ -59,13 +59,12 @@ export class AcmScraper extends Scraper {
    */
   async getInternshipUrls() {
     await this.page.waitForSelector('.job-result-tiles .job-tile');
-    let isNotInactive;
+    let isInactive;
     let pageNumber = 1;
     do {
       this.log.debug(`Getting Urls on page ${pageNumber}`);
       const nextPageElement = await this.page.$('ul[class="pagination"] li:nth-child(6)[class="page-item inactive"]');
-      this.log.debug(nextPageElement);
-      isNotInactive = nextPageElement === null;
+      isInactive = nextPageElement !== null;
       const pageUrls = await super.getValues('.job-result-tiles .job-tile .job-main-data .job-details .job-detail-row .job-title a', 'href');
       pageUrls.forEach(url => {
         if (url.toLowerCase().includes('intern')) {
@@ -79,31 +78,34 @@ export class AcmScraper extends Scraper {
         // this.page.waitForSelector('.job-result-tiles .job-tile'),
         super.randomWait(),
       ]);
-      this.log.debug(`Now have ${this.urls.length} internships isNotInactive = ${isNotInactive}`);
-    } while (isNotInactive);
+      this.log.debug(`Now have ${this.urls.length} internships isInactive = ${isInactive}`);
+    } while (!isInactive);
   }
 
   /**
-   * Process the detail page to create a listing.
-   * @param url the URL of the detail page.
+   * Process the detail pages to create listings.
    */
-  async processUrl(url) {
-    await super.goto(url);
-    const position = await super.getValue('.job-main-data .job-details .job-detail-row h1.job-title', 'innerText');
-    const company = await super.getValue('.job-company-row', 'innerText');
-    const locStr = await super.getValue('.company-location', 'innerText');
-    // TODO should this code be consolidated somewhere?
-    const lSplit = locStr.split(',');
-    const city = (lSplit.length > 0) ? lSplit[0] : '';
-    const state = (lSplit.length > 1) ? lSplit[1] : '';
-    const country = (lSplit.length > 2) ? lSplit[2] : '';
-    this.log.trace(`Location: {${city}, ${state}, ${country}}`);
-    const location = { city, state, country };
-    const postedStr = await super.getValue('.job-posted-date', 'innerText');
-    const posted = convertPostedToDate(postedStr.toLowerCase()).toLocaleDateString();
-    const description = await super.getValue('.job-main-desc .job-desc', 'innerHTML');
-    const listing = new Listing({ url, location, position, description, company, posted });
-    this.listings.addListing(listing);
+  async processUrls() {
+    let url;
+    for (let i = 0; i < this.urls.length; i++) {
+      url = this.urls[i];
+      await super.goto(url);
+      const position = await super.getValue('.job-main-data .job-details .job-detail-row h1.job-title', 'innerText');
+      const company = await super.getValue('.job-company-row', 'innerText');
+      const locStr = await super.getValue('.company-location', 'innerText');
+      // TODO should this code be consolidated somewhere?
+      const lSplit = locStr.split(',');
+      const city = (lSplit.length > 0) ? lSplit[0] : '';
+      const state = (lSplit.length > 1) ? lSplit[1] : '';
+      const country = (lSplit.length > 2) ? lSplit[2] : '';
+      this.log.debug(`Location: {${city}, ${state}, ${country}}`);
+      const location = { city, state, country };
+      const postedStr = await super.getValue('.job-posted-date', 'innerText');
+      const posted = convertPostedToDate(postedStr.toLowerCase()).toLocaleDateString();
+      const description = await super.getValue('.job-main-desc .job-desc', 'innerHTML');
+      const listing = new Listing({ url, location, position, description, company, posted });
+      this.listings.addListing(listing);
+    }
   }
 
   async generateListings() {
@@ -111,7 +113,7 @@ export class AcmScraper extends Scraper {
     // get all the internship urls
     await this.getInternshipUrls();
     this.log.debug(this.urls);
-    this.urls.forEach(async url => await this.processUrl(url));
+    await this.processUrls();
   }
 
   async processListings() {

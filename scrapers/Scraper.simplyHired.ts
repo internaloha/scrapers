@@ -121,7 +121,7 @@ export class SimplyHiredScraper extends Scraper {
         }
       } else {
         company = 'N/A';
-        this.log.trace('No company found');
+        this.log.debug('No company found');
       }
       const locationObj = await super.getValues('div[class="viewjob-header-companyInfo"] div:nth-child(2)', 'innerText');
       if (locationObj.length > 1) {
@@ -135,11 +135,11 @@ export class SimplyHiredScraper extends Scraper {
         posted = convertPostedToDate(postedVal[0].toLowerCase()).toLocaleDateString();
       } else {
         posted = 'N/A';
-        this.log.trace('No date found. Setting posted as: N/A');
+        this.log.debug('No date found. Setting posted as: N/A');
       }
-      this.log.trace(`Position: ${position}`);
-      this.log.trace(`Company: ${company}`);
-      this.log.trace(`Posted: ${posted}`);
+      this.log.debug(`Position: ${position}`);
+      this.log.debug(`Company: ${company}`);
+      this.log.debug(`Posted: ${posted}`);
       // this.log.debug(`LocationStr: ${locationStr} ${typeof locationStr}`);
       // this.log.debug(`Description: ${description}`);
       const url = urls[i - 1];
@@ -148,7 +148,7 @@ export class SimplyHiredScraper extends Scraper {
       const city = (lSplit.length > 0) ? lSplit[0] : '';
       const state = (lSplit.length > 1) ? lSplit[1] : '';
       const country = '';
-      this.log.trace(`Location: {${city}, ${state}, ${country}}`);
+      this.log.debug(`Location: {${city}, ${state}, ${country}}`);
       const location = { city, state, country };
 
       // this.log.debug(`Position: \n${position}`);
