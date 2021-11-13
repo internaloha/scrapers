@@ -23,6 +23,10 @@ export class Listings {
     this.listings.push(listing);
   }
 
+  forEach(fn) {
+    this.listings.forEach(fn);
+  }
+
   length() {
     return this.listings.length;
   }
@@ -33,7 +37,7 @@ export class Listings {
       const file = `${this.listingDir}/${this.name}.${suffix}`;
       const data = JSON.stringify(this.listings, null, 2);
       fs.writeFileSync(file, data, 'utf-8');
-      this.log.info(`Wrote ${this.listings.length} listings.`);
+      this.log.info(`Wrote ${this.listings.length} listings to ${file}.`);
     } catch (error) {
       this.log.error(`Error in Listings.writeListings: ${error}`);
     }

@@ -1,6 +1,7 @@
 import log from 'loglevel';
 import chalk from 'chalk';
 import puppeteer from 'puppeteer-extra';
+import { Listing } from './Listing';
 import { Listings } from './Listings';
 import * as prefix from 'loglevel-plugin-prefix';
 import * as moment from 'moment';
@@ -49,7 +50,7 @@ export class Scraper {
   protected maxRandomWait: number;
 
   /** Initialize the scraper state and provide configuration info. */
-  constructor({ name, url }) {
+  constructor({ name, url = '' }) {
     this.name = name;
     this.url = url;
     this.log = log;
@@ -60,11 +61,23 @@ export class Scraper {
 
   /**
    * Return a list of field values based on selector.
+   * Use this function when you expect the selector to match a list of elements in the page.
    * @param selector The nodes to be selected from the current page.
    * @param field The field to extract from the nodes returned from the selector.
    */
   async getValues(selector, field) {
     return await this.page.$$eval(selector, (nodes, field) => nodes.map(node => node[field]), field);
+  }
+
+  /**
+   * Return a single field value based on selector.
+   * Use this function when you expect the selector match only a single element in the page.
+   * @param selector The node to be selected from the current page.
+   * @param field The field to extract from the node returned from the selector.
+   * @throws Error if there is no element matching the selector.
+   */
+  async getValue(selector, field) {
+    return await this.page.$eval(selector, (node, field) => node[field], field);
   }
 
   /**
@@ -153,6 +166,25 @@ export class Scraper {
     await this.page.waitForTimeout(wait);
   }
 
+  /** Scrolls down 400 pixels every 400 milliseconds until scrolling doesn't increase the page height. */
+  async autoScroll() {
+    await this.page.evaluate(async () => {
+      await new Promise<void>((resolve) => {
+        let totalHeight = 0;
+        const distance = 400;
+        const timer = setInterval(() => {
+          const scrollHeight = document.body.scrollHeight;
+          window.scrollBy(0, distance);
+          totalHeight += distance;
+          if (totalHeight >= scrollHeight) {
+            clearInterval(timer);
+            resolve();
+          }
+        }, 400);
+      });
+    });
+  }
+
   /**
    * Login to site.
    * Subclass: invoke `await super.login()` if you need to override.
@@ -231,6 +263,40 @@ export class Scraper {
       await this.launch();
       await this.login();
       await this.generateListings();
+      await this.processListings();
+    } catch (error) {
+      const message = error['message'];
+      this.errorMessages.push(message);
+      this.log.error(`Error caught in scrape(): ${message}`);
+    } finally {
+      await this.close();
+      await this.writeListings();
+      await this.writeStatistics();
+    }
+  }
+
+  async getListingsObj(fileName) {
+    const path = `${this.listingDir}/${this.discipline}/${fileName}`;
+    let listingsObj;
+    try {
+      this.log.info(`Reading listings from ${path}`);
+      listingsObj = JSON.parse(fs.readFileSync(path, 'utf8'));
+    } catch (Exception) {
+      this.log.error(`${path} missing or unable to be parsed. Exiting.`);
+      process.exit(0);
+    }
+    return listingsObj;
+  }
+
+  async initializeAndProcessListings(fileName) {
+    try {
+      await this.launch();
+      const listingsObj = await this.getListingsObj(fileName);
+      listingsObj.forEach(listingData => {
+        const {url = '', position = '', location = {}, company = '', description =  '', contact = '', posted = '', due = '' }= listingData;
+        const listing = new Listing({ url, position, location, company, description, contact, posted, due });
+        this.listings.addListing(listing);
+      });
       await this.processListings();
     } catch (error) {
       const message = error['message'];
