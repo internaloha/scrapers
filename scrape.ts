@@ -13,6 +13,7 @@ import { TestScraper } from './scrapers/Scraper.test';
 import { ZipRecruiterScraper } from './scrapers/Scraper.ziprecruiter';
 import { GlassDoorScraper } from './scrapers/Scraper.glassdoor';
 import { StackOverFlowScrapper } from './scrapers/Scraper.stackoverflow';
+import { SOCScraper } from './scrapers/Scraper.soc';
 
 /**
  *  Create all possible scraper instances next. Keys must be all lower case.
@@ -37,6 +38,7 @@ const scrapers = {
   ziprecruiter: new ZipRecruiterScraper(),
   glassdoor: new GlassDoorScraper(),
   stackoverflow: new StackOverFlowScrapper(),
+  soc: new SOCScraper(),
 };
 
 // You don't normally edit anything below.
