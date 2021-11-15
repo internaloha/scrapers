@@ -40,15 +40,13 @@ export class CheggScraper extends Scraper {
     //Create an array called elements which is an array of all the internship boxes on the chegg page
     let elements = await this.page.$$('div[class="GridItem_jobContent__ENwap"]');
 
-    this.log.info('Obtaining and adding internships');
+    this.log.info(`Found ${elements.length} internships (initially).`);
 
     // This for loop loops through the elements array.
     // After we select and click the div that contains the internship we want and add the listing.
     // Then go back a page and refresh the elements array refilling it with new internships that loaded.
     for (let i = 0; i < elements.length; i++) {
 
-      // This code ensures that both the click() and the waitForNavigation() complete before the script proceeds to the next
-      // command.
       await Promise.all([
         this.page.waitForSelector('div[class="GridItem_jobContent__ENwap"]', { visible: true }),
         elements[i].click(),
@@ -56,45 +54,32 @@ export class CheggScraper extends Scraper {
       ]);
 
       let url = this.page.url();
+      ((i % 20) === 0) ? this.log.info(`Processing URL ${i}`) : this.log.debug(`Processing URL ${i}:`, url);
 
       const position = (await super.getValue('h1[class="DesktopHeader_title__2ihuJ"]', 'innerText'));
-      this.log.debug(`Position: \n${position}`);
-
       const description = (await super.getValue('div[class="ql-editor ql-snow ql-container ql-editor-display ' +
         'Body_rteText__U3_Ce"]', 'innerText'));
-      this.log.debug(`Description: \n${description}`);
-
       const companySelector = 'a[class="Link_anchor__1oD5h Link_linkColoring__394wp Link_medium__25UK6 ' +
         'DesktopHeader_subTitle__3k6XA"]';
-      // Sometimes the company selector does not exist, use super.selectorExists to check if it the selector exists
-      // If it exists return the value else return an empty string
+      // If company selector exists return the value else return an empty string
       const company = (await super.selectorExists(companySelector) ? await super.getValue(companySelector, 'innerText') : '');
-      this.log.debug(`Company: \n${company}`);
-
       const location = (await super.getValue('span[class="DesktopHeader_subTitle__3k6XA ' +
         'DesktopHeader_location__3jiWp"]', 'innerText'));
-      this.log.debug(`Location: ${location}`);
-
       const posted = (await super.getValue('p[class="DesktopHeader_postedDate__11t-5"]', 'innerText'));
+      this.log.debug(position, description, company, location, posted);
 
       const listing = new Listing({ url, position, location, company, description, posted });
-      this.log.debug(`Adding Listing ${listing.url}`); //Used to verify that a listing is being added
       this.listings.addListing(listing);
 
       // Go back to original page with all the listings
       await this.page.goBack();
       await this.page.waitForTimeout(3000); //Have to wait till page is loaded might need a better way to do this
-
       // EXTRA failsafe just in case waiting does not work, we wait until the element is visible
       await this.page.waitForSelector('div[class="GridItem_jobContent__ENwap"]', { visible: true });
 
       // Refill elements array with new recently loaded boxes
       elements = await this.page.$$('div[class="GridItem_jobContent__ENwap"]');
-
     }
-
-    this.log.info(`Added ${this.listings.length()} listings.`);
-
   }
 
 
@@ -105,6 +90,7 @@ export class CheggScraper extends Scraper {
     var removedCount = 0; //the number of non relevant listings removed
     const words = ['Computer Science', 'programming', 'software']; //the words we want to search for in the description
 
+    // TODO: Replace this with filter() at some point.
     this.listings.forEach(function (listing, index, object) {
       //This tests to see if some words from our array are in the description, returns true if there is
       const test = words.some(word => listing.description.includes(word));
@@ -115,9 +101,6 @@ export class CheggScraper extends Scraper {
         object.splice(index, 1);
       }
     });
-
-    this.log.info(`Removed ${removedCount} nonrelevant listings`);
-    this.log.info(`Total number of listing added after processing: ${this.listings.length()}`);
+    this.log.info(`Removed ${removedCount} nonrelevant listings, total now: ${this.listings.length()}`);
   }
-
 }

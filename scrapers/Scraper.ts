@@ -10,6 +10,7 @@ import * as UserAgent from 'user-agents';
 
 // For some reason, the following package(s) generate TS errors if I use import.
 const StealthPlugin = require('puppeteer-extra-plugin-stealth');
+const StripHtml = require('string-strip-html');
 
 const colors = {
   TRACE: chalk.magenta,
@@ -148,15 +149,14 @@ export class Scraper {
     await this.page.setUserAgent(userAgent.toString());
   }
 
-  async goto(url: string, options = {newUserAgent: true, randomWait: true}) {
+  async goto(url: string, options = {newUserAgent: true, randomWait: true, waitUntil: 'networkidle0'}) {
     if (options.newUserAgent) {
       await this.setUserAgent();
     }
+    await this.page.goto(url, { waitUntil: options.waitUntil });
     if (options.randomWait) {
       await this.randomWait();
     }
-    this.log.debug(`Going to ${url}`);
-    await this.page.goto(url);
   }
 
   async randomWait() {
@@ -204,11 +204,31 @@ export class Scraper {
   }
 
   /**
+   * Default processing for the description field:
+   *   1. Replace 4+ newlines with two newlines.
+   *   2. Replace nonbreaking space chars with a normal space char.
+   *   3. Strip HTML.
+   */
+  fixDescription(description) {
+    const description1 = description
+      .replace(/\n\s*\n\s*\n\s*\n\s*\n\s*\n\s*\n\s*\n/g, '\n\n')
+      .replace(/\n\s*\n\s*\n\s*\n\s*\n\s*\n\s*\n/g, '\n\n')
+      .replace(/\n\s*\n\s*\n\s*\n\s*\n\s*\n/g, '\n\n')
+      .replace(/\n\s*\n\s*\n\s*\n\s*\n/g, '\n\n')
+      .replace(/\n\s*\n\s*\n\s*\n/g, '\n\n')
+      .replace(/\n\s*\n\s*\n/g, '\n\n')
+      .replace(/\xa0/g, ' ');
+    const description2 = StripHtml.stripHtml(description1).result;
+    return description2;
+  }
+
+  /**
    * After the this.listings field is populated, use this method to further process the data.
    * Subclass: invoke `await super.processListings` if you override.
    */
   async processListings() {
     this.log.debug('Starting processListings');
+    this.listings.forEach(listing => { listing.description = this.fixDescription(listing.description); });
   }
 
   /**
@@ -263,12 +283,12 @@ export class Scraper {
       await this.launch();
       await this.login();
       await this.generateListings();
-      await this.processListings();
     } catch (error) {
       const message = error['message'];
       this.errorMessages.push(message);
       this.log.error(`Error caught in scrape(): ${message}`);
     } finally {
+      await this.processListings();
       await this.close();
       await this.writeListings();
       await this.writeStatistics();
