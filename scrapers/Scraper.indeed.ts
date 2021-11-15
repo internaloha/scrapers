@@ -17,7 +17,6 @@ export class IndeedScraper extends Scraper {
   async generateListings() {
     await super.generateListings();
     let pageNum = 1;
-    //const listingsTable = '#mosaic-zone-jobcards';
 
     // pageUrl returns an URL containing the specified page number.
     const pageUrl = (pageNum) =>
@@ -25,6 +24,9 @@ export class IndeedScraper extends Scraper {
 
     // Get the first page of Internship listings.
     await super.goto(pageUrl(pageNum));
+
+    await this.page.waitForTimeout(1000); //WAIT FOR PAGE TO FULLY LOAD
+
 
     //select the boxes and there links
     await this.page.waitForSelector(('div[class="mosaic-zone"] > div[class="mosaic mosaic-provider-jobcards mosaic-provider-hydrated"] > a'));
