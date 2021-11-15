@@ -16,25 +16,19 @@ export class IndeedScraper extends Scraper {
 
   async generateListings() {
     await super.generateListings();
-    let pageNum = 1;
 
-    // pageUrl returns an URL containing the specified page number.
-    const pageUrl = (pageNum) =>
-      `https://www.indeed.com/jobs?q=computer%20science%20internship&l=Honolulu%2C%20HI&vjk=4d4385fce8630e4b&page=${pageNum}`;
+    //go to the indeed website
+    await super.goto('https://www.indeed.com/jobs?q=computer%20science%20internship&l=Honolulu%2C%20HI&vjk=4d4385fce8630e4b&page=1');
 
-    // Get the first page of Internship listings.
-    await super.goto(pageUrl(pageNum));
-
-    await this.page.waitForTimeout(1000); //WAIT FOR PAGE TO FULLY LOAD
-
-
-    //select the boxes and there links
+    //select the boxes and their links
     await this.page.waitForSelector(('div[class="mosaic-zone"] > div[class="mosaic mosaic-provider-jobcards mosaic-provider-hydrated"] > a'));
-    // saves links to url
+
+    // saves links to url array
     let urls = (await super.getValues('div[class="mosaic-zone"] > div[class="mosaic mosaic-provider-jobcards mosaic-provider-hydrated"] > a', 'href'));
 
     this.log.debug(`URLS: ${urls}`);
 
+    //Loop through urls
     for (let i = 0; i < urls.length; i++) {
       const url = urls[i];
       await this.page.goto(url);
@@ -47,7 +41,6 @@ export class IndeedScraper extends Scraper {
     }
 
   }
-
 
   async processListings() {
     await super.processListings();
