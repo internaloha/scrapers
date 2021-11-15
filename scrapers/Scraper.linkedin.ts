@@ -10,31 +10,19 @@ export class LinkedinScraper extends Scraper {
   async launch() {
     await super.launch();
     prefix.apply(this.log, { nameFormatter: () => this.name.toUpperCase() });
-    this.log.info('Launching scraper.');
-  }
+    this.log.warn(`Launching ${this.name.toUpperCase()} scraper`);
 
-  async login() {
-    super.login();
   }
 
 
   async getData() {
     const results = [];
-    results.push(await super.getValues( 'h1[class="top-card-layout__title topcard__title"]', 'innerHTML'));
-    results.push(await super.getValues('a[class="topcard__org-name-link topcard__flavor--black-link"]', 'innerHTML'));
-    results.push(await super.getValues('span[class="topcard__flavor topcard__flavor--bullet"]', 'innerHTML'));
-    results.push(await super.getValues('span[class="posted-time-ago__text topcard__flavor--metadata"]', 'innerHTML'));
-    // results.push(await super.getValues('div[class="show-more-less-html__markup"]', 'innerHTML'));
+    results.push(await super.getValue( 'h1[class="top-card-layout__title topcard__title"]', 'innerHTML'));
+    results.push(await super.getValue('a[class="topcard__org-name-link topcard__flavor--black-link"]', 'innerHTML'));
+    results.push(await super.getValue('span[class="topcard__flavor topcard__flavor--bullet"]', 'innerHTML'));
+    results.push(await super.getValue('span[class="posted-time-ago__text topcard__flavor--metadata"]', 'innerHTML'));
     results.push(await super.getValues('div[class="show-more-less-html__markup show-more-less-html__markup--clamp-after-5"]', 'innerHTML'));
-
-    // for (let i = 0; i < 5; i++) {
-    //   results.push(await super.getValues( 'h1[class="top-card-layout__title topcard__title"]', 'innerHTML'));
-    //   results.push(await super.getValues('a[class="topcard__org-name-link topcard__flavor--black-link"]', 'innerHTML'));
-    //   results.push(await super.getValues('span[class="topcard__flavor topcard__flavor--bullet"]', 'innerHTML'));
-    //   results.push(await super.getValues('span[class="posted-time-ago__text topcard__flavor--metadata"]', 'innerHTML'));
-    //   results.push(await super.getValues('div[class="show-more-less-html__markup"]', 'innerHTML'));
-    // }
-    return Promise.all(results);
+    return results;
   }
 
   /**
@@ -53,7 +41,7 @@ export class LinkedinScraper extends Scraper {
           totalHeight += distance;
           if (totalHeight >= scrollHeight) {
             clearInterval(timer);
-            resolve(); //????
+            resolve();
           }
         }, 400);
       });
@@ -108,8 +96,6 @@ export class LinkedinScraper extends Scraper {
     await super.generateListings();
     await this.reload();
     let totalInternships = 0;
-    let elements = await this.page.$$('a[class="base-card__full-link"]');
-    this.log.info('Total Elements:', elements);
     let urls = await super.getValues('a[class="base-card__full-link"]', 'href');
 
     this.log.info('Total URLs:', urls.length);
@@ -119,24 +105,14 @@ export class LinkedinScraper extends Scraper {
 
     for (let i = 0; i < urls.length; i++) {
       try {
-        // const element = elements[i];
-        // sometimes clicking it doesn't show the panel, try/catch to allow it to keep going
         try {
           this.log.debug('getting data for element ', i);
           await this.page.goto(urls[i]);
           await this.page.waitForSelector('button[class="show-more-less-html__button show-more-less-html__button--more"]', {timeout: 1500});
-          // await this.page.waitForTimeout(1500);
-          // eslint-disable-next-line prefer-const
           this.log.debug('url: ', urls[i]);
 
           let [position, company, location, posted, description] = await this.getData();
-          // this.log.debug(await this.getData());
-          this.log.debug('Got data:');
-          this.log.debug('position', position);
-          this.log.debug('company', company);
-          this.log.debug('location', location);
-          this.log.debug('posted', posted);
-          this.log.debug('description', description);
+          this.log.debug(`Got data:\n position: ${position}\n company: ${company}\n location: ${location}\n posted:${posted}\n description: ${description}`);
           // let state = '';
           // if (!location.match(/([^,]*)/g)[2]) {
           //   state = 'United States';
@@ -157,25 +133,16 @@ export class LinkedinScraper extends Scraper {
           });
           this.log.info(position);
           totalInternships++;
-          // this.log.info(this.listings);
         } catch (err5) {
           this.log.info('LinkedIn', err5);
           this.log.info('Skipping! Did not load...');
           skippedURLs.push(urls[i]);
         }
-        // this.log.debug('What is this element:', element);
-        // await element.click();
-        this.log.debug('click happened');
       } catch (e2) {
         this.log.info('Navigated off site... Redirecting back...');
         await this.reload();
-        elements = await this.page.$$('li[class="result-card job-result-card result-card--with-hover-state"]');
-
         urls = await super.getValues('a.result-card__full-card-link', 'href');
       }
-      // this.log.debug('What is this element 2:', elements[i + 1]);
-      // await elements[i + 1].click();
-      this.log.debug('click 2 happened');
     }
 
     this.log.info('--- Going back to scrape the ones previously skipped ---');
@@ -183,17 +150,10 @@ export class LinkedinScraper extends Scraper {
     for (let i = 0; i < skippedURLs.length; i++) {
       try {
         await this.page.goto(skippedURLs[i]);
-        // await this.page.waitForSelector('section.core-rail');
         const skills = 'N/A';
-        // eslint-disable-next-line prefer-const
         let [position, company, location, posted, description] = await this.getData();
-        this.log.debug('Got data:');
-        this.log.debug('position', position);
-        this.log.debug('company', company);
-        this.log.debug('location', location);
-        this.log.debug('posted', posted);
-        this.log.debug('description', description);
-        // posted = this.convertPostedToDate(posted);
+        this.log.debug(`Got data:\n position: ${position}\n company: ${company}\n location: ${location}\n posted:${posted}\n description: ${description}`);
+
         // let state = '';
         // if (!location.match(/([^,]*)/g)[2]) {
         //   state = 'United States';
@@ -217,17 +177,11 @@ export class LinkedinScraper extends Scraper {
         totalInternships++;
       } catch (err5) {
         this.log.info('LinkedIn', err5);
-        this.log.info('Skipping! Did not load...');
-        // skippedURLs.push(urls[i]);
+        this.log.info('Skipping! Did not load....');
       }
 
     }
     this.log.info('Total internships scraped:', totalInternships);
     this.log.info('Closing browser!');
-  }
-
-  async processListings() {
-    await super.processListings();
-    // Not yet implemented.
   }
 }
