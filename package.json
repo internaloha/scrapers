@@ -13,6 +13,7 @@
     "puppeteer": "^10.4.0",
     "puppeteer-extra": "^3.2.3",
     "puppeteer-extra-plugin-stealth": "^2.9.0",
+    "string-strip-html": "^8.3.0",
     "user-agents": "^1.0.823",
     "ts-node": "^10.2.1",
     "tslib": "^2.3.1",

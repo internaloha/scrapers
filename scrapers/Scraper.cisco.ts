@@ -51,14 +51,4 @@ export class CiscoScraper extends Scraper {
       this.listings.addListing(listing);
     }
   }
-
-  /** Replace four newlines with two newlines and nonbreaking space chars with a normal space char. */
-  fixDescription(description) {
-    return description.replace(/\n\s*\n\s*\n\s*\n/g, '\n\n').replace(/\xa0/g, ' ');
-  }
-
-  async processListings() {
-    await super.processListings();
-    this.listings.forEach(listing => { listing.description = this.fixDescription(listing.description); });
-  }
 }
