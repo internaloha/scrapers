@@ -28,7 +28,6 @@ function convertPostedToDate(posted) {
 }
 
 export class SimplyHiredScraper extends Scraper {
-  private timeout: number;
   private searchTerms: string;
 
   constructor() {
@@ -40,11 +39,7 @@ export class SimplyHiredScraper extends Scraper {
     prefix.apply(this.log, { nameFormatter: () => this.name.toUpperCase() });
     this.log.warn(`Launching ${this.name.toUpperCase()} scraper`);
     this.log.debug(`Discipline: ${this.discipline}`);
-    // check the config file for timeout.
-    // this.timeout = this.config?['additionalParams']?['simplyHired']?['timeout'] || 500;
-    this.timeout = super.getNested(this.config, 'additionalParams', 'simplyHired', 'timeout') || 500;
     // check the config file to set the search terms.
-    //this.searchTerms = this.config?.additionalParams?.simplyHired?.searchTerms[this.discipline] || 'computer science intern';
     this.searchTerms = super.getNested(this.config, 'additionalParams', 'simplyHired', 'searchTerms', this.discipline) || 'computer science intern';
     this.log.debug(`Search Terms: ${this.searchTerms}`);
   }
@@ -52,10 +47,11 @@ export class SimplyHiredScraper extends Scraper {
   async login() {
     super.login();
     this.log.debug(`Going to ${this.url}`);
-    await this.page.goto(this.url);
+    await super.goto(this.url);
   }
 
   async setUpSearchCriteria() {
+    this.log.debug('Setting up search criteria');
     await this.page.waitForSelector('input[name=q]');
     await this.page.$eval('input[name=l]', (el) => {
       // eslint-disable-next-line no-param-reassign
@@ -69,20 +65,16 @@ export class SimplyHiredScraper extends Scraper {
     this.log.debug(`Inputted search query: ${this.searchTerms}`);
     await this.page.waitForSelector('div[data-id=JobType]');
     // Getting href link for internship filter
-    const internshipDropdown = await super.getValues('a[href*="internship"]', 'href');
-    if (internshipDropdown.length > 0) {
-      const url = `${internshipDropdown[0]}`;
+    const internshipDropdown = await super.getValue('a[href*="internship"]', 'href');
+    if (internshipDropdown) {
+      const url = internshipDropdown;
       this.log.debug(`Directing to: ${url}`);
-      await Promise.all([
-        this.page.goto(url),
-        this.page.waitForSelector('div[data-id=JobType]'),
-      ]);
+      await super.goto(url);
       // Setting filter as last '30 days'
-      const lastPosted = await super.getValues('div[data-id=Date] a[href*="30"]', 'href');
-      const lastPostedURL = `${lastPosted[0]}`;
+      const lastPosted = await super.getValue('div[data-id=Date] a[href*="30"]', 'href');
       this.log.debug('Setting Date Relevance: 30 days');
-      this.log.debug(`Directing to: ${lastPostedURL}`);
-      await this.page.goto(lastPostedURL);
+      this.log.debug(`Directing to: ${lastPosted}`);
+      await super.goto(lastPosted);
       await Promise.all([
         this.page.click('a[class=SortToggle]'),
         this.page.waitForNavigation()
@@ -100,28 +92,20 @@ export class SimplyHiredScraper extends Scraper {
     const elements = await this.page.$$('.SerpJob-jobCard.card');
     this.log.debug('Processing page', (pageNumber + 1), ': ', elements.length, ' internships');
     const urls = await super.getValues('a[class="SerpJob-link card-link"]', 'href');
-    // this.log.debug(`URLS: \n${urls}`);
+    this.log.debug(`URLS: \n${urls}`);
+    await super.randomWait();
     for (let i = 1; i <= elements.length; i++) {
-      await this.page.waitForTimeout(this.timeout);
       // await this.page.waitForSelector('div[class="viewjob-jobDescription"]');
       const element = elements[i];
-      const positionVal = await super.getValues('div[class="viewjob-jobTitle h2"]', 'innerText');
-      let position;
-      if (positionVal.length > 0) {
-        position = positionVal[0].trim();
-      }
-      const companyVal = await super.getValues('div[class="viewjob-header-companyInfo"] div:nth-child(1)', 'innerText');
+      const positionVal = await super.getValue('div[class="viewjob-jobTitle h2"]', 'innerText');
+      const position = positionVal.trim();
+      const companyVal = await super.getValue('div[class="viewjob-header-companyInfo"] div:nth-child(1)', 'innerText');
       let company;
-      if (companyVal.length > 0) {
-        company = companyVal[0];
-        // strip off the rating for the company
-        const ratingIndex = company.lastIndexOf('-');
-        if (ratingIndex !== -1) {
-          company = company.substring(0, ratingIndex).trim();
-        }
-      } else {
-        company = 'N/A';
-        this.log.trace('No company found');
+      company = companyVal;
+      // strip off the rating for the company
+      const ratingIndex = company.lastIndexOf('-');
+      if (ratingIndex !== -1) {
+        company = company.substring(0, ratingIndex).trim();
       }
       const locationObj = await super.getValues('div[class="viewjob-header-companyInfo"] div:nth-child(2)', 'innerText');
       if (locationObj.length > 1) {
@@ -129,19 +113,17 @@ export class SimplyHiredScraper extends Scraper {
       }
       const locationStr = `${locationObj}`;
       const description = await super.getValue('div[class="viewjob-jobDescription"]', 'innerHTML');
-      const postedVal = await super.getValues('span[class="viewjob-labelWithIcon viewjob-age"]', 'innerText');
+      const postedVal = await super.getValue('span[class="viewjob-labelWithIcon viewjob-age"]', 'innerText');
       let posted = '';
-      if (postedVal.length > 0) {
-        posted = convertPostedToDate(postedVal[0].toLowerCase()).toLocaleDateString();
+      if (postedVal) {
+        posted = convertPostedToDate(postedVal.toLowerCase()).toLocaleDateString();
       } else {
         posted = 'N/A';
         this.log.trace('No date found. Setting posted as: N/A');
       }
-      this.log.trace(`Position: ${position}`);
-      this.log.trace(`Company: ${company}`);
-      this.log.trace(`Posted: ${posted}`);
-      // this.log.debug(`LocationStr: ${locationStr} ${typeof locationStr}`);
-      // this.log.debug(`Description: ${description}`);
+      this.log.debug(`Position: ${position}`);
+      this.log.debug(`Company: ${company}`);
+      this.log.debug(`Posted: ${posted}`);
       const url = urls[i - 1];
       const lSplit = locationStr.split(', ');
       // this.log.debug(`${lSplit.length}`);
@@ -156,7 +138,6 @@ export class SimplyHiredScraper extends Scraper {
       // this.log.debug(`Location: \n${location}`);
       // this.log.debug(`Description: \n${description}`);
       const listing = new Listing({ url, location, position, description, company, posted });
-      // this.log.debug(`${listing}`);
       this.listings.addListing(listing);
       internshipsPerPage++;
       // this.log.info(`Listing length: ${this.listings.length()}`);
@@ -192,8 +173,7 @@ export class SimplyHiredScraper extends Scraper {
         // eslint-disable-next-line @typescript-eslint/no-unused-expressions
         ((totalPages === 1) || (totalPages % 10 === 0)) ? this.log.info(message) : this.log.debug(message);
       }
-    } while (hasNext === true);
+    } while (hasNext);
     this.log.debug(`Found ${totalPages} pages.`);
   }
-
 }
