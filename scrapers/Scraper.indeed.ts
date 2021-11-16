@@ -18,7 +18,7 @@ export class IndeedScraper extends Scraper {
     await super.generateListings();
 
     //go to the indeed website
-    await super.goto('https://www.indeed.com/jobs?q=computer%20science%20internship&l=Honolulu%2C%20HI&vjk=4d4385fce8630e4b&page=1');
+    await this.page.goto('https://www.indeed.com/jobs?q=computer%20science%20internship&l=Honolulu%2C%20HI&vjk=4d4385fce8630e4b&page=1');
 
     //select the boxes and their links
     await this.page.waitForSelector(('div[class="mosaic-zone"] > div[class="mosaic mosaic-provider-jobcards mosaic-provider-hydrated"] > a'));
@@ -31,13 +31,7 @@ export class IndeedScraper extends Scraper {
     //Loop through urls
     for (let i = 0; i < urls.length; i++) {
       const url = urls[i];
-
-      //We want to make sure that we complete going the new page, before we start adding the listing
-      await Promise.all([
-        await super.goto(url),
-        this.page.waitForNavigation(),
-      ]);
-
+      await this.page.goto(url);
       const company = await super.getValue('div[class="jobsearch-InlineCompanyRating icl-u-xs-mt--xs jobsearch-DesktopStickyContainer-companyrating"] > div[class="icl-u-lg-mr--sm icl-u-xs-mr--xs"]', 'innerText');
       const position = await super.getValue('h1[class="icl-u-xs-mb--xs icl-u-xs-mt--none jobsearch-JobInfoHeader-title"]', 'innerText');
       const description = await super.getValue('div[class="jobsearch-JobComponent-description icl-u-xs-mt--md"]', 'innerText'); //might want to filter description
