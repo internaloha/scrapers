@@ -24,7 +24,7 @@ export class AppleScraper extends Scraper {
       `https://jobs.apple.com/en-us/search?location=united-states-USA&sort=relevance&search=internship&page=${pageNum}`;
 
     // Get the first page of Internship listings.
-    await this.page.goto(pageUrl(pageNum), { waitUntil: 'networkidle0' });
+    await super.goto(pageUrl(pageNum));
 
     while (await super.selectorExists(listingsTable)) {
       // Collect the URLs to the listings on this page.

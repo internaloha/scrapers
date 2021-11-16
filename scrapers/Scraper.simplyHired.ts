@@ -32,7 +32,7 @@ export class SimplyHiredScraper extends Scraper {
   private searchTerms: string;
 
   constructor() {
-    super({ name: 'simplyHired', url: 'https://www.simplyhired.com' });
+    super({ name: 'simplyhired', url: 'https://www.simplyhired.com' });
   }
 
   async launch() {
@@ -128,7 +128,7 @@ export class SimplyHiredScraper extends Scraper {
         this.log.debug(`Multiple locations for ${company}: ${position}`);
       }
       const locationStr = `${locationObj}`;
-      const description = await super.getValues('div[class="viewjob-jobDescription"]', 'innerHTML');
+      const description = await super.getValue('div[class="viewjob-jobDescription"]', 'innerHTML');
       const postedVal = await super.getValues('span[class="viewjob-labelWithIcon viewjob-age"]', 'innerText');
       let posted = '';
       if (postedVal.length > 0) {
@@ -194,11 +194,6 @@ export class SimplyHiredScraper extends Scraper {
       }
     } while (hasNext === true);
     this.log.debug(`Found ${totalPages} pages.`);
-  }
-
-  async processListings() {
-    await super.processListings();
-    // No post-processing (yet) for Simply Hired scraper results.
   }
 
 }
