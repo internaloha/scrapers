@@ -30,8 +30,13 @@ function convertPostedToDate(posted) {
 export class SimplyHiredScraper extends Scraper {
   private searchTerms: string;
 
+  private urls: string[];
+
+  private baseURL: string;
+
   constructor() {
     super({ name: 'simplyhired', url: 'https://www.simplyhired.com' });
+    this.urls = [];
   }
 
   async launch() {
@@ -75,6 +80,7 @@ export class SimplyHiredScraper extends Scraper {
       this.log.debug('Setting Date Relevance: 30 days');
       this.log.debug(`Directing to: ${lastPosted}`);
       await super.goto(lastPosted);
+      this.baseURL = lastPosted;
       await Promise.all([
         this.page.click('a[class=SortToggle]'),
         this.page.waitForNavigation()
@@ -88,15 +94,11 @@ export class SimplyHiredScraper extends Scraper {
 
   async processPage(pageNumber) {
     let internshipsPerPage = 0;
-    await this.page.waitForSelector('.SerpJob-jobCard.card');
-    const elements = await this.page.$$('.SerpJob-jobCard.card');
-    this.log.debug('Processing page', (pageNumber + 1), ': ', elements.length, ' internships');
     const urls = await super.getValues('a[class="SerpJob-link card-link"]', 'href');
-    this.log.debug(`URLS: \n${urls}`);
-    await super.randomWait();
-    for (let i = 1; i <= elements.length; i++) {
-      // await this.page.waitForSelector('div[class="viewjob-jobDescription"]');
-      const element = elements[i];
+    this.log.debug('Processing page', (pageNumber + 1), ': ', urls.length, ' internships');
+    // await super.randomWait();
+    for (let i = 0; i <= urls.length; i++) {
+      await super.goto(urls[i]);
       const positionVal = await super.getValue('div[class="viewjob-jobTitle h2"]', 'innerText');
       const position = positionVal.trim();
       const companyVal = await super.getValue('div[class="viewjob-header-companyInfo"] div:nth-child(1)', 'innerText');
@@ -113,9 +115,9 @@ export class SimplyHiredScraper extends Scraper {
       }
       const locationStr = `${locationObj}`;
       const description = await super.getValue('div[class="viewjob-jobDescription"]', 'innerHTML');
-      const postedVal = await super.getValue('span[class="viewjob-labelWithIcon viewjob-age"]', 'innerText');
       let posted = '';
-      if (postedVal) {
+      if (await super.selectorExists('span[class="viewjob-labelWithIcon viewjob-age"]')) {
+        const postedVal = await super.getValue('span[class="viewjob-labelWithIcon viewjob-age"]', 'innerText');
         posted = convertPostedToDate(postedVal.toLowerCase()).toLocaleDateString();
       } else {
         posted = 'N/A';
@@ -124,31 +126,25 @@ export class SimplyHiredScraper extends Scraper {
       this.log.debug(`Position: ${position}`);
       this.log.debug(`Company: ${company}`);
       this.log.debug(`Posted: ${posted}`);
-      const url = urls[i - 1];
+      const url = urls[i];
       const lSplit = locationStr.split(', ');
-      // this.log.debug(`${lSplit.length}`);
       const city = (lSplit.length > 0) ? lSplit[0] : '';
       const state = (lSplit.length > 1) ? lSplit[1] : '';
-      const country = '';
-      this.log.trace(`Location: {${city}, ${state}, ${country}}`);
+      const country = (lSplit.length > 2) ? lSplit[2] : '';
+      this.log.debug(`Location: {${city}, ${state}, ${country}}`);
       const location = { city, state, country };
-
-      // this.log.debug(`Position: \n${position}`);
-      // this.log.debug(`Company: \n${company}`);
-      // this.log.debug(`Location: \n${location}`);
-      // this.log.debug(`Description: \n${description}`);
       const listing = new Listing({ url, location, position, description, company, posted });
       this.listings.addListing(listing);
       internshipsPerPage++;
-      // this.log.info(`Listing length: ${this.listings.length()}`);
-      if (i < elements.length) {
-        await Promise.all([
-          element.click(),
-          this.page.waitForNavigation(),
-        ]);
-      }
     }
     return internshipsPerPage;
+  }
+
+  async getTheURLs() {
+    const directUrls = await super.getValues('a[class="SerpJob-link card-link"]', 'href');
+    this.log.debug(directUrls);
+    this.urls = this.urls.concat(directUrls);
+    this.log.debug(`Found ${directUrls.length}. Now have ${this.urls.length} total Urls.`);
   }
 
   async generateListings() {
@@ -159,15 +155,19 @@ export class SimplyHiredScraper extends Scraper {
     let hasNext = true;
     do {
       totalInternships += await this.processPage(totalPages);
+      // await this.getTheURLs();
       const nextPage = await this.page.$('a[class="Pagination-link next-pagination"]');
       if (!nextPage) {
         hasNext = false;
         this.log.info('Reached the end of pages!');
       } else {
-        await Promise.all([
-          nextPage.click(),
-          this.page.waitForNavigation()
-        ]);
+        const nextPageUrl = `${this.baseURL}&pn=${totalPages + 2}`;
+        this.log.info(nextPageUrl);
+        await super.goto(nextPageUrl);
+        // await Promise.all([
+        //   nextPage.click(),
+        //   this.page.waitForNavigation()
+        // ]);
         totalPages++;
         const message = `Processed page ${totalPages}, ${totalInternships} total internships`;
         // eslint-disable-next-line @typescript-eslint/no-unused-expressions
