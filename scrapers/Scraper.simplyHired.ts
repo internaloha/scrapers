@@ -30,13 +30,10 @@ function convertPostedToDate(posted) {
 export class SimplyHiredScraper extends Scraper {
   private searchTerms: string;
 
-  private urls: string[];
-
   private baseURL: string;
 
   constructor() {
     super({ name: 'simplyhired', url: 'https://www.simplyhired.com' });
-    this.urls = [];
   }
 
   async launch() {
@@ -50,7 +47,7 @@ export class SimplyHiredScraper extends Scraper {
   }
 
   async login() {
-    super.login();
+    await super.login();
     this.log.debug(`Going to ${this.url}`);
     await super.goto(this.url);
   }
@@ -97,8 +94,9 @@ export class SimplyHiredScraper extends Scraper {
     const urls = await super.getValues('a[class="SerpJob-link card-link"]', 'href');
     this.log.debug('Processing page', (pageNumber + 1), ': ', urls.length, ' internships');
     // await super.randomWait();
-    for (let i = 0; i <= urls.length; i++) {
-      await super.goto(urls[i]);
+    for (let i = 0; i < urls.length; i++) {
+      // await super.goto(urls[i]);
+      await this.page.goto(urls[i], {waitUntil: 'networkidle0'});
       const positionVal = await super.getValue('div[class="viewjob-jobTitle h2"]', 'innerText');
       const position = positionVal.trim();
       const companyVal = await super.getValue('div[class="viewjob-header-companyInfo"] div:nth-child(1)', 'innerText');
@@ -140,13 +138,6 @@ export class SimplyHiredScraper extends Scraper {
     return internshipsPerPage;
   }
 
-  async getTheURLs() {
-    const directUrls = await super.getValues('a[class="SerpJob-link card-link"]', 'href');
-    this.log.debug(directUrls);
-    this.urls = this.urls.concat(directUrls);
-    this.log.debug(`Found ${directUrls.length}. Now have ${this.urls.length} total Urls.`);
-  }
-
   async generateListings() {
     await super.generateListings();
     await this.setUpSearchCriteria();
@@ -154,21 +145,15 @@ export class SimplyHiredScraper extends Scraper {
     let totalInternships = 0;
     let hasNext = true;
     do {
-      totalInternships += await this.processPage(totalPages);
-      // await this.getTheURLs();
+      totalInternships += await this.processPage(++totalPages);
+      await super.goto(`${this.baseURL}&pn=${totalPages}`);
       const nextPage = await this.page.$('a[class="Pagination-link next-pagination"]');
       if (!nextPage) {
         hasNext = false;
         this.log.info('Reached the end of pages!');
       } else {
-        const nextPageUrl = `${this.baseURL}&pn=${totalPages + 2}`;
-        this.log.info(nextPageUrl);
+        const nextPageUrl = `${this.baseURL}&pn=${totalPages + 1}`;
         await super.goto(nextPageUrl);
-        // await Promise.all([
-        //   nextPage.click(),
-        //   this.page.waitForNavigation()
-        // ]);
-        totalPages++;
         const message = `Processed page ${totalPages}, ${totalInternships} total internships`;
         // eslint-disable-next-line @typescript-eslint/no-unused-expressions
         ((totalPages === 1) || (totalPages % 10 === 0)) ? this.log.info(message) : this.log.debug(message);
