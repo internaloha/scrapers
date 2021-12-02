@@ -1,0 +1,10 @@
+{
+  "date": "2021-11-29",
+  "elapsedTime": 63,
+  "numErrors": 1,
+  "numListings": 73,
+  "errorMessages": [
+    "Error: failed to find element matching selector \"div[class=\"viewjob-jobDescription\"]\""
+  ],
+  "scraper": "simplyhired"
+}

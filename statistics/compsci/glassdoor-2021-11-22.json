@@ -1,0 +1,10 @@
+{
+  "date": "2021-11-22",
+  "elapsedTime": 888,
+  "numErrors": 1,
+  "numListings": 0,
+  "errorMessages": [
+    "Error: failed to find element matching selector \"div[class=\"css-17x2pwl e11nt52q6\"]\""
+  ],
+  "scraper": "glassdoor"
+}

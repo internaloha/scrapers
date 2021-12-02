@@ -1,36 +1,21 @@
 [
   {
-    "url": "https://stackoverflow.com/jobs/521892/java-full-stack-web-application-developer-entry-lbi-software?a=2P1DBA8o3JN6&so=i&pg=1&offset=0&total=9&so_medium=Internal&so_source=JobSearch&q=internship&l=United+States&u=Km&d=100",
-    "position": "JAVA Full Stack Web Application Developer – Entry Level & Internships",
+    "url": "https://stackoverflow.com/jobs/558489/internal-cloud-developer-jpmorgan-chase-bank-na?a=31iAVZE27rPi&so=i&pg=1&offset=0&total=11&so_medium=Internal&so_source=JobSearch&q=internship&l=United+States&u=Km&d=100",
+    "position": "Internal Cloud Developer",
     "location": {
-      "city": "– Melville",
-      "state": "NY",
+      "city": "– Columbus",
+      "state": "OH",
       "country": "United States"
     },
-    "description": "Job description\n\nLBi Software is looking for an entry level Java Full Stack Web Application Developer. Candidates will be working on a team to design and develop custom enterprise web applications. LBi Software develops custom applications both sports leagues/teams and HR Enterprise Software markets. Candidates must be self-starters and able to follow written and verbal direction working with a technical team leader. They must be able to produce well-documented and efficient code and possess the communication skills necessary to explain complex technical information. The position requires strong interpersonal and communication skills. The position requires strong knowledge of software architecture, development, database design, unit testing, continuous integration, continuous delivery, and QA processes.\n\nLBi is also looking for internships and co-ops with the same skillset.\n\nQualified candidates will join a team utilizing agile methodologies towards software development and delivery. Team sizes vary roughly from 2-10 developers, who will work in 1-3 week sprints.\n\nRequired technical skills:\nJava or .NET(C#), REST Services, HTML, Angular, CSS/SCSS, Bootstrap, Junit, SQL, Database Design\n\nAdditional skills a plus:\nJSpring Framework, J2EE technologies, MyBatis, .NET Core, EF Core, UI/UX design, Responsive Design, SASS/LESS, React, Node, Tomcat, Jenkins, Docker, Kubernetes, Agile Process, Smartphone/Tablet App Development (iOS, Android), Business Objects, ETL, Crystal Report, database reporting tools, Apache Spark, DB2, Oracle, MySQL, MariaDB, PostgreSQL, SQL Server\n\nFor more information see https://www.lbisoftware.com/careers and http://lbidynasty.com/\n\nSend Resume and Cover letter to Resume@LBiSoftware.com",
-    "company": "LBi Software – Melville, NY",
+    "description": "Job description\nWe're looking for members to fill out our Agile team. Your focus will be on the newer technologies (cloud, Domain Driven Design, API's, microservices) with the goal of decomposing a larger service into smaller microservices. The existing team is a truly diverse, fun mix of experience and skills who currently work extremely well together. This team solves the tough problems for breakfast! We just need a strong developer to help us put it all together!\n\nPlease note that we are describing our ideal candidate here. We don't expect you to know everything. Showing that you can learn something new is almost as valuable as already knowing it.\n\nAs a member of our Agile team we look first and foremost for people who are passionate around solving business and technical problems through innovation and engineering practices. Our team embraces a culture of experimentation and constantly strives for improvement and learning. You'll work in a collaborative, trusting, thought-provoking environment-one that encourages diversity of thought and creative solutions that are in the best interests of our customers globally.\n\nOur ideal candidate possesses many of the following attributes:\n* BS/BA degree or equivalent experience\n* Minimum of 2 years of application development experience\n* Expertise in Java, Spring Boot, OO-design/implementation, Domain Driven Design, Data management, and relational databases\n+ Website development is a plus but not critical\n+ J2EE experience is welcome as we remove those components from our system\n+ Kafka and Cassandra experience\n* Knowledge of industry-wide technology trends and best practices (let's use all the fun tools out there!)\n* Mindset of testing while coding (automated)\n* Passionate about building an innovative and inclusive culture\n* Strong communication skills - able to work with technical and non-technical stakeholders\n\nCome be part of a genuinely fun team who can truly be independent. Come set the example for other teams in the area to follow. We have some interesting problems to solve over the next couple years. Isn't that why you really got into programming to begin with?\n\nJPMorgan Chase & Co., one of the oldest financial institutions, offers innovative financial solutions to millions of consumers, small businesses and many of the world's most prominent corporate, institutional and government clients under the J.P. Morgan and Chase brands. Our history spans over 200 years and today we are a leader in investment banking, consumer and small business banking, commercial banking, financial transaction processing and asset management.\n\nWe recognize that our people are our strength and the diverse talents they bring to our global workforce are directly linked to our success. We are an equal opportunity employer and place a high value on diversity and inclusion at our company. We do not discriminate on the basis of any protected attribute, including race, religion, color, national origin, gender, sexual orientation, gender identity, gender expression, age, marital or veteran status, pregnancy or disability, or any other basis protected under applicable law. In accordance with applicable law, we make reasonable accommodations for applicants' and employees' religious practices and beliefs, as well as any mental health or physical disability needs.\n\nThe health and safety of our colleagues, candidates, clients and communities has been a top priority in light of the COVID-19 pandemic. JPMorgan Chase was awarded the \"WELL Health-Safety Rating\" for all of our 6,200 locations globally based on our operational policies, maintenance protocols, stakeholder engagement and emergency plans to address a post-COVID-19 environment.\nAs a part of our commitment to health and safety, we have implemented various COVID-related health and safety requirements for our workforce. These requirements may include sharing information in the firm's vaccine record tool, vaccination or regular testing, mask wearing, social distancing and daily health checks. Requirements may change in the future with the evolving public health landscape. JPMorgan Chase will consider accommodation requests.\n\nEqual Opportunity Employer/Disability/Veterans",
+    "company": "JPMorgan Chase Bank, N.A. – Columbus, OH",
     "contact": "",
     "posted": "",
     "due": "",
-    "lastScraped": "2021-11-15T21:54:57.380Z"
+    "lastScraped": "2021-11-29T17:48:45.312Z"
   },
   {
-    "url": "https://stackoverflow.com/jobs/555175/software-engineer-intern-summer-2022-research-grammatech-inc?a=30bGvcYPW8z6&so=i&pg=1&offset=1&total=9&so_medium=Internal&so_source=JobSearch&q=internship&l=United+States&u=Km&d=100",
-    "position": "Software Engineer Intern - Summer 2022 (Research)",
-    "location": {
-      "city": "– Ithaca",
-      "state": "NY",
-      "country": "United States"
-    },
-    "description": "Job description\n\nOverview:\n\nGrammaTech’s internship program for SUMMER 2022 offers students the opportunity to gain real experience in a friendly, open, and supportive environment. We choose projects based on real needs, and interns work closely with engineers to make sure that projects are completed successfully.\n\nThis position is on the Research side of our business, please look at the information on the website before applying to learn more about some of our current and completed research projects, https://www.grammatech.com/sponsored-research.\n\nGrammaTech will conduct a series of programming tests and screening interviews as part of our process in Python and C++..\n\nLOCATION: Preference is to have Interns at our Research & Development Center in Ithaca, NY but remote roles may be allowed with alignment of skills. (ALL CANDIDATES MUST BE LOCATED IN THE USA TO APPLY.) Remote candidates must be in the USA.\n\nResponsibilities:\n\nResearch projects at GrammaTech can take on a wide variety of topics and challenges. Projects focus on software assurance, software protection, reverse engineering, and software synthesis. We do both static and dynamic analysis on both source and object code, in order to tackle serious problems with practical solutions.\n\nPotential projects include:\n\nReverse-engineering software binaries to extract information about structure and functionality\nDeveloping new static analyses for binaries\nImproving existing tooling for runtime instrumentation and introspection of programs\nEnhancing user interfaces and workflows for reverse-engineering\nEnhancing the robustness and scalability of existing static and dynamic analysis research prototypes in preparation for commercialization\n\nQualifications:\n\nRequired\n\nCurrently enrolled in a BS, or MS in Computer\nExcellent programming skills in Python and C++ using Linux tools.\nExperience working with software binaries.\n\nPreferred\n\nExperience with Ghidra, IDA Pro, Binary Ninja, or radare2\n\nAbout the Company\n\nInnovation is at the heart of GrammaTech, and we are constantly pushing the boundaries of software research and development–from software assurance and software integrity to cyber‐security, threat mitigation and autonomic computing. We develop new technologies and see the results of our research incorporated into tools used by engineers and security professionals worldwide.\n\nGrammaTech was founded in 1988, with the firmly‐grounded purpose of helping today’s organizations develop tomorrow’s software. With a focus on the evolving cyber‐security landscape, software hardening and intelligent systems, we tackle the most challenging software issues through a constant stream of highly innovative research and commercial development programs. Executive offices are in Bethesda, MD, and a Research and Development Center in Ithaca, NY, as well as opportunities for remote employment.\n\nWe offer a competitive salary and benefits package including health care plan options, a generous paid time off program, flexible hours, 401(k) plan with company contribution, and opportunities for professional and personal development.\n\nGrammaTech, Inc. is an Equal Opportunity/Disability/Veterans/Affirmative Action employer.\n\nMembers of protected groups are encouraged to apply.",
-    "company": "GrammaTech, Inc. – Ithaca, NY",
-    "contact": "",
-    "posted": "",
-    "due": "",
-    "lastScraped": "2021-11-15T21:54:57.822Z"
-  },
-  {
-    "url": "https://stackoverflow.com/jobs/556332/common-lisp-software-intern-research-summer-grammatech-inc?a=30zK3HbDkCMo&so=i&pg=1&offset=2&total=9&so_medium=Internal&so_source=JobSearch&q=internship&l=United+States&u=Km&d=100",
+    "url": "https://stackoverflow.com/jobs/556332/common-lisp-software-intern-research-summer-grammatech-inc?a=30zK3HbDkCMo&so=i&pg=1&offset=1&total=11&so_medium=Internal&so_source=JobSearch&q=internship&l=United+States&u=Km&d=100",
     "position": "Common Lisp Software Intern (Research) - Summer 2022",
     "location": {
       "city": "– Ithaca",
@@ -42,10 +27,40 @@
     "contact": "",
     "posted": "",
     "due": "",
-    "lastScraped": "2021-11-15T21:54:58.535Z"
+    "lastScraped": "2021-11-29T17:48:46.172Z"
   },
   {
-    "url": "https://stackoverflow.com/jobs/556561/software-developer-internship-spring-2022-oreilly-auto-parts?a=30EvhamTUIdW&so=i&pg=1&offset=3&total=9&so_medium=Internal&so_source=JobSearch&q=internship&l=United+States&u=Km&d=100",
+    "url": "https://stackoverflow.com/jobs/559406/software-engineer-intern-codesonar-summer-2021-grammatech-inc?a=31BEVOsk9k52&so=i&pg=1&offset=2&total=11&so_medium=Internal&so_source=JobSearch&q=internship&l=United+States&u=Km&d=100",
+    "position": "Software Engineer Intern (CodeSonar) - Summer 2021",
+    "location": {
+      "city": "– Ithaca",
+      "state": "NY",
+      "country": "United States"
+    },
+    "description": "Job description\n\nOverview:\n\nGrammaTech’s internship program offers students the opportunity to gain real experience in a friendly, open, and supportive environment. We choose projects based on real needs, and interns work closely with engineers to make sure that projects are completed successfully. This position is on the Product side of our business, iworking with the CodeSonar Team. If you are new to GrammaTech, please visit the Product tab on the website to learn more about what we do and the CodeSonar product, https://www.grammatech.com.\n\nTesting: You will receive a Prescreening Test in the coming weeks so the team can qualify your skills.\n\nCOVID-19: GrammaTech employees must be fully vaccinated against COVID-19.\n\nLocation: Preference is to have interns located in our Ithaca, NY office for the summer. (COVID Restrictions will be considered as we get closer to the summer.)\n\nResponsibilities:\n\nSoftware development projects will be focused on CodeSonar, our advanced static analysis software. You may work to extend its functionality by writing additional checkers, working on new features, or by improving the user interface. Or you may work on test automation.\n\nQualifications:\n\nRequired\n\nCurrently enrolled in a BS, MS, or PhD in Computer Science\nExcellent programming skills (C++, Python, Javascript, Java) in Linux or Windows environments\n\nPreferred\n\nWe are especially interested in people with demonstrable knowledge in the following fields:\n\nCompilers\nMachine Code (x86, PowerPC, or ARM)\nSoftware Security\n\nAbout the Company\n\nInnovation is at the heart of GrammaTech, and we are constantly pushing the boundaries of software research and development–from software assurance and software integrity to cyber‐security, threat mitigation and autonomic computing. We develop new technologies and see the results of our research incorporated into tools used by engineers and security professionals worldwide.\n\nGrammaTech was founded in 1988, with the firmly‐grounded purpose of helping today’s organizations develop tomorrow’s software. With a focus on the evolving cyber‐security landscape, software hardening and intelligent systems, we tackle the most challenging software issues through a constant stream of highly innovative research and commercial development programs. Executive offices in Bethesda, MD, and a Research and Development Center in Ithaca, NY, as well as opportunities for remote employment.\n\nWe offer a competitive salary and benefits package including health care plan options, a generous paid time off program, flexible hours, 401(k) plan with company contribution, and opportunities for professional and personal development.\n\nGrammaTech, Inc. is an Equal Opportunity/Disability/Veterans/Affirmative Action employer.\n\nMembers of protected groups are encouraged to apply.",
+    "company": "GrammaTech, Inc. – Ithaca, NY",
+    "contact": "",
+    "posted": "",
+    "due": "",
+    "lastScraped": "2021-11-29T17:48:47.130Z"
+  },
+  {
+    "url": "https://stackoverflow.com/jobs/559407/software-engineer-intern-codesentry-product-grammatech-inc?a=31BGdJYRwuFa&so=i&pg=1&offset=3&total=11&so_medium=Internal&so_source=JobSearch&q=internship&l=United+States&u=Km&d=100",
+    "position": "Software Engineer Intern (CodeSentry Product Team) - Summer 2022",
+    "location": {
+      "city": "– Ithaca",
+      "state": "NY",
+      "country": "United States"
+    },
+    "description": "Job description\n\nOverview:\n\nGrammaTech’s internship program offers students the opportunity to gain real experience in a friendly, open, and supportive environment. We choose projects based on real needs, and interns work closely with engineers to make sure that projects are completed successfully. This position is on the Product side of our business, working with the CodeSentry Team. If you are new to GrammaTech, please visit the Product tab on the website to learn more about what we do and CodeSentry, https://www.grammatech.com/\n\nTesting: As part of the screening process, we ask candidates to take a brief programming test, either in Python or in Javascript, it will be sent within the next few weeks.\n\nGrammaTech employees must be fully vaccinated against COVID-19.\n\nLocation: Preference is to have interns located in our Ithaca, NY office for the summer. (COVID Restrictions will be considered as we get closer to the summer.)\n\nResponsibilities:\n\nThis position is for the CodeSentry Product team. This is a new SaaS tool for finding software security vulnerabilities by analyzing binary code using machine learning techniques. We have projects in mind for the web application and the analysis side, as well as for automated testing.\n\nQualifications:\n\nRequired\n\nCurrently enrolled in a BS, MS, or PhD in Computer Science\nExcellent programming skills (C++, Python, Javascript, Java) in Linux or Windows environments\nSome experience with Docker\n\nPreferred\n\nAngular\nKubernetes\nMachine learning\nMachine Code (x86, PowerPC, or ARM)\nSoftware Security\n\nAbout the Company\n\nInnovation is at the heart of GrammaTech, and we are constantly pushing the boundaries of software research and development–from software assurance and software integrity to cyber‐security, threat mitigation and autonomic computing. We develop new technologies and see the results of our research incorporated into tools used by engineers and security professionals worldwide.\n\nGrammaTech was founded in 1988, with the firmly‐grounded purpose of helping today’s organizations develop tomorrow’s software. With a focus on the evolving cyber‐security landscape, software hardening and intelligent systems, we tackle the most challenging software issues through a constant stream of highly innovative research and commercial development programs. Executive offices in Bethesda, MD, and a Research and Development Center in Ithaca, NY, as well as opportunities for remote employment.\n\nWe offer a competitive salary and benefits package including health care plan options, a generous paid time off program, flexible hours, 401(k) plan with company contribution, and opportunities for professional and personal development.\n\nGrammaTech, Inc. is an Equal Opportunity/Disability/Veterans/Affirmative Action employer.\n\nMembers of protected groups are encouraged to apply.",
+    "company": "GrammaTech, Inc. – Ithaca, NY",
+    "contact": "",
+    "posted": "",
+    "due": "",
+    "lastScraped": "2021-11-29T17:48:47.562Z"
+  },
+  {
+    "url": "https://stackoverflow.com/jobs/556561/software-developer-internship-spring-2022-oreilly-auto-parts?a=30EvhamTUIdW&so=i&pg=1&offset=4&total=11&so_medium=Internal&so_source=JobSearch&q=internship&l=United+States&u=Km&d=100",
     "position": "Software Developer Internship - Spring 2022",
     "location": {
       "city": "– Springfield",
@@ -57,40 +72,10 @@
     "contact": "",
     "posted": "",
     "due": "",
-    "lastScraped": "2021-11-15T21:54:59.428Z"
+    "lastScraped": "2021-11-29T17:48:47.957Z"
   },
   {
-    "url": "https://stackoverflow.com/jobs/531835/process-engineering-graduate-intern-intel-corporation?a=2SmnxTTfifJu&so=i&pg=1&offset=4&total=9&so_medium=Internal&so_source=JobSearch&q=internship&l=United+States&u=Km&d=100",
-    "position": "Process Engineering Graduate Intern",
-    "location": {
-      "city": "– Albuquerque",
-      "state": "NM",
-      "country": "United States"
-    },
-    "description": "Job description\nJob Description\n\nCome intern with Intel's F11X. Responsibilities may be quite diverse of a technical nature. University experience and education requirements will vary significantly depending on the unique needs of the job. You must be actively enrolled in school and not graduated to work as a student intern. We are seeking students to work long term as a student intern part-time while attending school and full-time while on breaks from school (i.e. summer break).\n\nThe ideal candidate should exhibit the following behavioral traits:\n\nExcellent teamwork and leadership skills.\nDemonstrated problem solving and prioritization skills.\n\nYou must possess the below minimum qualifications to be initially considered for this position. Preferred qualifications are in addition to the minimum requirements and are considered a plus factor in identifying top candidates. The experience listed below would be obtained through a combination of your school work/classes/research and/or relevant previous job and/or internship experiences.\n\nQualifications\n\nMinimum Qualifications:\n\nMust be pursuing a MS or PhD degree in Electrical Engineering, Photonics, Mechanical Engineering, Chemical Engineering, Optoelectronics, Optics, Physics, Material Science, or similar technical engineering discipline.\n6+ months of experience with programs such as Python, MS office, Power Bi, Statistical Analysis.\n6+ months of experience in semiconductor engineering manufacturing and development.\n6+ months of experience with design of experiment (DOE)\n\nPreferred Qualifications:\n\nKnowledge of substrate manufacturing.\nProgramming knowledge especially Python.\nExperience in photonics, optoelectronics, optical transceiver components, semiconductor physics and/or device physics is a plus.\nExperience in failure analysis techniques.",
-    "company": "Intel Corporation – Albuquerque, NM",
-    "contact": "",
-    "posted": "",
-    "due": "",
-    "lastScraped": "2021-11-15T21:54:59.996Z"
-  },
-  {
-    "url": "https://stackoverflow.com/jobs/531834/process-engineering-graduate-intern-intel-corporation?a=2SmmfYmHV59m&so=i&pg=1&offset=5&total=9&so_medium=Internal&so_source=JobSearch&q=internship&l=United+States&u=Km&d=100",
-    "position": "Process Engineering Graduate Intern",
-    "location": {
-      "city": "– Albuquerque",
-      "state": "NM",
-      "country": "United States"
-    },
-    "description": "Job description\nJob Description\n\nCome intern with Intel's F11X. Responsibilities may be quite diverse of a technical nature. University experience and education requirements will vary significantly depending on the unique needs of the job. You must be actively enrolled in school and not graduated to work as a student intern. We are seeking students to work long term as a student intern part-time while attending school and full-time while on breaks from school (i.e. summer break).\n\nThe ideal candidate should exhibit the following behavioral traits:\n\nExcellent teamwork and leadership skills.\nDemonstrated problem solving and prioritization skills.\n\nYou must possess the below minimum qualifications to be initially considered for this position. Preferred qualifications are in addition to the minimum requirements and are considered a plus factor in identifying top candidates. The experience listed below would be obtained through a combination of your school work/classes/research and/or relevant previous job and/or internship experiences.\n\nQualifications\n\nMinimum Qualifications:\n\nMust be pursuing a MS or PhD degree in Electrical Engineering, Photonics, Mechanical Engineering, Chemical Engineering, Optoelectronics, Optics, Physics, Material Science, or similar technical engineering discipline.\n6+ months of experience with programs such as Python, MS office, Power Bi, Statistical Analysis.\n6+ months of experience in semiconductor engineering manufacturing and development.\n6+ months of experience with design of experiment (DOE)\n\nPreferred Qualifications:\n\nKnowledge of substrate manufacturing.\nProgramming knowledge especially Python.\nExperience in photonics, optoelectronics, optical transceiver components, semiconductor physics and/or device physics is a plus.\nExperience in failure analysis techniques.",
-    "company": "Intel Corporation – Albuquerque, NM",
-    "contact": "",
-    "posted": "",
-    "due": "",
-    "lastScraped": "2021-11-15T21:55:00.398Z"
-  },
-  {
-    "url": "https://stackoverflow.com/jobs/526759/qa-intern-for-enterprise-consumer-facing-sites-hearst-magazines?a=2QEPMhWUhPOw&so=i&pg=1&offset=6&total=9&so_medium=Internal&so_source=JobSearch&q=internship&l=United+States&u=Km&d=100",
+    "url": "https://stackoverflow.com/jobs/526759/qa-intern-for-enterprise-consumer-facing-sites-hearst-magazines?a=2QEPMhWUhPOw&so=i&pg=1&offset=5&total=11&so_medium=Internal&so_source=JobSearch&q=internship&l=United+States&u=Km&d=100",
     "position": "QA Intern for enterprise consumer facing sites",
     "location": {
       "city": "– Chicago",
@@ -102,25 +87,70 @@
     "contact": "",
     "posted": "",
     "due": "",
-    "lastScraped": "2021-11-15T21:55:01.750Z"
+    "lastScraped": "2021-11-29T17:48:49.738Z"
   },
   {
-    "url": "https://stackoverflow.com/jobs/558489/internal-cloud-developer-jpmorgan-chase-bank-na?a=31iAVZE27rNe&so=i&pg=1&offset=7&total=9&so_medium=Internal&so_source=JobSearch&q=internship&l=United+States&u=Km&d=100",
-    "position": "Internal Cloud Developer",
+    "url": "https://stackoverflow.com/jobs/531835/process-engineering-graduate-intern-intel-corporation?a=2SmnxTTfifJu&so=i&pg=1&offset=6&total=11&so_medium=Internal&so_source=JobSearch&q=internship&l=United+States&u=Km&d=100",
+    "position": "Process Engineering Graduate Intern",
     "location": {
-      "city": "– Columbus",
-      "state": "OH",
+      "city": "– Albuquerque",
+      "state": "NM",
       "country": "United States"
     },
-    "description": "Job description\nWe're looking for members to fill out our Agile team. Your focus will be on the newer technologies (cloud, Domain Driven Design, API's, microservices) with the goal of decomposing a larger service into smaller microservices. The existing team is a truly diverse, fun mix of experience and skills who currently work extremely well together. This team solves the tough problems for breakfast! We just need a strong developer to help us put it all together!\n\nPlease note that we are describing our ideal candidate here. We don't expect you to know everything. Showing that you can learn something new is almost as valuable as already knowing it.\n\nAs a member of our Agile team we look first and foremost for people who are passionate around solving business and technical problems through innovation and engineering practices. Our team embraces a culture of experimentation and constantly strives for improvement and learning. You'll work in a collaborative, trusting, thought-provoking environment-one that encourages diversity of thought and creative solutions that are in the best interests of our customers globally.\n\nOur ideal candidate possesses many of the following attributes:\n* BS/BA degree or equivalent experience\n* Minimum of 2 years of application development experience\n* Expertise in Java, Spring Boot, OO-design/implementation, Domain Driven Design, Data management, and relational databases\n+ Website development is a plus but not critical\n+ J2EE experience is welcome as we remove those components from our system\n+ Kafka and Cassandra experience\n* Knowledge of industry-wide technology trends and best practices (let's use all the fun tools out there!)\n* Mindset of testing while coding (automated)\n* Passionate about building an innovative and inclusive culture\n* Strong communication skills - able to work with technical and non-technical stakeholders\n\nCome be part of a genuinely fun team who can truly be independent. Come set the example for other teams in the area to follow. We have some interesting problems to solve over the next couple years. Isn't that why you really got into programming to begin with?\n\nJPMorgan Chase & Co., one of the oldest financial institutions, offers innovative financial solutions to millions of consumers, small businesses and many of the world's most prominent corporate, institutional and government clients under the J.P. Morgan and Chase brands. Our history spans over 200 years and today we are a leader in investment banking, consumer and small business banking, commercial banking, financial transaction processing and asset management.\n\nWe recognize that our people are our strength and the diverse talents they bring to our global workforce are directly linked to our success. We are an equal opportunity employer and place a high value on diversity and inclusion at our company. We do not discriminate on the basis of any protected attribute, including race, religion, color, national origin, gender, sexual orientation, gender identity, gender expression, age, marital or veteran status, pregnancy or disability, or any other basis protected under applicable law. In accordance with applicable law, we make reasonable accommodations for applicants' and employees' religious practices and beliefs, as well as any mental health or physical disability needs.\n\nEqual Opportunity Employer/Disability/Veterans",
-    "company": "JPMorgan Chase Bank, N.A. – Columbus, OH",
+    "description": "Job description\nJob Description\n\nCome intern with Intel's F11X. Responsibilities may be quite diverse of a technical nature. University experience and education requirements will vary significantly depending on the unique needs of the job. You must be actively enrolled in school and not graduated to work as a student intern. We are seeking students to work long term as a student intern part-time while attending school and full-time while on breaks from school (i.e. summer break).\n\nThe ideal candidate should exhibit the following behavioral traits:\n\nExcellent teamwork and leadership skills.\nDemonstrated problem solving and prioritization skills.\n\nYou must possess the below minimum qualifications to be initially considered for this position. Preferred qualifications are in addition to the minimum requirements and are considered a plus factor in identifying top candidates. The experience listed below would be obtained through a combination of your school work/classes/research and/or relevant previous job and/or internship experiences.\n\nQualifications\n\nMinimum Qualifications:\n\nMust be pursuing a MS or PhD degree in Electrical Engineering, Photonics, Mechanical Engineering, Chemical Engineering, Optoelectronics, Optics, Physics, Material Science, or similar technical engineering discipline.\n6+ months of experience with programs such as Python, MS office, Power Bi, Statistical Analysis.\n6+ months of experience in semiconductor engineering manufacturing and development.\n6+ months of experience with design of experiment (DOE)\n\nPreferred Qualifications:\n\nKnowledge of substrate manufacturing.\nProgramming knowledge especially Python.\nExperience in photonics, optoelectronics, optical transceiver components, semiconductor physics and/or device physics is a plus.\nExperience in failure analysis techniques.",
+    "company": "Intel Corporation – Albuquerque, NM",
     "contact": "",
     "posted": "",
     "due": "",
-    "lastScraped": "2021-11-15T21:55:03.548Z"
+    "lastScraped": "2021-11-29T17:48:50.100Z"
   },
   {
-    "url": "https://stackoverflow.com/jobs/525968/senior-full-stack-development-engineer-audible?a=2Qoo3nP7FOSs&so=i&pg=1&offset=8&total=9&so_medium=Internal&so_source=JobSearch&q=internship&l=United+States&u=Km&d=100",
+    "url": "https://stackoverflow.com/jobs/531834/process-engineering-graduate-intern-intel-corporation?a=2SmmfYmHV59m&so=i&pg=1&offset=7&total=11&so_medium=Internal&so_source=JobSearch&q=internship&l=United+States&u=Km&d=100",
+    "position": "Process Engineering Graduate Intern",
+    "location": {
+      "city": "– Albuquerque",
+      "state": "NM",
+      "country": "United States"
+    },
+    "description": "Job description\nJob Description\n\nCome intern with Intel's F11X. Responsibilities may be quite diverse of a technical nature. University experience and education requirements will vary significantly depending on the unique needs of the job. You must be actively enrolled in school and not graduated to work as a student intern. We are seeking students to work long term as a student intern part-time while attending school and full-time while on breaks from school (i.e. summer break).\n\nThe ideal candidate should exhibit the following behavioral traits:\n\nExcellent teamwork and leadership skills.\nDemonstrated problem solving and prioritization skills.\n\nYou must possess the below minimum qualifications to be initially considered for this position. Preferred qualifications are in addition to the minimum requirements and are considered a plus factor in identifying top candidates. The experience listed below would be obtained through a combination of your school work/classes/research and/or relevant previous job and/or internship experiences.\n\nQualifications\n\nMinimum Qualifications:\n\nMust be pursuing a MS or PhD degree in Electrical Engineering, Photonics, Mechanical Engineering, Chemical Engineering, Optoelectronics, Optics, Physics, Material Science, or similar technical engineering discipline.\n6+ months of experience with programs such as Python, MS office, Power Bi, Statistical Analysis.\n6+ months of experience in semiconductor engineering manufacturing and development.\n6+ months of experience with design of experiment (DOE)\n\nPreferred Qualifications:\n\nKnowledge of substrate manufacturing.\nProgramming knowledge especially Python.\nExperience in photonics, optoelectronics, optical transceiver components, semiconductor physics and/or device physics is a plus.\nExperience in failure analysis techniques.",
+    "company": "Intel Corporation – Albuquerque, NM",
+    "contact": "",
+    "posted": "",
+    "due": "",
+    "lastScraped": "2021-11-29T17:48:50.498Z"
+  },
+  {
+    "url": "https://stackoverflow.com/jobs/560135/full-stack-web-developer-remote-international-soci?a=31QOJc2JAKT6&so=i&pg=1&offset=8&total=11&so_medium=Internal&so_source=JobSearch&q=internship&l=United+States&u=Km&d=100",
+    "position": "Full Stack Web Developer (Remote, International)",
+    "location": {
+      "city": "– San Diego",
+      "state": "CA",
+      "country": "United States"
+    },
+    "description": "Job description\n\nAbout Us\n\nSOCi is one of the fastest growing technology companies in the country, ranking in the top tier of Inc 5000's Fastest Growing Companies in America list for the last 4 years in a row. The builder of an award-winning enterprise SaaS marketing platform, and one of Forbes' Best Startup Employers, SOCi boasts hundreds of the world's largest brands as its customers, supporting millions of their local locations. The SOCi platform specifically solves complicated marketing and workflow problems for national and global multi-location brands that want to scale and optimize their presence across search, social, reviews, listening, ads, bots, and more. As the largest localized marketing platform in the world, SOCi makes the impossible possible by enabling top brands and their locations to strengthen and scale their digital presence across limitless locations.\n\nOur accolades include:\n\nRecently closed a Series D investment round of $80 million, led by JMI Equity\n4x honoree on Inc. 5000 Fastest Growing Companies in America\n2x honoree on Financial Times' Fastest Growing Companies\n3x CEO Finalist for Ernst & Young's Entrepreneur of the Year award\nWinner of the MarTech Breakthrough Award for Best Overall Social Media Management Platform\n#1 Rank by Entrepreneur magazine's Top Marketing Providers for Franchises, three years in a row\nFront Runner for Gartner award in Reputation Management & Brand Management\n2021 Honoree on Forbes America's Best Startup Employers\n\n*** This is a fully remote position; international applicants welcome!\n\nFull Stack Web Developer\n\nAs a member of an Empowered Product Team, you'll be accountable for deeply understanding the customer's problem, actively contributing to ideating on the solutions and measuring your impact through the results on our customers, not code written. You and your team will be responsible for creating the functional and technical specs and determining estimates to present to management.\nA Product Team consists of 2 mobs (each mob consists of 3 engineers), an Engineering Manager (EM), a UX designer, and a Product Manager (PM). You'll be \"mob programming\" with the other engineers, in real-time over Zoom throughout the day, while ad-hoc collaborating with your EM, UX designer, and PM, as needed.\nThis position is fully remote, our teams are distributed across four continents. You'll be expected to have 6 hours of overlap with your team within the ~6am...~4pm PST (ÃÂ±2) window (varies by team).\nYou'll be deploying incremental slices of progress to production daily or even multiple times throughout the day; the only measure of progress is delivery of customer value to production.\n\nRequirements\n\n7+ years experience in building complex software systems\nDeep understanding of object-oriented programming, ability to articulate the pros and cons of inheritance vs composition, discuss common design patterns, their applications and common mistakes when using them.\nDeep understanding of relational database systems (MySQL, Postgres), including normalization (pros, cons), indexing strategies for large databases (100s millions of rows), and query optimization strategies (and common pitfalls).\nDemonstrated track record of being able to balance making the right architectural decisions while moving fast do deliver customer value; can show examples of prior architectures built, articulate the tradeoffs and reasons for them.\nSolid programming skills in a couple of languages (.Net C#, JavaScript, PHP, Go, NodeJS).\nUnderstanding of modern cloud technologies (AWS, GCP) and ability to use them to solve common technology problems in a simple and quick way.\nBasic understanding of micro-services and service-oriented architectures, and the benefits and tradeoffs of monolith vs SOA, single-tenant vs multi-tenant systems.\nHigh-level awareness of available ML technologies, ability to recognize their application in solving common business problems.\nHigh-level awareness of basic visual and user experience principles (recognize obviously ugly and/or unusable experiences), and corresponding CSS skills to remedy them, in partnership with a UX designer.\n\nWhy you'll love it here\n\nFully remote, diverse international team\nAn extremely talented group of engineers and tech leads to learn from\nWork directly with product and technology executives\nActive career coaching and professional development to keep you growing\nLearning budget (books, online courses)\nDirectly see the impact of your work by working closely with customers and help build the fastest-growing mar-tech platform for top brands\n\nWhat's SOCi's culture like?\n\nSOCi stands for Selfless, Overachievers, Customer Centric, and Innovative. We strive to be in service to each other, consider learning as Job #1. We are life-long learners and care to grow the company just as much as we care to grow each other. We obsess over the customer problems such that we can deliver the most valuable solutions to them. We hold each other accountable, are candid in our feedback, and expect you to do the same. It's okay to make mistakes, it's not okay to not learn from them. We partner strongly across departments and function, as we know it'll take a village to succeed. One team, one dream.\n\nSOCi is an Equal Opportunity/Affirmative Action employer. All qualified applicants will receive consideration for employment without regard to race, color, religion, sex including sexual orientation and gender identity, national origin, disability, protected Veteran Status, or any other characteristic protected by applicable federal, state, or local law.",
+    "company": "SOCi – San Diego, CA",
+    "contact": "",
+    "posted": "",
+    "due": "",
+    "lastScraped": "2021-11-29T17:48:51.429Z"
+  },
+  {
+    "url": "https://stackoverflow.com/jobs/521892/java-full-stack-web-application-developer-entry-lbi-software?a=2P1DBA8o3JL2&so=i&pg=1&offset=9&total=11&so_medium=Internal&so_source=JobSearch&q=internship&l=United+States&u=Km&d=100",
+    "position": "JAVA Full Stack Web Application Developer – Entry Level & Internships",
+    "location": {
+      "city": "– Melville",
+      "state": "NY",
+      "country": "United States"
+    },
+    "description": "Job description\n\nLBi Software is looking for an entry level Java Full Stack Web Application Developer. Candidates will be working on a team to design and develop custom enterprise web applications. LBi Software develops custom applications both sports leagues/teams and HR Enterprise Software markets. Candidates must be self-starters and able to follow written and verbal direction working with a technical team leader. They must be able to produce well-documented and efficient code and possess the communication skills necessary to explain complex technical information. The position requires strong interpersonal and communication skills. The position requires strong knowledge of software architecture, development, database design, unit testing, continuous integration, continuous delivery, and QA processes.\n\nLBi is also looking for internships and co-ops with the same skillset.\n\nQualified candidates will join a team utilizing agile methodologies towards software development and delivery. Team sizes vary roughly from 2-10 developers, who will work in 1-3 week sprints.\n\nRequired technical skills:\nJava or .NET(C#), REST Services, HTML, Angular, CSS/SCSS, Bootstrap, Junit, SQL, Database Design\n\nAdditional skills a plus:\nJSpring Framework, J2EE technologies, MyBatis, .NET Core, EF Core, UI/UX design, Responsive Design, SASS/LESS, React, Node, Tomcat, Jenkins, Docker, Kubernetes, Agile Process, Smartphone/Tablet App Development (iOS, Android), Business Objects, ETL, Crystal Report, database reporting tools, Apache Spark, DB2, Oracle, MySQL, MariaDB, PostgreSQL, SQL Server\n\nFor more information see https://www.lbisoftware.com/careers and http://lbidynasty.com/\n\nSend Resume and Cover letter to Resume@LBiSoftware.com",
+    "company": "LBi Software – Melville, NY",
+    "contact": "",
+    "posted": "",
+    "due": "",
+    "lastScraped": "2021-11-29T17:48:51.755Z"
+  },
+  {
+    "url": "https://stackoverflow.com/jobs/525968/senior-full-stack-development-engineer-audible?a=2Qoo3nP7FOSs&so=i&pg=1&offset=10&total=11&so_medium=Internal&so_source=JobSearch&q=internship&l=United+States&u=Km&d=100",
     "position": "Senior Full Stack Development Engineer - International Expansion",
     "location": {
       "city": "– Newark",
@@ -132,6 +162,6 @@
     "contact": "",
     "posted": "",
     "due": "",
-    "lastScraped": "2021-11-15T21:55:04.477Z"
+    "lastScraped": "2021-11-29T17:48:52.797Z"
   }
 ]
