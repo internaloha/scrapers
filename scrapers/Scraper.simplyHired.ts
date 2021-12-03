@@ -3,30 +3,6 @@ import { Listing } from './Listing';
 
 const prefix = require('loglevel-plugin-prefix');
 
-/**
- * Converts posted strings to ISO format. This is ONLY if it follows the format of:
- * Posted: 4 days ago... 3 weeks ago... a month ago
- * @param posted The string
- * @returns {Date}
- */
-function convertPostedToDate(posted) {
-  const date = new Date();
-  let daysBack: number;
-  if (posted.includes('hours') || (posted.includes('hour')) || (posted.includes('minute'))
-    || (posted.includes('minutes')) || (posted.includes('moment')) || (posted.includes('second'))
-    || (posted.includes('seconds')) || (posted.includes('today'))) {
-    daysBack = 0;
-  } else if ((posted.includes('week')) || (posted.includes('weeks'))) {
-    daysBack = posted.match(/\d+/g) * 7;
-  } else if ((posted.includes('month')) || (posted.includes('months'))) {
-    daysBack = posted.match(/\d+/g) * 30;
-  } else {
-    daysBack = posted.match(/\d+/g);
-  }
-  date.setDate(date.getDate() - daysBack);
-  return date;
-}
-
 export class SimplyHiredScraper extends Scraper {
   private searchTerms: string;
 
@@ -116,7 +92,7 @@ export class SimplyHiredScraper extends Scraper {
       let posted = '';
       if (await super.selectorExists('span[class="viewjob-labelWithIcon viewjob-age"]')) {
         const postedVal = await super.getValue('span[class="viewjob-labelWithIcon viewjob-age"]', 'innerText');
-        posted = convertPostedToDate(postedVal.toLowerCase()).toLocaleDateString();
+        posted = this.convertPostedToDate(postedVal.toLowerCase()).toLocaleDateString();
       } else {
         posted = 'N/A';
         this.log.trace('No date found. Setting posted as: N/A');

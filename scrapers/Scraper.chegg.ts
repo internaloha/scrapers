@@ -54,6 +54,7 @@ export class CheggScraper extends Scraper {
       ]);
 
       let url = this.page.url();
+      // eslint-disable-next-line @typescript-eslint/no-unused-expressions
       ((i % 20) === 0) ? this.log.info(`Processing URL ${i}`) : this.log.debug(`Processing URL ${i}:`, url);
 
       const position = (await super.getValue('h1[class="DesktopHeader_title__2ihuJ"]', 'innerText'));

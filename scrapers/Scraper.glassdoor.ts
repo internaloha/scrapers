@@ -36,6 +36,7 @@ export class GlassDoorScraper extends Scraper {
     // for each j starting from 2 iterate the number of available pages of internship
     for (let j = 2; j < pagesToProcess; j++) {
       const message = `Retrieving page ${j} of ${pagesToProcess}. ${urls.length} URLs found so far.`;
+      // eslint-disable-next-line @typescript-eslint/no-unused-expressions
       ((j % 5) === 0) ? this.log.info(message) : this.log.debug(message);
       await this.page.goto(`https://www.glassdoor.com/Job/us-computer-science-intern-jobs-SRCH_IL.0,2_IN1_KO3,26_IP${j}.htm?fromAge=14&includeNoSalaryJobs=true&jobType=internship&sortBy=date_desc&pgc=AB4AAoEAPAAAAAAAAAAAAAAAAbsADWUAcAEBARYLPplTgwz6w5gkUFSL%2FblhjH2dnpaNeUYZXuH6Cu3v8isCPy16PzrVdNdet7UF1fZYJ6qrDq1oVrnKpdztukcmJhLXfw0O24fRE0%2B5tWtrBFKzBwo1%2Bd0fZppHS9r3QIn3v1WdnCbnV9BKa%2B4AAA%3D%3D`, { waitUntil: 'networkidle0' });
       urls = urls.concat(await super.getValues('a[class="jobLink"]', 'href'));
@@ -47,7 +48,8 @@ export class GlassDoorScraper extends Scraper {
     this.log.info(`Found a total of ${urls.length} Internship URLs`);
     // for each url in the list
     for (let k = 0; k < urls.length; k++) {
-      ((k % 20) === 0) ? this.log.info(`Processing URL ${k}`) : this.log.debug(`Processing URL:`, urls[k]);
+      // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+      ((k % 20) === 0) ? this.log.info(`Processing URL ${k}`) : this.log.debug('Processing URL:', urls[k]);
       // go to the page and retrieve its relative information
       await super.goto(urls[k]);
       positions.push(await super.getValue('div[class="css-17x2pwl e11nt52q6"]', 'innerText'));

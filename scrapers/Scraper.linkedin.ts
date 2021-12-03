@@ -86,24 +86,6 @@ export class LinkedinScraper extends Scraper {
     }
   }
 
-  async convertPostedToDate(posted) {
-    const date = new Date();
-    let daysBack = 0;
-    if (posted.includes('hours') || (posted.includes('hour')) || (posted.includes('minute'))
-      || (posted.includes('minutes')) || (posted.includes('moment')) || (posted.includes('second'))
-      || (posted.includes('seconds')) || (posted.includes('today'))) {
-      daysBack = 0;
-    } else if ((posted.includes('week')) || (posted.includes('weeks'))) {
-      daysBack = posted.match(/\d+/g) * 7;
-    } else if ((posted.includes('month')) || (posted.includes('months'))) {
-      daysBack = posted.match(/\d+/g) * 30;
-    } else {
-      daysBack = posted.match(/\d+/g);
-    }
-    date.setDate(date.getDate() - daysBack);
-    return date;
-  }
-
   async generateListings() {
     await super.generateListings();
     await this.reload();

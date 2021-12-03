@@ -223,6 +223,30 @@ export class Scraper {
   }
 
   /**
+   * Converts posted strings to ISO format. This is ONLY if it follows the format of:
+   * Posted: 4 days ago... 3 weeks ago... a month ago
+   * @param posted The string
+   * @returns {Date}
+   */
+  convertPostedToDate(posted) {
+    const date = new Date();
+    let daysBack: number;
+    if (posted.includes('hours') || (posted.includes('hour')) || (posted.includes('minute'))
+      || (posted.includes('minutes')) || (posted.includes('moment')) || (posted.includes('second'))
+      || (posted.includes('seconds')) || (posted.includes('today'))) {
+      daysBack = 0;
+    } else if ((posted.includes('week')) || (posted.includes('weeks'))) {
+      daysBack = posted.match(/\d+/g) * 7;
+    } else if ((posted.includes('month')) || (posted.includes('months'))) {
+      daysBack = posted.match(/\d+/g) * 30;
+    } else {
+      daysBack = posted.match(/\d+/g);
+    }
+    date.setDate(date.getDate() - daysBack);
+    return date;
+  }
+
+  /**
    * After the this.listings field is populated, use this method to further process the data.
    * Subclass: invoke `await super.processListings` if you override.
    */
