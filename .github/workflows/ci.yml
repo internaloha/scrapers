@@ -1,0 +1,36 @@
+name: ci-scrapers
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Cache node modules
+        uses: actions/cache@v2
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-build-v7-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '14.x'
+
+      - run: npm ci
+
+      - name: lint
+        shell: bash -l {0}
+        run: npm run lint
+
+      - name: unimported
+        shell: bash -l {0}
+        run: npx unimported

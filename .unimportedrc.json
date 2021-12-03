@@ -3,9 +3,9 @@
     "scrape.ts",
     "statistics.ts"
   ],
-  "ignoreUnresolved": [
-  ],
+  "ignoreUnresolved": [],
   "ignoreUnimported": [
+    "scrapers/Scraper.template.ts"
   ],
   "ignoreUnused": [
     "ts-node",
