@@ -1,6 +1,6 @@
 [
   {
-    "url": "https://stackoverflow.com/jobs/558489/internal-cloud-developer-jpmorgan-chase-bank-na?a=31iAVZE27rPi&so=i&pg=1&offset=0&total=11&so_medium=Internal&so_source=JobSearch&q=internship&l=United+States&u=Km&d=100",
+    "url": "https://stackoverflow.com/jobs/558489/internal-cloud-developer-jpmorgan-chase-bank-na?a=31iAVZE27rPi&so=i&pg=1&offset=0&total=10&so_medium=Internal&so_source=JobSearch&q=internship&l=United+States&u=Km&d=100",
     "position": "Internal Cloud Developer",
     "location": {
       "city": "– Columbus",
@@ -12,25 +12,10 @@
     "contact": "",
     "posted": "",
     "due": "",
-    "lastScraped": "2021-11-29T17:48:45.312Z"
+    "lastScraped": "2021-12-06T18:33:19.418Z"
   },
   {
-    "url": "https://stackoverflow.com/jobs/556332/common-lisp-software-intern-research-summer-grammatech-inc?a=30zK3HbDkCMo&so=i&pg=1&offset=1&total=11&so_medium=Internal&so_source=JobSearch&q=internship&l=United+States&u=Km&d=100",
-    "position": "Common Lisp Software Intern (Research) - Summer 2022",
-    "location": {
-      "city": "– Ithaca",
-      "state": "NY",
-      "country": "United States"
-    },
-    "description": "Job description\n\nGrammaTech’s Common Lisp Software internship program offers students the opportunity to gain real experience in a friendly, open, and supportive environment. We choose projects based on real needs, and interns work closely with engineers to make sure that projects are completed successfully.\n\nCurrent COMMON LISP IS REQURED FOR THIS ROLE.\n\nGrammaTech will conduct a series of programming tests and screening interviews in Common Lisp right from the start as part of our process. You must know Common Lisp now, unfortunately we cannot train for an internship role . (Please do not apply if you do not have experience with Lisp.)\n\nLocation: Remote in USA Only or the possibility of being in our Ithaca, NY office for the summer. (COVID Restrictions will be considered as we get closer to the summer.)\n\nResponsibilities:\n\nResearch projects at GrammaTech can take on a wide variety of topics and challenges. Projects focus on software assurance, software protection, reverse engineering, and software transformation. We do both static and dynamic analysis on both source and object code, in order to tackle serious problems with practical solutions.\n\nPotential projects include:\n\nApply compiler optimizations to binaries. Develop some classic compiler optimizations on top of our Binary IR (https://grammatech.github.io/gtirb)\nDevelop source-code program transformations for refactoring, optimization, and diversification on top of our Software Evolution Library (https://grammatech.github.io/sel)\nDesign and run large-scale experiments evaluating automated software modification and automated software engineering tools\n\nQualifications:\n\nRequired\n\nCurrently enrolled in a BS, MS, or PhD program\nExcellent programming skills with Common LISP (required)\n\nPreferred\n\nEnrollment in a Computer Science PhD program\n\nGrammaTech, Inc. is an Equal Opportunity/Disability/Veterans/Affirmative Action employer.\nMembers of protected groups are encouraged to apply.",
-    "company": "GrammaTech, Inc. – Ithaca, NY",
-    "contact": "",
-    "posted": "",
-    "due": "",
-    "lastScraped": "2021-11-29T17:48:46.172Z"
-  },
-  {
-    "url": "https://stackoverflow.com/jobs/559406/software-engineer-intern-codesonar-summer-2021-grammatech-inc?a=31BEVOsk9k52&so=i&pg=1&offset=2&total=11&so_medium=Internal&so_source=JobSearch&q=internship&l=United+States&u=Km&d=100",
+    "url": "https://stackoverflow.com/jobs/559406/software-engineer-intern-codesonar-summer-2021-grammatech-inc?a=31BEVOsk9k52&so=i&pg=1&offset=1&total=10&so_medium=Internal&so_source=JobSearch&q=internship&l=United+States&u=Km&d=100",
     "position": "Software Engineer Intern (CodeSonar) - Summer 2021",
     "location": {
       "city": "– Ithaca",
@@ -42,10 +27,25 @@
     "contact": "",
     "posted": "",
     "due": "",
-    "lastScraped": "2021-11-29T17:48:47.130Z"
+    "lastScraped": "2021-12-06T18:33:19.988Z"
   },
   {
-    "url": "https://stackoverflow.com/jobs/559407/software-engineer-intern-codesentry-product-grammatech-inc?a=31BGdJYRwuFa&so=i&pg=1&offset=3&total=11&so_medium=Internal&so_source=JobSearch&q=internship&l=United+States&u=Km&d=100",
+    "url": "https://stackoverflow.com/jobs/556332/common-lisp-software-intern-research-summer-grammatech-inc?a=30zK3HbDkCMo&so=i&pg=1&offset=2&total=10&so_medium=Internal&so_source=JobSearch&q=internship&l=United+States&u=Km&d=100",
+    "position": "Common Lisp Software Intern (Research) - Summer 2022",
+    "location": {
+      "city": "– Ithaca",
+      "state": "NY",
+      "country": "United States"
+    },
+    "description": "Job description\n\nGrammaTech’s Common Lisp Software internship program offers students the opportunity to gain real experience in a friendly, open, and supportive environment. We choose projects based on real needs, and interns work closely with engineers to make sure that projects are completed successfully.\n\nCurrent COMMON LISP IS REQURED FOR THIS ROLE.\n\nGrammaTech will conduct a series of programming tests and screening interviews in Common Lisp right from the start as part of our process. You must know Common Lisp now, unfortunately we cannot train for an internship role . (Please do not apply if you do not have experience with Lisp.)\n\nLocation: Remote in USA Only or the possibility of being in our Ithaca, NY office for the summer. (COVID Restrictions will be considered as we get closer to the summer.)\n\nResponsibilities:\n\nResearch projects at GrammaTech can take on a wide variety of topics and challenges. Projects focus on software assurance, software protection, reverse engineering, and software transformation. We do both static and dynamic analysis on both source and object code, in order to tackle serious problems with practical solutions.\n\nPotential projects include:\n\nApply compiler optimizations to binaries. Develop some classic compiler optimizations on top of our Binary IR (https://grammatech.github.io/gtirb)\nDevelop source-code program transformations for refactoring, optimization, and diversification on top of our Software Evolution Library (https://grammatech.github.io/sel)\nDesign and run large-scale experiments evaluating automated software modification and automated software engineering tools\n\nQualifications:\n\nRequired\n\nCurrently enrolled in a BS, MS, or PhD program\nExcellent programming skills with Common LISP (required)\n\nPreferred\n\nEnrollment in a Computer Science PhD program\n\nGrammaTech, Inc. is an Equal Opportunity/Disability/Veterans/Affirmative Action employer.\nMembers of protected groups are encouraged to apply.",
+    "company": "GrammaTech, Inc. – Ithaca, NY",
+    "contact": "",
+    "posted": "",
+    "due": "",
+    "lastScraped": "2021-12-06T18:33:20.653Z"
+  },
+  {
+    "url": "https://stackoverflow.com/jobs/559407/software-engineer-intern-codesentry-product-grammatech-inc?a=31BGdJYRwuFa&so=i&pg=1&offset=3&total=10&so_medium=Internal&so_source=JobSearch&q=internship&l=United+States&u=Km&d=100",
     "position": "Software Engineer Intern (CodeSentry Product Team) - Summer 2022",
     "location": {
       "city": "– Ithaca",
@@ -57,10 +57,10 @@
     "contact": "",
     "posted": "",
     "due": "",
-    "lastScraped": "2021-11-29T17:48:47.562Z"
+    "lastScraped": "2021-12-06T18:33:21.112Z"
   },
   {
-    "url": "https://stackoverflow.com/jobs/556561/software-developer-internship-spring-2022-oreilly-auto-parts?a=30EvhamTUIdW&so=i&pg=1&offset=4&total=11&so_medium=Internal&so_source=JobSearch&q=internship&l=United+States&u=Km&d=100",
+    "url": "https://stackoverflow.com/jobs/556561/software-developer-internship-spring-2022-oreilly-auto-parts?a=30EvhamTUIdW&so=i&pg=1&offset=4&total=10&so_medium=Internal&so_source=JobSearch&q=internship&l=United+States&u=Km&d=100",
     "position": "Software Developer Internship - Spring 2022",
     "location": {
       "city": "– Springfield",
@@ -72,10 +72,10 @@
     "contact": "",
     "posted": "",
     "due": "",
-    "lastScraped": "2021-11-29T17:48:47.957Z"
+    "lastScraped": "2021-12-06T18:33:21.588Z"
   },
   {
-    "url": "https://stackoverflow.com/jobs/526759/qa-intern-for-enterprise-consumer-facing-sites-hearst-magazines?a=2QEPMhWUhPOw&so=i&pg=1&offset=5&total=11&so_medium=Internal&so_source=JobSearch&q=internship&l=United+States&u=Km&d=100",
+    "url": "https://stackoverflow.com/jobs/526759/qa-intern-for-enterprise-consumer-facing-sites-hearst-magazines?a=2QEPMhWUhPOw&so=i&pg=1&offset=5&total=10&so_medium=Internal&so_source=JobSearch&q=internship&l=United+States&u=Km&d=100",
     "position": "QA Intern for enterprise consumer facing sites",
     "location": {
       "city": "– Chicago",
@@ -87,10 +87,10 @@
     "contact": "",
     "posted": "",
     "due": "",
-    "lastScraped": "2021-11-29T17:48:49.738Z"
+    "lastScraped": "2021-12-06T18:33:23.288Z"
   },
   {
-    "url": "https://stackoverflow.com/jobs/531835/process-engineering-graduate-intern-intel-corporation?a=2SmnxTTfifJu&so=i&pg=1&offset=6&total=11&so_medium=Internal&so_source=JobSearch&q=internship&l=United+States&u=Km&d=100",
+    "url": "https://stackoverflow.com/jobs/531835/process-engineering-graduate-intern-intel-corporation?a=2SmnxTTfifJu&so=i&pg=1&offset=6&total=10&so_medium=Internal&so_source=JobSearch&q=internship&l=United+States&u=Km&d=100",
     "position": "Process Engineering Graduate Intern",
     "location": {
       "city": "– Albuquerque",
@@ -102,10 +102,10 @@
     "contact": "",
     "posted": "",
     "due": "",
-    "lastScraped": "2021-11-29T17:48:50.100Z"
+    "lastScraped": "2021-12-06T18:33:23.744Z"
   },
   {
-    "url": "https://stackoverflow.com/jobs/531834/process-engineering-graduate-intern-intel-corporation?a=2SmmfYmHV59m&so=i&pg=1&offset=7&total=11&so_medium=Internal&so_source=JobSearch&q=internship&l=United+States&u=Km&d=100",
+    "url": "https://stackoverflow.com/jobs/531834/process-engineering-graduate-intern-intel-corporation?a=2SmmfYmHV59m&so=i&pg=1&offset=7&total=10&so_medium=Internal&so_source=JobSearch&q=internship&l=United+States&u=Km&d=100",
     "position": "Process Engineering Graduate Intern",
     "location": {
       "city": "– Albuquerque",
@@ -117,10 +117,10 @@
     "contact": "",
     "posted": "",
     "due": "",
-    "lastScraped": "2021-11-29T17:48:50.498Z"
+    "lastScraped": "2021-12-06T18:33:24.176Z"
   },
   {
-    "url": "https://stackoverflow.com/jobs/560135/full-stack-web-developer-remote-international-soci?a=31QOJc2JAKT6&so=i&pg=1&offset=8&total=11&so_medium=Internal&so_source=JobSearch&q=internship&l=United+States&u=Km&d=100",
+    "url": "https://stackoverflow.com/jobs/560135/full-stack-web-developer-remote-international-soci?a=31QOJc2JAKT6&so=i&pg=1&offset=8&total=10&so_medium=Internal&so_source=JobSearch&q=internship&l=United+States&u=Km&d=100",
     "position": "Full Stack Web Developer (Remote, International)",
     "location": {
       "city": "– San Diego",
@@ -132,10 +132,10 @@
     "contact": "",
     "posted": "",
     "due": "",
-    "lastScraped": "2021-11-29T17:48:51.429Z"
+    "lastScraped": "2021-12-06T18:33:24.582Z"
   },
   {
-    "url": "https://stackoverflow.com/jobs/521892/java-full-stack-web-application-developer-entry-lbi-software?a=2P1DBA8o3JL2&so=i&pg=1&offset=9&total=11&so_medium=Internal&so_source=JobSearch&q=internship&l=United+States&u=Km&d=100",
+    "url": "https://stackoverflow.com/jobs/521892/java-full-stack-web-application-developer-entry-lbi-software?a=2P1DBA8o3JL2&so=i&pg=1&offset=9&total=10&so_medium=Internal&so_source=JobSearch&q=internship&l=United+States&u=Km&d=100",
     "position": "JAVA Full Stack Web Application Developer – Entry Level & Internships",
     "location": {
       "city": "– Melville",
@@ -147,21 +147,6 @@
     "contact": "",
     "posted": "",
     "due": "",
-    "lastScraped": "2021-11-29T17:48:51.755Z"
-  },
-  {
-    "url": "https://stackoverflow.com/jobs/525968/senior-full-stack-development-engineer-audible?a=2Qoo3nP7FOSs&so=i&pg=1&offset=10&total=11&so_medium=Internal&so_source=JobSearch&q=internship&l=United+States&u=Km&d=100",
-    "position": "Senior Full Stack Development Engineer - International Expansion",
-    "location": {
-      "city": "– Newark",
-      "state": "NJ",
-      "country": "United States"
-    },
-    "description": "Job description\nGood storytelling starts with great listening. At Audible, that means each role and every project has our audience in mind. Because the same people who design, develop, and deploy our products also happen to use them. To us, that speaks volumes.\n\nAbout the team\nAudible International Expansion team is delivering on a vision for launching a localized, customer-centric presence in new countries while building world class engineering platform to enable faster and differentiated launches. We are expanding and improving the platform from mobile web to back-end services while innovating and leveraging new Amazon technology and platforms. Success means we are delighting more customers in new countries while building on an already tremendously successful and much-loved product.\n\nAbout you\nYou are an innovative and passionate top software engineer looking to make a positive impact on customer experience. You like to own deliverables end-to-end and have a meaningful influence on the final product. You are a builder. You like to work with fellow engineers and product people to share knowledge, imagine, design, develop, test, and launch software that wows our community and inspires our peers. You're curious and love to learn unprompted as you stay up to date with tools, trends, technologies and best practices in the industry. Please don't hesitate to apply!\n\nAs a Software Developer II, you will:\n· Partner with cross-functional teams to imagine, design, develop, test, and launch software that impacts our community and inspires your peers.\n· Set the technical direction and strategy within a team and strategize to influence technology across Audible and beyond.\n· Work with your team to invent, design and build software that is stable and performant.\n· Proficient in a broad range of design approaches and know when it is appropriate to use each.\n· Solve difficult problems of diverse scope where analysis of data requires evaluation of identifiable factors, demonstrating sound judgment in selecting methods and techniques for obtaining solutions.\n· Capable of independently clarifying technical requirements, developing coding estimates and applying a broad range of design approaches to bring innovative solutions to the table.\n· Review code of other team members and provide constructive direction.\n· Constantly strive to raise the bar on engineering excellence.\n· Drive continuous improvement of software quality, CX and maintainability of products/features.\n· Lead the way - staying up to date with tools, trends, technologies and frameworks both industry-wide and within Amazon and then sharing that knowledge in a meaningful way with the community.\n· Mentor and lead developers by cultivating curiosity and deep technical understanding.\n· Additional duties as assigned.\n\nBasic Qualifications\n\n· Programming experience with at least one modern language such as Java, C++, or C# including object-oriented design\n· 1+ years of experience contributing to the architecture and design (architecture, design patterns, reliability and scaling) of new and current systems.\n· 2+ years of non-internship professional software development experience\n· Bachelor’s degree in Computer Science or related field, or equivalent experience.\n\nPreferred Qualifications\n\n· Able to provide a code review, assess an existing software application and correctly identify where enhancements may be made to improve it, identify and resolve the root cause of software defects.\n· Experience navigating highly complex and ambiguous situations.\n· Past mentorship of other engineers within an organization, showing mutual growth.\n· Experience building software systems that have been successfully delivered to internal or external customers.\n· Ability to think creatively and adapt the message to the audience. Can provide information to technical and non-technical stakeholders alike and guide them to confidently informed decisions.\n· Able to design, implement, and deploy software components and features, and solve difficult problems.\n· Able to work independently and with your team to deliver software successfully.\n· Able to establish good working relationships with peers. Able to recognize discordant views and take part in constructive dialogue to resolve them.\n· Able to confidently train new team-mates about your customers, what the team’s software does, how it is constructed, tested, operates, and how it fits into the bigger picture.\n· Knowledgeable about a broad range of design approaches and when to use them (and when to not).\n· Understand the legacy of coding decisions. Know when a short-term workaround is a problem and when to limit this type of solution and the implications of adding new dependencies.\n\nABOUT AUDIBLE\nAt Audible, we innovate and inspire through the power of voice. We're changing the narrative on storytelling. As a leading producer and provider of original spoken-word entertainment and audiobooks, we've redefined the ways people access, discover, and share stories. The stories we tell have the ability to transport and transform everyday moments into meaningful experiences and it's our people who make Audible's service possible. We're listeners, storytellers, and problem-solvers. Our perspectives and experiences power our ideas and come together in our mission to unleash the power of the spoken word.\n\nAudible is committed to a diverse and inclusive workplace. Audible is an equal opportunity employer and does not discriminate on the basis of race, national origin, gender, gender identity, sexual orientation, protected veteran status, disability, age, or other legally protected status. For individuals with disabilities who would like to request an accommodation, please visit https://www.amazon.jobs/en/disability/us.",
-    "company": "Audible – Newark, NJ",
-    "contact": "",
-    "posted": "",
-    "due": "",
-    "lastScraped": "2021-11-29T17:48:52.797Z"
+    "lastScraped": "2021-12-06T18:33:24.899Z"
   }
 ]
