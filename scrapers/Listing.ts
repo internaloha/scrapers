@@ -1,7 +1,24 @@
+export interface Location {
+  city: string;
+  state: string;
+  country: string;
+}
+
+export interface ListingData {
+  url: string,
+  position: string;
+  location: Location;
+  description: string;
+  company: string;
+  contact?: string;
+  posted?: string;
+  due?: string;
+}
+
 export class Listing {
   public url: string;
   public position?: string;
-  public location?: { city: string, state: string, country: string };
+  public location?: Location;
   public description?: string;
   public company?: string;
   public contact?: string;
@@ -9,7 +26,10 @@ export class Listing {
   public due?: string;
   public lastScraped: Date;
 
-  constructor({ url, position = '', location = { city: '', state: '', country: ''}, description = '', company = '', contact = '', posted = '', due = '' }) {
+  constructor({ url, position = '', location = { city: '', state: '', country: ''}, description = '', company = '', contact = '', posted = '', due = '' }: ListingData) {
+    if (position === '') {
+      throw new Error('Empty position string. Position is required.');
+    }
     this.url = url;
     this.position = position;
     this.location = location;

@@ -64,8 +64,10 @@ export class CheggScraper extends Scraper {
         'DesktopHeader_subTitle__3k6XA"]';
       // If company selector exists return the value else return an empty string
       const company = (await super.selectorExists(companySelector) ? await super.getValue(companySelector, 'innerText') : '');
-      const location = (await super.getValue('span[class="DesktopHeader_subTitle__3k6XA ' +
+      // TODO better processing of the location string
+      const locationStr = (await super.getValue('span[class="DesktopHeader_subTitle__3k6XA ' +
         'DesktopHeader_location__3jiWp"]', 'innerText'));
+      const location = { city: locationStr, state: '', country: '' };
       const posted = (await super.getValue('p[class="DesktopHeader_postedDate__11t-5"]', 'innerText'));
       this.log.debug(position, description, company, location, posted);
 
@@ -88,7 +90,7 @@ export class CheggScraper extends Scraper {
   async processListings() {
     await super.processListings();
     this.log.info('Processing Listings');
-    var removedCount = 0; //the number of non relevant listings removed
+    let removedCount = 0; //the number of non-relevant listings removed
     const words = ['Computer Science', 'programming', 'software']; //the words we want to search for in the description
 
     // TODO: Replace this with filter() at some point.
@@ -102,6 +104,6 @@ export class CheggScraper extends Scraper {
         object.splice(index, 1);
       }
     });
-    this.log.info(`Removed ${removedCount} nonrelevant listings, total now: ${this.listings.length()}`);
+    this.log.info(`Removed ${removedCount} non-relevant listings, total now: ${this.listings.length()}`);
   }
 }

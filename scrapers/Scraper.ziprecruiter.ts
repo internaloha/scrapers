@@ -29,7 +29,7 @@ export class ZipRecruiterScraper extends Scraper {
     urls = _.uniq(urls);
     this.log.info(`Found ${urls.length} listings`);
 
-    const positions = await super.getValues('h1[class="job_title"]', 'innerText');
+    const positions = await super.getValues('h2[class="job_title"]', 'innerText'); // CAM changed h1 to h2.
     const descriptions = await super.getValues('div[class="job_description_container"] ', 'innerText');
     const companies = await super.getValues('a[class="t_org_link name"]', 'innerText');
 

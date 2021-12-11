@@ -32,7 +32,7 @@ export class AppleScraper extends Scraper {
       this.log.info(`Processing page ${pageNum} with ${urls.length} listings.`);
       // Retrieve each URL, extract the internship listing info.
       for (let i = 0; i < urls.length; i++) {
-        const url = urls[i];
+        const url: string = urls[i];
         await this.page.goto(url);
         const company = 'Apple';
         const position = await super.getValue('h1[itemprop="title"]', 'innerText');
