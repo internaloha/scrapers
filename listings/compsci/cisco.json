@@ -12,7 +12,7 @@
     "contact": "",
     "posted": "",
     "due": "",
-    "lastScraped": "2021-12-12T20:10:13.488Z"
+    "lastScraped": "2022-01-11T17:37:49.389Z"
   },
   {
     "url": "https://jobs.cisco.com/jobs/ProjectDetail/Product-Management-Intern-MBA-Summer-2022-Internship-Meraki/1349331",
@@ -27,7 +27,7 @@
     "contact": "",
     "posted": "",
     "due": "",
-    "lastScraped": "2021-12-12T20:10:13.488Z"
+    "lastScraped": "2022-01-11T17:37:49.389Z"
   },
   {
     "url": "https://jobs.cisco.com/jobs/ProjectDetail/Test-Automation-Engineer-Summer-2022-Internship-Bachelors-Meraki/1348849",
@@ -42,7 +42,7 @@
     "contact": "",
     "posted": "",
     "due": "",
-    "lastScraped": "2021-12-12T20:10:13.489Z"
+    "lastScraped": "2022-01-11T17:37:49.389Z"
   },
   {
     "url": "https://jobs.cisco.com/jobs/ProjectDetail/Site-Reliability-Engineer-Summer-2022-Internship-Bachelors-Meraki/1341219",
@@ -57,7 +57,7 @@
     "contact": "",
     "posted": "",
     "due": "",
-    "lastScraped": "2021-12-12T20:10:13.489Z"
+    "lastScraped": "2022-01-11T17:37:49.389Z"
   },
   {
     "url": "https://jobs.cisco.com/jobs/ProjectDetail/Network-Support-Engineer-Intern-San-Francisco-Summer-2022-Internship-Bachelors-Meraki/1341029",
@@ -72,7 +72,7 @@
     "contact": "",
     "posted": "",
     "due": "",
-    "lastScraped": "2021-12-12T20:10:13.489Z"
+    "lastScraped": "2022-01-11T17:37:49.389Z"
   },
   {
     "url": "https://jobs.cisco.com/jobs/ProjectDetail/Network-Support-Engineer-Intern-Helpdesk-IT-Computer-Science-Summer-2022-Internship-Meraki/1340044",
@@ -87,22 +87,7 @@
     "contact": "",
     "posted": "",
     "due": "",
-    "lastScraped": "2021-12-12T20:10:13.489Z"
-  },
-  {
-    "url": "https://jobs.cisco.com/jobs/ProjectDetail/Network-Support-Engineer-Intern-Chicago-Summer-2022-Internship-Bachelors-Meraki/1339621",
-    "position": "Network Support Engineer Intern - Chicago, Summer 2022 Internship, Bachelors (Meraki)",
-    "location": {
-      "city": "Chicago",
-      "state": "Illinois",
-      "country": ""
-    },
-    "description": "Summer Internship (May-August, full-time, Chicago)\n\nCisco Meraki Business Unit\n\nAt Cisco Meraki, our Network Support Engineer Interns act as key players on the Support team! You will troubleshoot cases that cover the entire Meraki product line, including our wireless access points, security appliances, switches, and Systems Manager application, just like our full-time engineers. With a steep learning curve and a fun, challenging work environment, our interns come out of the program with a deeper understanding of networking, stronger problem-solving skills, and a mastery of customer support that will carry with them for the rest of their careers. Our interns are an integral part of the Support team - we look for smart, passionate individuals who are open to taking on any task and are proactive in helping the team. The position is full-time and based out of the Chicago office. \n\nResponsibilities\n\nResearch and resolve issues reported by Meraki customers and partners\nIdentify issues suitable for entry in the Meraki Knowledge Base\nWrite, review, and release KB articles\nAssist with lab testing work as needed for Meraki products\nIdentify, reproduce, and document bugs\nHave a project in mind? Let us know and we'll help to make it happen!\n\nQualifications\n\nMust be a Junior or Senior working towards a B.S in Networking and Systems Administration, Computer Information Technology, Network Technologies, Computer Science, or a related discipline from an accredited university - Not accepting Masters students\nBasic understanding of networking fundamentals, e.g. be able to explain the functions of and differences among the link, network, transport, and application layers\nA passion to assist and problem-solve with our customers\nOutstanding account management, follow-through, and problem-solving skills\nResourcefulness and attention to detail\nExcellent communication skills, both written and verbal\n\nCisco requires all U.S. employees to be fully vaccinated or have an approved religious or medical accommodation. Candidates accepting an offer must provide proof of vaccination status on their first day. If someone anticipates requesting an accommodation for this requirement, they must receive approval before the start date. Candidates receiving an offer will receive additional information about the accommodation process at the time of the offer. All offers of employment are contingent upon complying with Cisco's vaccination policy.\n\nCisco is an Affirmative Action and Equal Opportunity Employer and all qualified applicants will receive consideration for employment without regard to race, color, religion, gender, sexual orientation, national origin, genetic information, age, disability, veteran status, or any other legally protected basis. Cisco will consider for employment, on a case by case basis, qualified applicants with arrest and conviction records.\n\nAt Cisco Meraki, we’re challenging the status quo with the power of diversity, inclusion, and collaboration. When we connect different perspectives, we can imagine new possibilities, inspire innovation, and release the full potential of our people. We’re building an employee experience that includes appreciation, belonging, growth, and purpose for everyone.",
-    "company": "Cisco",
-    "contact": "",
-    "posted": "",
-    "due": "",
-    "lastScraped": "2021-12-12T20:10:13.489Z"
+    "lastScraped": "2022-01-11T17:37:49.389Z"
   },
   {
     "url": "https://jobs.cisco.com/jobs/ProjectDetail/Product-Software-Engineer-Summer-2022-Internship-Meraki/1339636",
@@ -117,7 +102,37 @@
     "contact": "",
     "posted": "",
     "due": "",
-    "lastScraped": "2021-12-12T20:10:13.489Z"
+    "lastScraped": "2022-01-11T17:37:49.389Z"
+  },
+  {
+    "url": "https://jobs.cisco.com/jobs/ProjectDetail/Network-Support-Engineer-Intern-Chicago-Summer-2022-Internship-Bachelors-Meraki/1339621",
+    "position": "Network Support Engineer Intern - Chicago, Summer 2022 Internship, Bachelors (Meraki)",
+    "location": {
+      "city": "Chicago",
+      "state": "Illinois",
+      "country": ""
+    },
+    "description": "Summer Internship (May-August, full-time, Chicago)\n\nCisco Meraki Business Unit\n\nAt Cisco Meraki, our Network Support Engineer Interns act as key players on the Support team! You will troubleshoot cases that cover the entire Meraki product line, including our wireless access points, security appliances, switches, and Systems Manager application, just like our full-time engineers. With a steep learning curve and a fun, challenging work environment, our interns come out of the program with a deeper understanding of networking, stronger problem-solving skills, and a mastery of customer support that will carry with them for the rest of their careers. Our interns are an integral part of the Support team - we look for smart, passionate individuals who are open to taking on any task and are proactive in helping the team. The position is full-time and based out of the Chicago office. \n\nResponsibilities\n\nResearch and resolve issues reported by Meraki customers and partners\nIdentify issues suitable for entry in the Meraki Knowledge Base\nWrite, review, and release KB articles\nAssist with lab testing work as needed for Meraki products\nIdentify, reproduce, and document bugs\nHave a project in mind? Let us know and we'll help to make it happen!\n\nQualifications\n\nMust be a Junior or Senior working towards a B.S in Networking and Systems Administration, Computer Information Technology, Network Technologies, Computer Science, or a related discipline from an accredited university - Not accepting Masters students\nBasic understanding of networking fundamentals, e.g. be able to explain the functions of and differences among the link, network, transport, and application layers\nA passion to assist and problem-solve with our customers\nOutstanding account management, follow-through, and problem-solving skills\nResourcefulness and attention to detail\nExcellent communication skills, both written and verbal\n\nCisco requires all U.S. employees to be fully vaccinated or have an approved religious or medical accommodation. Candidates accepting an offer must provide proof of vaccination status on their first day. If someone anticipates requesting an accommodation for this requirement, they must receive approval before the start date. Candidates receiving an offer will receive additional information about the accommodation process at the time of the offer. All offers of employment are contingent upon complying with Cisco's vaccination policy.\n\nCisco is an Affirmative Action and Equal Opportunity Employer and all qualified applicants will receive consideration for employment without regard to race, color, religion, gender, sexual orientation, national origin, genetic information, age, disability, veteran status, or any other legally protected basis. Cisco will consider for employment, on a case by case basis, qualified applicants with arrest and conviction records.\n\nAt Cisco Meraki, we’re challenging the status quo with the power of diversity, inclusion, and collaboration. When we connect different perspectives, we can imagine new possibilities, inspire innovation, and release the full potential of our people. We’re building an employee experience that includes appreciation, belonging, growth, and purpose for everyone.",
+    "company": "Cisco",
+    "contact": "",
+    "posted": "",
+    "due": "",
+    "lastScraped": "2022-01-11T17:37:49.389Z"
+  },
+  {
+    "url": "https://jobs.cisco.com/jobs/ProjectDetail/Technical-Marketing-Engineer-Intern-United-States/1338945",
+    "position": "Technical Marketing Engineer (Intern) United States",
+    "location": {
+      "city": "San Jose",
+      "state": "California",
+      "country": ""
+    },
+    "description": "What You'll Do  \n\nWe are looking for a Technical Marketing Engineer to promote and increase customer adoption of various enterprise technologies such as network visibility, security, switching, wireless, routing, and Software Defined intent based networking technologies. We are seeking a motivated, detail oriented & committed engineer that will rise to the challenge to communicate, design, build & help customers and sales teams on enterprise networking technologies. Often times you will work as part of a team as well as independently in customer engagements of the latest technologies. You should be curious and eager to learn about new products, technologies, and solutions to provide valuable input and communication to the sales, engineering, and product management organization. The engineer will help drive the future technical product direction. Be a technical consultant on customer calls and meetings. Work closely with the field, key Systems Integrators, Engineering, and Cisco Technology Partners in an Agile environment. Work with automation or cloud software to enable next generation network design and network architectures. Develop automated methods to own the network and optimize our customer's user experience. Build messaging about key customer challenges and benefits of Cisco's solutions based on use cases. Build Documents and Presentations with technical details for the products, technologies, and solutions. Travel and deliver training to customers, partners, sales teams both domestically and internationally at events and customer locations  \n\nWho You'll Work With  \n\nCisco’s Enterprise Networking Group is a core technology group within Cisco. By defining and delivering market-leading campus networking solutions with Cisco Digital Network Architecture (DNA) which is an intent-based networking architecture that delivers advanced solutions for enterprises.  \n\nWho You Are  \n\nLoves technology, computer networking, loves automation, loves digital. Self-starter who is passionate about ground-breaking technology and driving change. Has a strong sense of ownership, loves turning ambiguity into real outcomes, working across all functions and matrixed teams, embraces the belief that leadership happens from all levels, and we are better together than any one of us in individually.  \n\nActively enrolled and pursuing a B.S. or M.S. degree in Computer Science, Electrical Engineering or related technical field or program\n\nExcellent communication skills both in technical and non-technical discussions  \n\nExcellent analytical skills. Confirmed ability to understand sophisticated and in-depth level technical situations, related business challenges, and be able to communicate these technologies in a clear and simple way to customers and sales teams.  \n\nDevOps Programming and scripting experience in Python, Linux, or other programming language is desired  \n\nInterest and knowledge of networking technologies and networking is desired. Cisco Routing, Catalyst Switching, IOS XE, Aironet AP and Wireless controller experience is desired. Cisco certifications is desired.  \n\nAble to legally live and work in the country for which you’re applying, without visa support or sponsorship \n\n#WeAreCisco, where each person is unique, but we bring our talents to work as a team and make a difference powering an inclusive future for all.  \n \nWe embrace digital, and help our customers implement change in their digital businesses. Some may think we’re “old” (36 years strong) and only about hardware, but we’re also a software company. And a security company. We even invented an intuitive network that adapts, predicts, learns and protects. No other company can do what we do – you can’t put us in a box! \n \nBut “Digital Transformation” is an empty buzz phrase without a culture that allows for innovation, creativity, and yes, even failure (if you learn from it.) \n \nDay to day, we focus on the give and take. We give our best, give our egos a break, and give of ourselves (because giving back is built into our DNA.) We take accountability, bold steps, and take difference to heart. Because without diversity of thought and a dedication to equality for all, there is no moving forward. \n \nSo, you have colorful hair? Don’t care. Tattoos? Show off your ink. Like polka dots? That’s cool. Pop culture geek? Many of us are. Passion for technology and world changing? Be you, with us!",
+    "company": "Cisco",
+    "contact": "",
+    "posted": "",
+    "due": "",
+    "lastScraped": "2022-01-11T17:37:49.389Z"
   },
   {
     "url": "https://jobs.cisco.com/jobs/ProjectDetail/Product-Manager-MBA-Intern-United-States/1338244",
@@ -132,7 +147,7 @@
     "contact": "",
     "posted": "",
     "due": "",
-    "lastScraped": "2021-12-12T20:10:13.489Z"
+    "lastScraped": "2022-01-11T17:37:49.389Z"
   },
   {
     "url": "https://jobs.cisco.com/jobs/ProjectDetail/User-Experience-Master-s-Intern-United-States/1338423",
@@ -147,7 +162,7 @@
     "contact": "",
     "posted": "",
     "due": "",
-    "lastScraped": "2021-12-12T20:10:13.489Z"
+    "lastScraped": "2022-01-11T17:37:49.389Z"
   },
   {
     "url": "https://jobs.cisco.com/jobs/ProjectDetail/User-Experience-Bachelor-s-Intern-United-States/1338396",
@@ -162,7 +177,22 @@
     "contact": "",
     "posted": "",
     "due": "",
-    "lastScraped": "2021-12-12T20:10:13.489Z"
+    "lastScraped": "2022-01-11T17:37:49.389Z"
+  },
+  {
+    "url": "https://jobs.cisco.com/jobs/ProjectDetail/Duo-Motion-Design-Intern-United-States/1359015",
+    "position": "Duo Motion Design (Intern) United States",
+    "location": {
+      "city": "Ann Arbor",
+      "state": "Michigan",
+      "country": ""
+    },
+    "description": "Motion Design Intern - Duo/Cisco\n\nAre you passionate about telling stories through visual mediums like animation, graphic design and illustration? Do you have a keen eye for detail, keyframe like there’s no tomorrow, and like the idea of  collaborating with creative teams that are telling stories across a scaling cybersecurity business? \n\nIf so, we’re looking for a talented motion design intern like you to join the Cisco Secure Brand Strategy & Design team. Cisco + Duo display value in our interns by offering competitive market (hourly) rates. In addition to this we offer generous relocation assistance, health and medical benefits, paid holidays, accrued sick pay, and Time to Give volunteering hours. However, the best perk is the opportunity to work hands on with a team and tackle real projects for the summer. Throughout the course of your internship, you’ll gain real world experience working closely with skilled visual designers, writers, and product marketers to tell the story of our security business. As part of our experienced in-house creative team, you’ll be developing polished animated content ranging from short form videos, to animated explainers.\n\nWhat You'll Do\n\n●      Collaborate directly with our in-house animator to produce content ranging from 20 - 60 second microvideos, to long-form animated explainers using the Cisco Secure and Duo visual identities.\n\n●      Work closely with colleagues within our brand team, and across teams, to develop eye-catching, polished content for public Duo and Cisco Secure platforms.\n\n●      Help build out streamlined, repeatable and scalable processes for producing high quality animated content.\n\n●      Be a proactive contributor to our creative process from the beginning of a project through delivery.\n\n●      Keep up to date on emerging technology and trends within the design and animation industries, ask lots of questions, and share your own knowledge with your peers as you gain experience on the job with us.\n\nOur Minimum Requirements For This Role\n\n●      You are seasoned with imaging and design software like Adobe After Effects, Adobe Illustrator and Photoshop, and more within the Adobe Creative Suite.\n\n●      Knowledge of applications like Cinema 4D, Maya, Adobe Animate or Adobe Character Animator a bonus.\n\n●      You have proven experience developing creative work in various mediums, but particularly animation.\n\n●      You are passionate about building your career around developing high quality animated or moving image content.\n\nWho You'll Work With\n\n●      Our specific group is the Story & Media team, a subgroup within Cisco Secure’s Brand Strategy & Design team.\n\n●      We’re a multi-functional, inclusive and innovative team of media artists, writers, and employer brand specialists who are focused on telling compelling stories around security products, philosophies and culture.\n\n●      We are a team that values and respects each others' work ethic, individual working styles, and supports each other in accomplishing what is vital to making our business successful.\n\n●      You’ll also collaborate with a wide variety of teams, from cybersecurity specialists, content marketers, and brand managers throughout the business.\n\nWho You Are\n\n●      You are a student working towards a degree in visual design and/or animation or recent graduate (1 year).\n\n●      You understand and appreciate  storytelling structure and mechanics, and how motion graphics integrate into that structure\n\n●      You work well in a tight-knit team structure, and enjoy collaboration and receiving constructive feedback. You’re open to experimentation and an iterative way of working.\n\n●      You work without ego. Make no assumptions, and aren’t afraid to ask questions and get context when you need to.\n\n●      You’re energized by continuous learning opportunities for you, your peers, and your team.\n\n●      You have a passion for technology and emerging trends.\n\n●      You're good at interacting with different personalities, skill levels, levels of seniority, and across other subject areas.\n\nInternship details...\n\n●      You'll be working with our global teams with offices in Ann Arbor, MI, Austin, TX and London, UK with the opportunity to work remotely\n\n●      Program dates are May 23rd - August 19th\n\n●      Roles are full time and 40 hours per week, Monday - Friday\n\n●      Generous pay and employee perks",
+    "company": "Cisco",
+    "contact": "",
+    "posted": "",
+    "due": "",
+    "lastScraped": "2022-01-11T17:37:49.389Z"
   },
   {
     "url": "https://jobs.cisco.com/jobs/ProjectDetail/Software-Engineer-Master-s-Intern-United-States/1338368",
@@ -177,7 +207,7 @@
     "contact": "",
     "posted": "",
     "due": "",
-    "lastScraped": "2021-12-12T20:10:13.489Z"
+    "lastScraped": "2022-01-11T17:37:49.389Z"
   },
   {
     "url": "https://jobs.cisco.com/jobs/ProjectDetail/Software-Engineer-Bachelor-s-Intern-United-States/1338366",
@@ -192,6 +222,6 @@
     "contact": "",
     "posted": "",
     "due": "",
-    "lastScraped": "2021-12-12T20:10:13.489Z"
+    "lastScraped": "2022-01-11T17:37:49.389Z"
   }
 ]
