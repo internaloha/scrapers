@@ -203,11 +203,51 @@ export class Scraper {
     this.log.debug('Starting generate listings');
   }
 
+  /** Return the passed description string with initial "junk" keywords removed. */
+  stripInitialKeywords(description) {
+    return description
+      .replace(/^(The position)/, '')
+      .replace(/^(What you'll do)/, '')
+      .replace(/^(Who are we?)/, '')
+      .replace(/^(About the role:)/, '')
+      .replace(/^(Why join us)/, '')
+      .replace(/^(Who we are)/, '')
+      .replace(/^(We are looking for)/, '')
+      .replace(/^(The basics)/, '')
+      .replace(/^(Company overview)/, '')
+      .replace(/^(Position)/, '')
+      .replace(/^(About us)/, '')
+      .replace(/^(About the job)/, '')
+      .replace(/^(Job Brief)/, '')
+      .replace(/^(Role & Responsibilities:)/, '')
+      .replace(/^(DESCRIPTION:)/, '')
+      .replace(/^(Description:)/, '')
+      .replace(/^(Description\/Job Summary)/, '')
+      .replace(/^(Job Summary)/, '')
+      .replace(/^(Your responsibilities include:)/, '')
+      .replace(/^(Introduction)/, '')
+      .replace(/^(Research Topics\/Keywords:)/, '')
+      .replace(/^(What You’ll Do)/, '')
+      .replace(/^(Overview)/, '')
+      .replace(/^(Job Description)/, '')
+      .replace(/^(ABOUT PROGRAM:)/, '')
+      .replace(/^(Who We Are)/, '')
+      .replace(/^(Responsibilities & Duties)/, '')
+      .replace(/^(Full Job Description)/, '')
+      .replace(/^(Company Description)/, '')
+      .replace(/^(About the Role)/, '')
+      .replace(/^(Our Technology:)/, '')
+      .replace(/^(More information about this job:)/, '')
+      .replace(/^(:)/, '')
+      .trim();
+  }
+
   /**
    * Default processing for the description field:
    *   1. Replace 4+ newlines with two newlines.
    *   2. Replace nonbreaking space chars with a normal space char.
    *   3. Strip HTML.
+   *   4. Remove 'junk' initial words: https://github.com/radgrad/radgrad2/issues/807
    */
   fixDescription(description) {
     const description1 = description
@@ -219,7 +259,10 @@ export class Scraper {
       .replace(/\n\s*\n\s*\n/g, '\n\n')
       .replace(/\xa0/g, ' ');
     const description2 = StripHtml.stripHtml(description1).result;
-    return description2;
+    const description3 = this.stripInitialKeywords(description2);
+    // Sometimes the keywords come in pairs, so strip again to get the second one.
+    const description4 = this.stripInitialKeywords(description3);
+    return description4;
   }
 
   /**
