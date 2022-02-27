@@ -1,6 +1,6 @@
 [
   {
-    "url": "https://stackoverflow.com/jobs/521892/java-full-stack-web-application-developer-entry-lbi-software?a=2P1DBA8o3JN6&so=i&pg=1&offset=0&total=4&so_medium=Internal&so_source=JobSearch&q=internship&l=United+States&u=Km&d=100",
+    "url": "https://stackoverflow.com/jobs/521892/java-full-stack-web-application-developer-entry-lbi-software?a=2P1DBA8o3JN6&so=i&pg=1&offset=0&total=3&so_medium=Internal&so_source=JobSearch&q=internship&l=United+States&u=Km&d=100",
     "position": "JAVA Full Stack Web Application Developer – Entry Level & Internships",
     "location": {
       "city": "– Melville",
@@ -12,25 +12,10 @@
     "contact": "",
     "posted": "",
     "due": "",
-    "lastScraped": "2022-01-11T17:38:03.422Z"
+    "lastScraped": "2022-02-27T17:18:09.457Z"
   },
   {
-    "url": "https://stackoverflow.com/jobs/556561/software-developer-internship-spring-2022-oreilly-auto-parts?a=30EvhamTUIdW&so=i&pg=1&offset=1&total=4&so_medium=Internal&so_source=JobSearch&q=internship&l=United+States&u=Km&d=100",
-    "position": "Software Developer Internship - Spring 2022",
-    "location": {
-      "city": "– Springfield",
-      "state": "MO",
-      "country": "United States"
-    },
-    "description": "Job description\n\nSoftware Developer Internship - Spring 2022\n\nLocation: Corporate Headquarters - Springfield, MO\nStatus: Supplemental\nTentative Schedule: Monday - Friday, 1 p.m. to 5 p.m.\nThe O'Reilly Auto Parts Software Developer Internship is an ongoing internship that begins with a 12 week classroom period to train each intern for a long term engagement with the company. This training period is taught by internship supervisors from O'Reilly Auto Parts and is hosted at Missouri State University. The program consists of both classroom training and hands-on experience in a lab environment. This internship requires part-time on site participation in Springfield, Missouri Monday through Friday from 1PM to 5PM starting Monday, February 7, 2022. After the initial 12 week training period, interns transition to more flexible part time hours with an assigned development team. This internship is designed to be an ongoing opportunity for professional development as long-term team members of O'Reilly Auto Parts.\n\nA Software Developer Intern develops, tests, and documents computer software, applying knowledge of programming techniques and computer systems.\n\nEssential Job Functions\n\nDebug and correct software defects\nDevelop new or modify existing software\nCreate or update project documentation\nTest software to validate accuracy of code\n\nSkills and Qualifications\n\nHigh School diploma or equivalent\nEntry level knowledge of programming, database systems, and systems analysis and design\nAbility to write technical documentation\nGood problem-solving skills\nGood verbal and written communications skills\nMust work well in a team environment\nAbility to learn independently\nComputer-related work experience is an advantage desired",
-    "company": "O'Reilly Auto Parts – Springfield, MO",
-    "contact": "",
-    "posted": "",
-    "due": "",
-    "lastScraped": "2022-01-11T17:38:03.963Z"
-  },
-  {
-    "url": "https://stackoverflow.com/jobs/531835/process-engineering-graduate-intern-intel-corporation?a=2SmnxTTfifJu&so=i&pg=1&offset=2&total=4&so_medium=Internal&so_source=JobSearch&q=internship&l=United+States&u=Km&d=100",
+    "url": "https://stackoverflow.com/jobs/531834/process-engineering-graduate-intern-intel-corporation?a=2SmmfYmHV59m&so=i&pg=1&offset=1&total=3&so_medium=Internal&so_source=JobSearch&q=internship&l=United+States&u=Km&d=100",
     "position": "Process Engineering Graduate Intern",
     "location": {
       "city": "– Albuquerque",
@@ -42,10 +27,10 @@
     "contact": "",
     "posted": "",
     "due": "",
-    "lastScraped": "2022-01-11T17:38:04.428Z"
+    "lastScraped": "2022-02-27T17:18:10.324Z"
   },
   {
-    "url": "https://stackoverflow.com/jobs/531834/process-engineering-graduate-intern-intel-corporation?a=2SmmfYmHV59m&so=i&pg=1&offset=3&total=4&so_medium=Internal&so_source=JobSearch&q=internship&l=United+States&u=Km&d=100",
+    "url": "https://stackoverflow.com/jobs/531835/process-engineering-graduate-intern-intel-corporation?a=2SmnxTTfifJu&so=i&pg=1&offset=2&total=3&so_medium=Internal&so_source=JobSearch&q=internship&l=United+States&u=Km&d=100",
     "position": "Process Engineering Graduate Intern",
     "location": {
       "city": "– Albuquerque",
@@ -57,6 +42,6 @@
     "contact": "",
     "posted": "",
     "due": "",
-    "lastScraped": "2022-01-11T17:38:04.903Z"
+    "lastScraped": "2022-02-27T17:18:10.700Z"
   }
 ]

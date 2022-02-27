@@ -1,0 +1,10 @@
+{
+  "date": "2022-02-27",
+  "elapsedTime": 1180,
+  "numErrors": 1,
+  "numListings": 499,
+  "errorMessages": [
+    "net::ERR_TIMED_OUT at https://www.simplyhired.com/job/4dqNt-85yJxbfpkVkK-pOuh0blkgN2mqo4RyEAiSxEJyp6fLypVrZQ?q=computer+science+intern"
+  ],
+  "scraper": "simplyhired"
+}

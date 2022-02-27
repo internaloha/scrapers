@@ -1,0 +1,14 @@
+# Copy and paste into separate command shells.
+
+cd ~/github/internaloha/scrapers; npm run scrape -- -cf true -s apple -ml 40
+cd ~/github/internaloha/scrapers; npm run scrape -- -cf true -s chegg -ml 100
+cd ~/github/internaloha/scrapers; npm run scrape -- -cf true -s cisco -ml 10
+cd ~/github/internaloha/scrapers; npm run scrape -- -cf true -s glassdoor -ml 200
+cd ~/github/internaloha/scrapers; npm run scrape -- -cf true -s nsf -ml 100
+cd ~/github/internaloha/scrapers; npm run scrape -- -cf true -s simplyhired -ml 1000
+cd ~/github/internaloha/scrapers; npm run scrape -- -cf true -s stackoverflow -ml 5
+cd ~/github/internaloha/scrapers; npm run scrape -- -cf true -s ziprecruiter -ml 100
+
+npm run statistics -- -cf true
+
+# npm run scrape -- -cf true -s linkedin -ml 100
